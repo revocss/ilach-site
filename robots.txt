@@ -1,0 +1,47 @@
+# robots.txt — i-lach.com
+# Generated: 2026-05-19
+
+User-agent: *
+Allow: /
+
+# Блокируем служебные папки / Block service directories
+Disallow: /admin/
+Disallow: /private/
+Disallow: /tmp/
+Disallow: /*.json$
+Disallow: /*.log$
+
+# Разрешаем все основные ресурсы
+Allow: /en/
+Allow: /ru/
+Allow: /blog/
+Allow: /about/
+Allow: /pharma-operator/
+Allow: /ai-biology/
+Allow: /biotechnology/
+Allow: /protein-digitalization/
+Allow: /portfolio/
+Allow: /partnerships/
+Allow: /investors/
+Allow: /contact/
+
+# Yandex — отдельные настройки
+User-agent: Yandex
+Allow: /
+Disallow: /admin/
+Disallow: /private/
+Clean-param: utm_source&utm_medium&utm_campaign&utm_term&utm_content
+
+# Google
+User-agent: Googlebot
+Allow: /
+Disallow: /admin/
+Disallow: /private/
+
+# Bing
+User-agent: Bingbot
+Allow: /
+Disallow: /admin/
+
+# Sitemap
+Sitemap: https://i-lach.com/sitemap.xml

@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+
+  <!-- Главная / Home -->
+  <url>
+    <loc>https://i-lach.com/</loc>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://i-lach.com/ru/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://i-lach.com/en/"/>
+    <lastmod>2026-05-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <!-- RU версия -->
+  <url>
+    <loc>https://i-lach.com/ru/</loc>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://i-lach.com/ru/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://i-lach.com/en/"/>
+    <lastmod>2026-05-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- EN версия -->
+  <url>
+    <loc>https://i-lach.com/en/</loc>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://i-lach.com/ru/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://i-lach.com/en/"/>
+    <lastmod>2026-05-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- About / О компании -->
+  <url>
+    <loc>https://i-lach.com/about/</loc>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://i-lach.com/ru/about/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://i-lach.com/en/about/"/>
+    <lastmod>2026-05-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Pharma Operator -->
+  <url>
+    <loc>https://i-lach.com/pharma-operator/</loc>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://i-lach.com/ru/pharma-operator/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://i-lach.com/en/pharma-operator/"/>
+    <lastmod>2026-05-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- AI Biology / Digital Biology Lab -->
+  <url>
+    <loc>https://i-lach.com/ai-biology/</loc>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://i-lach.com/ru/ai-biology/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://i-lach.com/en/ai-biology/"/>
+    <lastmod>2026-05-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Biotechnology -->
+  <url>
+    <loc>https://i-lach.com/biotechnology/</loc>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://i-lach.com/ru/biotechnology/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://i-lach.com/en/biotechnology/"/>
+    <lastmod>2026-05-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Protein Digitalization -->
+  <url>
+    <loc>https://i-lach.com/protein-digitalization/</loc>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://i-lach.com/ru/protein-digitalization/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://i-lach.com/en/protein-digitalization/"/>
+    <lastmod>2026-05-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Portfolio -->
+  <url>
+    <loc>https://i-lach.com/portfolio/</loc>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://i-lach.com/ru/portfolio/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://i-lach.com/en/portfolio/"/>
+    <lastmod>2026-05-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Partnerships -->
+  <url>
+    <loc>https://i-lach.com/partnerships/</loc>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://i-lach.com/ru/partnerships/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://i-lach.com/en/partnerships/"/>
+    <lastmod>2026-05-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Investors -->
+  <url>
+    <loc>https://i-lach.com/investors/</loc>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://i-lach.com/ru/investors/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://i-lach.com/en/investors/"/>
+    <lastmod>2026-05-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Contact -->
+  <url>
+    <loc>https://i-lach.com/contact/</loc>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://i-lach.com/ru/contact/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://i-lach.com/en/contact/"/>
+    <lastmod>2026-05-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <!-- Blog (главная блога) -->
+  <url>
+    <loc>https://i-lach.com/blog/</loc>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://i-lach.com/ru/blog/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://i-lach.com/en/blog/"/>
+    <lastmod>2026-05-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Blog EN: AI in Drug Discovery -->
+  <url>
+    <loc>https://i-lach.com/en/blog/ai-in-drug-discovery/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://i-lach.com/en/blog/ai-in-drug-discovery/"/>
+    <lastmod>2026-05-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Blog EN: Digital Protein Modeling -->
+  <url>
+    <loc>https://i-lach.com/en/blog/digital-protein-modeling/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://i-lach.com/en/blog/digital-protein-modeling/"/>
+    <lastmod>2026-05-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Blog EN: Pharma + Artificial Intelligence -->
+  <url>
+    <loc>https://i-lach.com/en/blog/pharma-artificial-intelligence/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://i-lach.com/en/blog/pharma-artificial-intelligence/"/>
+    <lastmod>2026-05-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Blog EN: Biotechnology Infrastructure in Eurasia -->
+  <url>
+    <loc>https://i-lach.com/en/blog/biotech-infrastructure-eurasia/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://i-lach.com/en/blog/biotech-infrastructure-eurasia/"/>
+    <lastmod>2026-05-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Blog RU: ИИ в фармацевтике -->
+  <url>
+    <loc>https://i-lach.com/ru/blog/ii-v-farmacevtike/</loc>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://i-lach.com/ru/blog/ii-v-farmacevtike/"/>
+    <lastmod>2026-05-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Blog RU: Цифровая биология -->
+  <url>
+    <loc>https://i-lach.com/ru/blog/cifrovaya-biologiya/</loc>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://i-lach.com/ru/blog/cifrovaya-biologiya/"/>
+    <lastmod>2026-05-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Blog RU: Фармацевтический оператор нового поколения -->
+  <url>
+    <loc>https://i-lach.com/ru/blog/farmacevticheskiy-operator/</loc>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://i-lach.com/ru/blog/farmacevticheskiy-operator/"/>
+    <lastmod>2026-05-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+</urlset>
