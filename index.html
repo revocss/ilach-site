@@ -853,15 +853,26 @@ footer{background:var(--g900);padding:40px 48px;display:flex;flex-direction:colu
         </div>
       </div>
     </div>
-    <form class="cform" onsubmit="return false;">
+    <form class="cform" id="contactForm" onsubmit="submitForm(event)">
       <div class="frow">
-        <div class="fg"><label data-ru="Имя" data-en="Name">Имя</label><input type="text" data-placeholder-ru="Иванов Иван" data-placeholder-en="John Smith" placeholder="Иванов Иван"></div>
-        <div class="fg"><label data-ru="Компания" data-en="Company">Компания</label><input type="text" data-placeholder-ru="ООО «Компания»" data-placeholder-en="Company Ltd." placeholder="ООО «Компания»"></div>
+        <div class="fg">
+          <label data-ru="Имя" data-en="Name">Имя</label>
+          <input type="text" id="from_name" name="from_name" required
+            data-placeholder-ru="Иванов Иван" data-placeholder-en="John Smith" placeholder="Иванов Иван">
+        </div>
+        <div class="fg">
+          <label data-ru="Компания" data-en="Company">Компания</label>
+          <input type="text" id="company" name="company"
+            data-placeholder-ru="ООО «Компания»" data-placeholder-en="Company Ltd." placeholder="ООО «Компания»">
+        </div>
       </div>
-      <div class="fg"><label>Email</label><input type="email" placeholder="investor@example.com"></div>
+      <div class="fg">
+        <label>Email</label>
+        <input type="email" id="reply_to" name="reply_to" required placeholder="investor@example.com">
+      </div>
       <div class="fg">
         <label data-ru="Интерес" data-en="Area of interest">Интерес</label>
-        <select>
+        <select id="interest" name="interest">
           <option data-ru="Инвестиционное участие (Pharma Ops)" data-en="Investment (Pharma Ops)">Инвестиционное участие (Pharma Ops)</option>
           <option data-ru="Инвестиции в Digital Biology Lab" data-en="Investment in Digital Biology Lab">Инвестиции в Digital Biology Lab</option>
           <option data-ru="Партнёрство" data-en="Partnership">Партнёрство</option>
@@ -870,12 +881,18 @@ footer{background:var(--g900);padding:40px 48px;display:flex;flex-direction:colu
           <option data-ru="Другое" data-en="Other">Другое</option>
         </select>
       </div>
-      <div class="fg"><label data-ru="Сообщение" data-en="Message">Сообщение</label><textarea data-placeholder-ru="Расскажите о вашем интересе..." data-placeholder-en="Tell us about your interest..." placeholder="Расскажите о вашем интересе..."></textarea></div>
-      <button type="button" class="btn-sub"
-        data-ru="Отправить запрос" data-en="Send Request"
-        data-alert-ru="Спасибо! Мы свяжемся с вами в ближайшее время."
-        data-alert-en="Thank you! We will get back to you shortly."
-        onclick="alert(this.getAttribute('data-alert-' + currentLang))">Отправить запрос</button>
+      <div class="fg">
+        <label data-ru="Сообщение" data-en="Message">Сообщение</label>
+        <textarea id="message" name="message" required
+          data-placeholder-ru="Расскажите о вашем интересе..." data-placeholder-en="Tell us about your interest..."
+          placeholder="Расскажите о вашем интересе..."></textarea>
+      </div>
+
+      <!-- Status message -->
+      <div id="formStatus" style="display:none;padding:14px 18px;border-radius:9px;font-size:14px;font-weight:500;"></div>
+
+      <button type="submit" class="btn-sub" id="submitBtn"
+        data-ru="Отправить запрос" data-en="Send Request">Отправить запрос</button>
     </form>
   </div>
 </section>
@@ -918,7 +935,72 @@ footer{background:var(--g900);padding:40px 48px;display:flex;flex-direction:colu
   </div>
 </footer>
 
+<!-- Formspree — no external SDK needed, uses native fetch -->
 <script>
+// ─── Form submit → Formspree ─────────────────────────────────────────────────
+async function submitForm(e) {
+  e.preventDefault();
+
+  const btn    = document.getElementById('submitBtn');
+  const status = document.getElementById('formStatus');
+  const isRu   = currentLang === 'ru';
+
+  btn.disabled = true;
+  btn.textContent = isRu ? 'Отправка...' : 'Sending...';
+  status.style.display = 'none';
+
+  const params = {
+    name     : document.getElementById('from_name').value.trim(),
+    company  : document.getElementById('company').value.trim() || '—',
+    email    : document.getElementById('reply_to').value.trim(),
+    interest : document.getElementById('interest').value,
+    message  : document.getElementById('message').value.trim(),
+    lang     : currentLang.toUpperCase(),
+    _replyto : document.getElementById('reply_to').value.trim(),
+    _subject : 'Новая заявка с сайта ILACH — ' + document.getElementById('interest').value,
+  };
+
+  try {
+    const res  = await fetch('https://formspree.io/f/xbdbgjdj', {
+      method  : 'POST',
+      headers : { 'Accept': 'application/json', 'Content-Type': 'application/json' },
+      body    : JSON.stringify(params),
+    });
+    const data = await res.json();
+
+    if (res.ok) {
+      status.style.display    = 'block';
+      status.style.background = '#eef8f3';
+      status.style.border     = '1px solid #a8dfc0';
+      status.style.color      = '#1e5537';
+      status.textContent = isRu
+        ? '✓ Спасибо! Ваша заявка отправлена. Мы свяжемся с вами в ближайшее время.'
+        : '✓ Thank you! Your message has been sent. We will get back to you shortly.';
+      document.getElementById('contactForm').reset();
+      btn.textContent = isRu ? 'Отправлено ✓' : 'Sent ✓';
+      setTimeout(() => {
+        btn.textContent = isRu ? 'Отправить запрос' : 'Send Request';
+        btn.disabled = false;
+      }, 5000);
+    } else {
+      throw new Error(data?.errors?.[0]?.message || 'Error');
+    }
+
+  } catch (err) {
+    console.error('Formspree error:', err);
+    status.style.display    = 'block';
+    status.style.background = '#fff0f0';
+    status.style.border     = '1px solid #ffb3b3';
+    status.style.color      = '#c0392b';
+    status.textContent = isRu
+      ? '✗ Ошибка отправки. Напишите нам напрямую: info@i-lach.com'
+      : '✗ Sending failed. Please email us: info@i-lach.com';
+    btn.textContent = isRu ? 'Отправить запрос' : 'Send Request';
+    btn.disabled = false;
+  }
+}
+
+// ─── Language switcher ───────────────────────────────────────────────────────
 let currentLang = 'ru';
 
 function setLang(lang) {
