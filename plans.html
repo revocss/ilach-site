@@ -1,0 +1,868 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Планы компании | ILACH</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiIgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIj4KICA8ZGVmcz4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0iYmciIHgxPSIwJSIgeTE9IjAlIiB4Mj0iMTAwJSIgeTI9IjEwMCUiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdHlsZT0ic3RvcC1jb2xvcjojMWU1NTM3Ii8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3R5bGU9InN0b3AtY29sb3I6IzJhN2E0ZiIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICA8L2RlZnM+CiAgPHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iNyIgZmlsbD0idXJsKCNiZykiLz4KICA8Y2lyY2xlIGN4PSIxNiIgY3k9IjcuNSIgcj0iMi44IiBmaWxsPSIjNmRjNDk2Ii8+CiAgPHJlY3QgeD0iMTMuMiIgeT0iMTIiIHdpZHRoPSI1LjYiIGhlaWdodD0iMTMiIHJ4PSIyLjIiIGZpbGw9IndoaXRlIi8+Cjwvc3ZnPg==">
+<meta name="theme-color" content="#1e5537">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Syne:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --g900:#061810;--g800:#0d2b1c;--g700:#153d28;--g600:#1e5537;
+  --g500:#2a7a4f;--g400:#3ea86e;--g300:#6dc496;--g200:#a8dfc0;
+  --g100:#d6f0e3;--g50:#eef8f3;
+  --gold:#d4a017;--gold-bg:rgba(212,160,23,0.12);--gold-border:rgba(212,160,23,0.25);
+  --blue:#1a56db;--blue-bg:#eef2ff;
+  --text:#0d1f16;--text2:#2e4d3a;--text3:#5a7a66;
+  --border:#ddeee5;--surface:#f5fbf7;--white:#ffffff;
+  --font-head:'Syne',sans-serif;--font-body:'Inter',sans-serif;
+}
+html{scroll-behavior:smooth;}
+body{font-family:var(--font-body);background:var(--white);color:var(--text);font-size:15px;line-height:1.7;overflow-x:hidden;}
+
+/* ── NAV ── */
+nav{position:fixed;top:0;left:0;right:0;z-index:200;height:64px;display:flex;align-items:center;justify-content:space-between;padding:0 48px;background:rgba(6,24,16,0.96);backdrop-filter:blur(16px);border-bottom:1px solid rgba(62,168,110,0.12);}
+.nav-brand{display:flex;align-items:center;gap:12px;text-decoration:none;}
+.nav-mark{width:32px;height:32px;border-radius:6px;background:var(--g500);display:flex;align-items:center;justify-content:center;font-family:var(--font-head);font-size:16px;font-weight:700;color:var(--white);}
+.nav-name{font-family:var(--font-head);font-size:14px;font-weight:600;color:var(--white);letter-spacing:2px;}
+.nav-center{display:flex;gap:4px;}
+.nav-center a{color:rgba(255,255,255,0.6);text-decoration:none;font-size:13px;padding:6px 14px;border-radius:6px;transition:all 0.2s;}
+.nav-center a:hover,.nav-center a.active{color:var(--white);background:rgba(255,255,255,0.08);}
+.nav-center a.active{background:rgba(62,168,110,0.15);color:var(--g300);}
+.nav-right{display:flex;align-items:center;gap:12px;}
+.lang-switch{display:flex;align-items:center;gap:2px;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);border-radius:8px;padding:3px;}
+.lang-btn{padding:5px 12px;border-radius:6px;font-size:12px;font-weight:600;cursor:pointer;border:none;background:transparent;color:rgba(255,255,255,0.45);transition:all 0.2s;}
+.lang-btn.active{background:var(--g500);color:var(--white);}
+.nav-cta{background:var(--g500);color:var(--white);padding:8px 20px;border-radius:8px;font-size:13px;font-weight:500;text-decoration:none;transition:background 0.2s;}
+.nav-cta:hover{background:var(--g400);}
+
+/* ── HERO ── */
+.hero{min-height:55vh;background:var(--g900);padding:120px 48px 80px;display:flex;align-items:center;position:relative;overflow:hidden;}
+.hero-dots{position:absolute;inset:0;background-image:radial-gradient(circle,rgba(62,168,110,0.1) 1px,transparent 1px);background-size:32px 32px;mask-image:radial-gradient(ellipse 100% 100% at 100% 50%,black,transparent);}
+.hero-content{position:relative;z-index:2;max-width:700px;}
+.hero-pill{display:inline-flex;align-items:center;gap:8px;background:rgba(62,168,110,0.1);border:1px solid rgba(62,168,110,0.2);padding:6px 14px;border-radius:100px;margin-bottom:32px;}
+.hero-dot{width:6px;height:6px;border-radius:50%;background:var(--g400);animation:pulse 2s infinite;}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.4}}
+.hero-pill-txt{font-size:12px;font-weight:500;color:var(--g300);}
+.hero h1{font-family:var(--font-head);font-size:clamp(38px,5vw,68px);font-weight:700;color:var(--white);line-height:1.08;margin-bottom:24px;letter-spacing:-2px;}
+.hero h1 span{color:var(--g400);}
+.hero-desc{font-size:17px;font-weight:300;color:rgba(255,255,255,0.5);max-width:560px;line-height:1.75;}
+.hero-stats{position:absolute;right:48px;bottom:60px;display:flex;gap:40px;z-index:2;}
+.hstat{text-align:right;}
+.hstat-num{font-family:var(--font-head);font-size:36px;font-weight:700;color:var(--white);line-height:1;display:block;}
+.hstat-lbl{font-size:11px;color:rgba(255,255,255,0.35);letter-spacing:1.5px;text-transform:uppercase;display:block;margin-top:4px;}
+.hstat-div{width:1px;background:rgba(255,255,255,0.1);align-self:stretch;}
+
+/* ── COMMON ── */
+section{padding:96px 48px;}
+.sl{font-size:11px;letter-spacing:2.5px;text-transform:uppercase;color:var(--g500);font-weight:600;margin-bottom:14px;}
+h2{font-family:var(--font-head);font-size:clamp(28px,3.5vw,46px);font-weight:700;line-height:1.1;color:var(--text);margin-bottom:16px;letter-spacing:-1px;}
+h2 span{color:var(--g500);}
+.lead{font-size:16px;color:var(--text3);max-width:540px;line-height:1.8;}
+.sec-head{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:end;margin-bottom:56px;}
+
+/* ── GEOGRAPHY MAP ── */
+.geo-section{background:var(--g900);padding:96px 48px;}
+.geo-section .sl{color:var(--g400);}
+.geo-section h2{color:var(--white);}
+.geo-section h2 span{color:var(--g400);}
+.geo-section .lead{color:rgba(255,255,255,0.5);}
+
+.geo-layout{display:grid;grid-template-columns:1fr 420px;gap:48px;align-items:start;margin-top:56px;}
+
+/* SVG Map */
+.map-wrap{position:relative;}
+.map-svg{width:100%;border-radius:16px;overflow:hidden;}
+.map-svg svg{width:100%;height:auto;display:block;}
+
+/* Country pins */
+.pin{cursor:pointer;transition:all 0.2s;}
+.pin circle{transition:all 0.25s;}
+.pin:hover circle.outer{r:18;}
+.pin.active circle.outer{r:20;opacity:1;}
+.pin.hq circle.outer{fill:rgba(212,160,23,0.2);}
+.pin.hq circle.inner{fill:#d4a017;}
+.pin.sales circle.outer{fill:rgba(62,168,110,0.2);}
+.pin.sales circle.inner{fill:var(--g400);}
+.pin-label{font-family:'Inter',sans-serif;font-size:11px;font-weight:600;fill:var(--white);pointer-events:none;}
+
+/* Country cards panel */
+.country-cards{display:flex;flex-direction:column;gap:12px;}
+.country-card{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:14px;padding:20px 22px;cursor:pointer;transition:all 0.22s;position:relative;overflow:hidden;}
+.country-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--g400);transform:scaleY(0);transform-origin:top;transition:transform 0.25s;}
+.country-card.hq-card::before{background:#d4a017;}
+.country-card.active,.country-card:hover{border-color:rgba(62,168,110,0.35);background:rgba(255,255,255,0.07);}
+.country-card.active::before,.country-card:hover::before{transform:scaleY(1);}
+.country-card.hq-card.active,.country-card.hq-card:hover{border-color:rgba(212,160,23,0.4);}
+.card-head{display:flex;align-items:center;gap:12px;margin-bottom:12px;}
+.card-flag{font-size:24px;line-height:1;}
+.card-title-wrap{}
+.card-role{font-size:10px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:3px;}
+.card-role.hq-role{color:#d4a017;}
+.card-role.sales-role{color:var(--g400);}
+.card-country{font-family:var(--font-head);font-size:16px;font-weight:700;color:var(--white);}
+.card-city{font-size:12px;color:rgba(255,255,255,0.4);}
+.card-desc{font-size:13px;color:rgba(255,255,255,0.5);line-height:1.65;display:none;}
+.country-card.active .card-desc,.country-card:hover .card-desc{display:block;}
+.card-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px;display:none;}
+.country-card.active .card-tags,.country-card:hover .card-tags{display:flex;}
+.card-tag{padding:3px 10px;border-radius:5px;font-size:11px;font-weight:500;}
+.card-tag.gold{background:rgba(212,160,23,0.15);color:#f0c040;}
+.card-tag.green{background:rgba(62,168,110,0.15);color:var(--g300);}
+
+/* ── STRATEGY ── */
+.strategy{background:var(--surface);}
+.strategy-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:16px;}
+.str-card{background:var(--white);border:1px solid var(--border);border-radius:14px;padding:28px 24px;transition:border-color 0.2s,box-shadow 0.2s;}
+.str-card:hover{border-color:var(--g300);box-shadow:0 6px 24px rgba(42,122,79,0.08);}
+.str-ico{width:44px;height:44px;border-radius:10px;background:var(--g50);display:flex;align-items:center;justify-content:center;margin-bottom:18px;}
+.str-ico svg{width:22px;height:22px;stroke:var(--g500);fill:none;stroke-width:1.5;}
+.str-card h3{font-size:15px;font-weight:700;font-family:var(--font-head);color:var(--text);margin-bottom:10px;letter-spacing:-0.3px;}
+.str-card p{font-size:13px;color:var(--text3);line-height:1.65;}
+
+/* ── PHASES TIMELINE ── */
+.timeline-sec{background:var(--white);}
+.tl-grid{display:flex;flex-direction:column;gap:2px;margin-top:16px;}
+.tl-item{display:grid;grid-template-columns:160px 1fr;border:1px solid var(--border);border-radius:12px;overflow:hidden;transition:border-color 0.2s;}
+.tl-item:hover{border-color:var(--g300);}
+.tl-year{background:var(--g50);padding:24px 20px;display:flex;flex-direction:column;justify-content:center;}
+.tl-year-num{font-family:var(--font-head);font-size:20px;font-weight:700;color:var(--g600);line-height:1;}
+.tl-year-phase{font-size:11px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--text3);margin-top:4px;}
+.tl-body{padding:24px 28px;display:flex;gap:40px;}
+.tl-col{}
+.tl-col-title{font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--text3);margin-bottom:10px;}
+.tl-col-items{display:flex;flex-direction:column;gap:6px;}
+.tl-col-item{font-size:13px;color:var(--text2);display:flex;gap:7px;align-items:flex-start;}
+.tl-col-item::before{content:'→';color:var(--g400);flex-shrink:0;font-weight:700;font-size:12px;}
+.tl-badge{display:inline-block;padding:3px 10px;border-radius:5px;font-size:11px;font-weight:600;margin-top:8px;}
+.tl-badge.green{background:var(--g50);color:var(--g600);}
+.tl-badge.gold{background:#fdf3d7;color:#7a5010;}
+.tl-badge.blue{background:#eef2ff;color:#3730a3;}
+
+/* ── MANUFACTURERS ── */
+.manuf-sec{background:var(--g800);}
+.manuf-sec .sl{color:var(--g400);}
+.manuf-sec h2{color:var(--white);}
+.manuf-sec h2 span{color:var(--g400);}
+.manuf-sec .lead{color:rgba(255,255,255,0.5);}
+.manuf-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:16px;}
+.manuf-card{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:14px;padding:28px 28px;transition:border-color 0.22s;}
+.manuf-card:hover{border-color:rgba(62,168,110,0.3);}
+.manuf-card-head{display:flex;align-items:center;gap:16px;margin-bottom:18px;}
+.manuf-logo{width:48px;height:48px;border-radius:10px;background:rgba(62,168,110,0.1);display:flex;align-items:center;justify-content:center;font-family:var(--font-head);font-size:18px;font-weight:700;color:var(--g400);}
+.manuf-name{font-family:var(--font-head);font-size:20px;font-weight:700;color:var(--white);}
+.manuf-sub{font-size:12px;color:rgba(255,255,255,0.4);margin-top:2px;}
+.manuf-drugs{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:14px;}
+.manuf-drug{padding:4px 11px;border-radius:6px;background:rgba(62,168,110,0.1);border:1px solid rgba(62,168,110,0.18);font-size:12px;font-weight:500;color:var(--g300);}
+.manuf-desc{font-size:13px;color:rgba(255,255,255,0.45);line-height:1.65;}
+
+/* ── MARKET SIZES ── */
+.markets{background:var(--surface);}
+.markets-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:16px;}
+.mkt-card{background:var(--white);border:1px solid var(--border);border-radius:14px;padding:24px 20px;text-align:center;transition:border-color 0.2s,box-shadow 0.2s;}
+.mkt-card:hover{border-color:var(--g300);box-shadow:0 4px 20px rgba(42,122,79,0.07);}
+.mkt-flag{font-size:28px;margin-bottom:12px;display:block;}
+.mkt-country{font-size:13px;font-weight:600;color:var(--text);margin-bottom:4px;}
+.mkt-size{font-family:var(--font-head);font-size:22px;font-weight:700;color:var(--g600);line-height:1;margin-bottom:4px;}
+.mkt-label{font-size:11px;color:var(--text3);letter-spacing:0.5px;}
+.mkt-divider{width:32px;height:2px;background:var(--g200);margin:12px auto;}
+.mkt-role{font-size:11px;font-weight:600;letter-spacing:1px;text-transform:uppercase;}
+.mkt-role.hq{color:#d4a017;}
+.mkt-role.sales{color:var(--g500);}
+
+/* ── FOOTER ── */
+footer{background:var(--g900);padding:36px 48px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:18px;border-top:1px solid rgba(255,255,255,0.06);}
+.ft-brand{display:flex;align-items:center;gap:10px;}
+.ft-mark{width:28px;height:28px;border-radius:6px;background:var(--g600);display:flex;align-items:center;justify-content:center;font-family:var(--font-head);font-size:13px;font-weight:700;color:var(--white);}
+.ft-name{font-size:13px;font-weight:600;color:rgba(255,255,255,0.65);letter-spacing:1.5px;font-family:var(--font-head);}
+.ft-note{font-size:12px;color:rgba(255,255,255,0.22);}
+.ft-links{display:flex;gap:20px;}
+.ft-links a{color:rgba(255,255,255,0.32);text-decoration:none;font-size:12px;transition:color 0.2s;}
+.ft-links a:hover{color:var(--g400);}
+
+@media(max-width:960px){
+  nav{padding:0 20px;}
+  .nav-center{display:none;}
+  section,.geo-section,.manuf-sec,.markets{padding:64px 24px;}
+  .hero{padding:100px 24px 60px;}
+  .hero-stats{display:none;}
+  .sec-head,.geo-layout,.manuf-grid{grid-template-columns:1fr;gap:36px;}
+  .strategy-grid,.markets-grid{grid-template-columns:1fr 1fr;}
+  .tl-body{flex-direction:column;gap:20px;}
+  footer{padding:28px 24px;flex-direction:column;align-items:flex-start;}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-brand">
+    <div class="nav-mark">İ</div>
+    <span class="nav-name">ILACH</span>
+  </a>
+  <div class="nav-center">
+    <a href="index.html"  data-ru="Главная"        data-en="Home">Главная</a>
+    <a href="index.html#dbl" data-ru="Digital Biology" data-en="Digital Biology">Digital Biology</a>
+    <a href="plans.html" class="active" data-ru="Планы компании" data-en="Company Plans">Планы компании</a>
+    <a href="index.html#invest" data-ru="Инвесторам" data-en="Investors">Инвесторам</a>
+    <a href="index.html#contact" data-ru="Контакты" data-en="Contacts">Контакты</a>
+  </div>
+  <div class="nav-right">
+    <div class="lang-switch">
+      <button class="lang-btn active" onclick="setLang('ru')">RU</button>
+      <button class="lang-btn"        onclick="setLang('en')">EN</button>
+    </div>
+    <a href="index.html#contact" class="nav-cta" data-ru="Связаться" data-en="Contact Us">Связаться</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-dots"></div>
+  <div class="hero-content">
+    <div class="hero-pill">
+      <div class="hero-dot"></div>
+      <span class="hero-pill-txt" data-ru="Стратегия развития · 2026–2035" data-en="Development Strategy · 2026–2035">Стратегия развития · 2026–2035</span>
+    </div>
+    <h1 data-ru="Планы компании<br><span>ILACH</span>" data-en="Company<br><span>Plans</span>">Планы компании<br><span>ILACH</span></h1>
+    <p class="hero-desc" data-ru="Стамбул — научно-производственный и финансовый центр. Россия, Беларусь и Казахстан — рынки сбыта с полным операционным циклом." data-en="Istanbul — the scientific, manufacturing and financial headquarters. Russia, Belarus and Kazakhstan — sales markets with a full operational cycle.">Стамбул — научно-производственный и финансовый центр. Россия, Беларусь и Казахстан — рынки сбыта с полным операционным циклом.</p>
+  </div>
+  <div class="hero-stats">
+    <div class="hstat">
+      <span class="hstat-num">4</span>
+      <span class="hstat-lbl" data-ru="Страны присутствия" data-en="Countries">Страны присутствия</span>
+    </div>
+    <div class="hstat-div"></div>
+    <div class="hstat">
+      <span class="hstat-num">2026</span>
+      <span class="hstat-lbl" data-ru="Год старта" data-en="Launch year">Год старта</span>
+    </div>
+    <div class="hstat-div"></div>
+    <div class="hstat">
+      <span class="hstat-num">2035</span>
+      <span class="hstat-lbl" data-ru="IPO / Exit" data-en="IPO / Exit">IPO / Exit</span>
+    </div>
+  </div>
+</section>
+
+<!-- GEOGRAPHY -->
+<section class="geo-section">
+  <div class="sl" data-ru="География присутствия" data-en="Geographic Presence">География присутствия</div>
+  <h2 data-ru="Штаб-квартира в <span>Стамбуле</span>,<br>рынки сбыта — ЕАЭС" data-en="Headquarters in <span>Istanbul</span>,<br>sales markets — EAEU">Штаб-квартира в <span>Стамбуле</span>,<br>рынки сбыта — ЕАЭС</h2>
+  <p class="lead" data-ru="Турция обеспечивает производственную базу (VEM, Koçak), финансовое управление и научный центр. Страны ЕАЭС — коммерциализация, регистрация и дистрибуция." data-en="Turkey provides the manufacturing base (VEM, Koçak), financial management and R&D hub. EAEU countries handle commercialisation, registration and distribution.">Турция обеспечивает производственную базу (VEM, Koçak), финансовое управление и научный центр. Страны ЕАЭС — коммерциализация, регистрация и дистрибуция.</p>
+
+  <div class="geo-layout">
+
+    <!-- World Map — D3.js + TopoJSON -->
+    <div class="map-wrap" id="map-container" style="border-radius:16px;border:1px solid rgba(255,255,255,0.1);overflow:hidden;background:#071a10;min-height:420px;position:relative;">
+      <canvas id="map-canvas" style="display:none;"></canvas>
+      <!-- Tooltip -->
+      <div id="map-tooltip" style="display:none;position:absolute;background:rgba(6,24,16,0.95);border:1px solid rgba(62,168,110,0.3);border-radius:8px;padding:8px 14px;font-size:12px;color:white;pointer-events:none;z-index:10;font-family:'Inter',sans-serif;"></div>
+    </div>
+
+    <!-- Country cards -->
+    <div class="country-cards">
+
+      <!-- Turkey / Istanbul -->
+      <div class="country-card hq-card active" id="card-turkey" onclick="selectCountry('turkey')">
+        <div class="card-head">
+          <span class="card-flag">🇹🇷</span>
+          <div class="card-title-wrap">
+            <div class="card-role hq-role" data-ru="Штаб-квартира · Производство · Финансы" data-en="HQ · Manufacturing · Finance">Штаб-квартира · Производство · Финансы</div>
+            <div class="card-country" data-ru="Турция — Стамбул" data-en="Turkey — Istanbul">Турция — Стамбул</div>
+          </div>
+        </div>
+        <div class="card-desc" data-ru="Главный операционный центр компании. Здесь сосредоточены: научно-исследовательская деятельность, финансовое управление, партнёрские отношения с производителями VEM и Koçak, юридическое и корпоративное администрирование. Стамбул — мост между производством и рынками ЕАЭС." data-en="The company's main operational centre. This is where R&D activity, financial management, partnerships with VEM and Koçak manufacturers, and legal and corporate administration are concentrated. Istanbul is the bridge between manufacturing and EAEU markets.">Главный операционный центр компании. Здесь сосредоточены: научно-исследовательская деятельность, финансовое управление, партнёрские отношения с производителями VEM и Koçak, юридическое и корпоративное администрирование. Стамбул — мост между производством и рынками ЕАЭС.</div>
+        <div class="card-tags">
+          <span class="card-tag gold" data-ru="Штаб-квартира" data-en="HQ">Штаб-квартира</span>
+          <span class="card-tag gold" data-ru="Производство GMP" data-en="GMP Manufacturing">Производство GMP</span>
+          <span class="card-tag gold" data-ru="R&D / DBL" data-en="R&D / DBL">R&D / DBL</span>
+          <span class="card-tag gold" data-ru="Финансы" data-en="Finance">Финансы</span>
+        </div>
+      </div>
+
+      <!-- Russia -->
+      <div class="country-card" id="card-russia" onclick="selectCountry('russia')">
+        <div class="card-head">
+          <span class="card-flag">🇷🇺</span>
+          <div class="card-title-wrap">
+            <div class="card-role sales-role" data-ru="Центр сбыта · Этап 1 · 2026" data-en="Sales Centre · Phase 1 · 2026">Центр сбыта · Этап 1 · 2026</div>
+            <div class="card-country" data-ru="Россия — Казань / Москва" data-en="Russia — Kazan / Moscow">Россия — Казань / Москва</div>
+          </div>
+        </div>
+        <div class="card-desc" data-ru="Базовая операционная площадка. Юридический адрес: г. Казань, Оренбургский тракт, 20. Регистрация препаратов (MAH), импорт, коммерциализация через госпитальные тендеры и retail-дистрибьюторов. Первые продажи — 2027." data-en="Core operational hub. Legal address: Orenburgsky Trakt 20, Kazan. Drug registration (MAH), import, commercialisation through hospital tenders and retail distributors. First sales — 2027.">Базовая операционная площадка. Юридический адрес: г. Казань, Оренбургский тракт, 20. Регистрация препаратов (MAH), импорт, коммерциализация через госпитальные тендеры и retail-дистрибьюторов. Первые продажи — 2027.</div>
+        <div class="card-tags">
+          <span class="card-tag green" data-ru="Центр сбыта" data-en="Sales Centre">Центр сбыта</span>
+          <span class="card-tag green" data-ru="MAH / РУ" data-en="MAH / MA">MAH / РУ</span>
+          <span class="card-tag green" data-ru="Госпиталь + Retail" data-en="Hospital + Retail">Госпиталь + Retail</span>
+        </div>
+      </div>
+
+      <!-- Belarus -->
+      <div class="country-card" id="card-belarus" onclick="selectCountry('belarus')">
+        <div class="card-head">
+          <span class="card-flag">🇧🇾</span>
+          <div class="card-title-wrap">
+            <div class="card-role sales-role" data-ru="Центр сбыта · Этап 1 · 2026" data-en="Sales Centre · Phase 1 · 2026">Центр сбыта · Этап 1 · 2026</div>
+            <div class="card-country" data-ru="Беларусь — Минск" data-en="Belarus — Minsk">Беларусь — Минск</div>
+          </div>
+        </div>
+        <div class="card-desc" data-ru="Отдельное юрлицо, синхронизированное с моделью РФ. Параллельная регистрация препаратов стартового портфеля. Госпитальный и retail-каналы по аналогии с Россией." data-en="Separate legal entity synchronised with the Russia model. Parallel registration of the starter portfolio. Hospital and retail channels mirroring the Russia approach.">Отдельное юрлицо, синхронизированное с моделью РФ. Параллельная регистрация препаратов стартового портфеля. Госпитальный и retail-каналы по аналогии с Россией.</div>
+        <div class="card-tags">
+          <span class="card-tag green" data-ru="Центр сбыта" data-en="Sales Centre">Центр сбыта</span>
+          <span class="card-tag green" data-ru="Параллельная регистрация" data-en="Parallel Registration">Параллельная регистрация</span>
+        </div>
+      </div>
+
+      <!-- Kazakhstan -->
+      <div class="country-card" id="card-kazakhstan" onclick="selectCountry('kazakhstan')">
+        <div class="card-head">
+          <span class="card-flag">🇰🇿</span>
+          <div class="card-title-wrap">
+            <div class="card-role sales-role" data-ru="Центр сбыта · Этап 2 · 2028" data-en="Sales Centre · Phase 2 · 2028">Центр сбыта · Этап 2 · 2028</div>
+            <div class="card-country" data-ru="Казахстан — Алматы" data-en="Kazakhstan — Almaty">Казахстан — Алматы</div>
+          </div>
+        </div>
+        <div class="card-desc" data-ru="Выход через локального партнёра после масштабирования в РФ и РБ. Коммерциализация при готовности регистрационного портфеля. Один из крупнейших фармрынков Центральной Азии." data-en="Market entry via a local partner after scaling in Russia and Belarus. Commercialisation once the registration portfolio is ready. One of the largest pharma markets in Central Asia.">Выход через локального партнёра после масштабирования в РФ и РБ. Коммерциализация при готовности регистрационного портфеля. Один из крупнейших фармрынков Центральной Азии.</div>
+        <div class="card-tags">
+          <span class="card-tag green" data-ru="Центр сбыта" data-en="Sales Centre">Центр сбыта</span>
+          <span class="card-tag green" data-ru="Локальный партнёр" data-en="Local Partner">Локальный партнёр</span>
+          <span class="card-tag green" data-ru="2028+" data-en="2028+">2028+</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- STRATEGY -->
+<section class="strategy">
+  <div class="sec-head">
+    <div>
+      <div class="sl" data-ru="Стратегия" data-en="Strategy">Стратегия</div>
+      <h2 data-ru="Три <span>стратегических</span><br>направления" data-en="Three <span>strategic</span><br>pillars">Три <span>стратегических</span><br>направления</h2>
+    </div>
+    <p class="lead" data-ru="Турция как производственный и интеллектуальный хаб. ЕАЭС как рынок сбыта. Digital Biology Lab как технологический рычаг будущего роста." data-en="Turkey as the manufacturing and intellectual hub. EAEU as the sales market. Digital Biology Lab as the technological lever of future growth.">Турция как производственный и интеллектуальный хаб. ЕАЭС как рынок сбыта. Digital Biology Lab как технологический рычаг будущего роста.</p>
+  </div>
+  <div class="strategy-grid">
+    <div class="str-card">
+      <div class="str-ico">
+        <svg viewBox="0 0 24 24"><path d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-2 10v-5a1 1 0 00-1-1h-2a1 1 0 00-1 1v5m4 0H9"/></svg>
+      </div>
+      <h3 data-ru="Турция — производственная база" data-en="Turkey — Manufacturing Base">Турция — производственная база</h3>
+      <p data-ru="GMP-производители VEM и Koçak в Стамбуле. Прямые контракты без посредников. Контроль качества у источника. Финансовое и юридическое управление холдингом." data-en="GMP manufacturers VEM and Koçak in Istanbul. Direct contracts without intermediaries. Quality control at source. Financial and legal holding management.">GMP-производители VEM и Koçak в Стамбуле. Прямые контракты без посредников. Контроль качества у источника. Финансовое и юридическое управление холдингом.</p>
+    </div>
+    <div class="str-card">
+      <div class="str-ico">
+        <svg viewBox="0 0 24 24"><path d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+      </div>
+      <h3 data-ru="ЕАЭС — рынки сбыта" data-en="EAEU — Sales Markets">ЕАЭС — рынки сбыта</h3>
+      <p data-ru="Россия, Беларусь, Казахстан — 190 млн человек, единое регуляторное пространство. Госпитальные тендеры и retail. MAH-статус в каждой стране." data-en="Russia, Belarus, Kazakhstan — 190 million people, unified regulatory space. Hospital tenders and retail. MAH status in each country.">Россия, Беларусь, Казахстан — 190 млн человек, единое регуляторное пространство. Госпитальные тендеры и retail. MAH-статус в каждой стране.</p>
+    </div>
+    <div class="str-card">
+      <div class="str-ico">
+        <svg viewBox="0 0 24 24"><path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg>
+      </div>
+      <h3 data-ru="Digital Biology Lab — технологии" data-en="Digital Biology Lab — Technology">Digital Biology Lab — технологии</h3>
+      <p data-ru="AI drug discovery на базе Стамбульского R&D центра. Pharma cash flow финансирует GPU-инфраструктуру. Цель — евразийская AI-биофармплатформа к 2031 году." data-en="AI drug discovery based at the Istanbul R&D centre. Pharma cash flow funds GPU infrastructure. Target — Eurasian AI biopharma platform by 2031.">AI drug discovery на базе Стамбульского R&D центра. Pharma cash flow финансирует GPU-инфраструктуру. Цель — евразийская AI-биофармплатформа к 2031 году.</p>
+    </div>
+  </div>
+</section>
+
+<!-- MARKET SIZES -->
+<section class="markets">
+  <div class="sec-head">
+    <div>
+      <div class="sl" data-ru="Размер рынков" data-en="Market Size">Размер рынков</div>
+      <h2 data-ru="Объём <span>фармацевтических</span><br>рынков" data-en="Pharma market<br><span>scale</span>">Объём <span>фармацевтических</span><br>рынков</h2>
+    </div>
+    <p class="lead" data-ru="Совокупный объём четырёх ключевых рынков — более $30 млрд. Для ILACH это пространство для последовательной экспансии." data-en="The combined volume of the four key markets exceeds $30B. For ILACH this is the space for sequential expansion.">Совокупный объём четырёх ключевых рынков — более $30 млрд. Для ILACH это пространство для последовательной экспансии.</p>
+  </div>
+  <div class="markets-grid">
+    <div class="mkt-card">
+      <span class="mkt-flag">🇹🇷</span>
+      <div class="mkt-country" data-ru="Турция" data-en="Turkey">Турция</div>
+      <div class="mkt-size">~$9B</div>
+      <div class="mkt-label" data-ru="объём фармрынка" data-en="pharma market size">объём фармрынка</div>
+      <div class="mkt-divider"></div>
+      <div class="mkt-role hq" data-ru="HQ + Производство" data-en="HQ + Manufacturing">HQ + Производство</div>
+    </div>
+    <div class="mkt-card">
+      <span class="mkt-flag">🇷🇺</span>
+      <div class="mkt-country" data-ru="Россия" data-en="Russia">Россия</div>
+      <div class="mkt-size">~$16B</div>
+      <div class="mkt-label" data-ru="объём фармрынка" data-en="pharma market size">объём фармрынка</div>
+      <div class="mkt-divider"></div>
+      <div class="mkt-role sales" data-ru="Центр сбыта №1" data-en="Sales Centre #1">Центр сбыта №1</div>
+    </div>
+    <div class="mkt-card">
+      <span class="mkt-flag">🇧🇾</span>
+      <div class="mkt-country" data-ru="Беларусь" data-en="Belarus">Беларусь</div>
+      <div class="mkt-size">~$1.2B</div>
+      <div class="mkt-label" data-ru="объём фармрынка" data-en="pharma market size">объём фармрынка</div>
+      <div class="mkt-divider"></div>
+      <div class="mkt-role sales" data-ru="Центр сбыта №2" data-en="Sales Centre #2">Центр сбыта №2</div>
+    </div>
+    <div class="mkt-card">
+      <span class="mkt-flag">🇰🇿</span>
+      <div class="mkt-country" data-ru="Казахстан" data-en="Kazakhstan">Казахстан</div>
+      <div class="mkt-size">~$2.5B</div>
+      <div class="mkt-label" data-ru="объём фармрынка" data-en="pharma market size">объём фармрынка</div>
+      <div class="mkt-divider"></div>
+      <div class="mkt-role sales" data-ru="Центр сбыта №3" data-en="Sales Centre #3">Центр сбыта №3</div>
+    </div>
+  </div>
+</section>
+
+<!-- TIMELINE -->
+<section class="timeline-sec">
+  <div class="sec-head">
+    <div>
+      <div class="sl" data-ru="Этапы реализации" data-en="Implementation Phases">Этапы реализации</div>
+      <h2 data-ru="Дорожная карта<br><span>по географии</span>" data-en="Geographic<br><span>expansion roadmap</span>">Дорожная карта<br><span>по географии</span></h2>
+    </div>
+    <p class="lead" data-ru="Последовательное освоение рынков: старт в России и Беларуси, затем масштабирование в Казахстан и запуск AI-платформы из Стамбула." data-en="Sequential market entry: start in Russia and Belarus, then scale to Kazakhstan and launch the AI platform from Istanbul.">Последовательное освоение рынков: старт в России и Беларуси, затем масштабирование в Казахстан и запуск AI-платформы из Стамбула.</p>
+  </div>
+  <div class="tl-grid">
+
+    <div class="tl-item">
+      <div class="tl-year">
+        <div class="tl-year-num">2026</div>
+        <div class="tl-year-phase" data-ru="Основание" data-en="Foundation">Основание</div>
+      </div>
+      <div class="tl-body">
+        <div class="tl-col">
+          <div class="tl-col-title">🇹🇷 <span data-ru="Стамбул" data-en="Istanbul">Стамбул</span></div>
+          <div class="tl-col-items">
+            <div class="tl-col-item" data-ru="Штаб-квартира компании" data-en="Company headquarters">Штаб-квартира компании</div>
+            <div class="tl-col-item" data-ru="Контракты с VEM и Koçak" data-en="Contracts with VEM and Koçak">Контракты с VEM и Koçak</div>
+            <div class="tl-col-item" data-ru="Планирование R&D (DBL)" data-en="R&D planning (DBL)">Планирование R&D (DBL)</div>
+          </div>
+          <span class="tl-badge gold" data-ru="HQ активен" data-en="HQ active">HQ активен</span>
+        </div>
+        <div class="tl-col">
+          <div class="tl-col-title">🇷🇺🇧🇾 <span data-ru="РФ + РБ" data-en="RU + BY">РФ + РБ</span></div>
+          <div class="tl-col-items">
+            <div class="tl-col-item" data-ru="Регистрация юрлиц" data-en="Legal entities registered">Регистрация юрлиц</div>
+            <div class="tl-col-item" data-ru="Подача досье на РУ" data-en="MA dossiers submitted">Подача досье на РУ</div>
+            <div class="tl-col-item" data-ru="Запуск PV / QMS / GDP" data-en="PV / QMS / GDP launched">Запуск PV / QMS / GDP</div>
+          </div>
+          <span class="tl-badge green" data-ru="Регистрация" data-en="Registration">Регистрация</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-year">
+        <div class="tl-year-num">2027</div>
+        <div class="tl-year-phase" data-ru="Первые продажи" data-en="First Sales">Первые продажи</div>
+      </div>
+      <div class="tl-body">
+        <div class="tl-col">
+          <div class="tl-col-title">🇹🇷 <span data-ru="Стамбул" data-en="Istanbul">Стамбул</span></div>
+          <div class="tl-col-items">
+            <div class="tl-col-item" data-ru="Первые поставки из Турции" data-en="First shipments from Turkey">Первые поставки из Турции</div>
+            <div class="tl-col-item" data-ru="GDP-логистика налажена" data-en="GDP logistics established">GDP-логистика налажена</div>
+          </div>
+        </div>
+        <div class="tl-col">
+          <div class="tl-col-title">🇷🇺🇧🇾 <span data-ru="РФ + РБ" data-en="RU + BY">РФ + РБ</span></div>
+          <div class="tl-col-items">
+            <div class="tl-col-item" data-ru="Получение РУ (5+ в РФ, 2+ в РБ)" data-en="MAs received (5+ in RU, 2+ in BY)">Получение РУ (5+ в РФ, 2+ в РБ)</div>
+            <div class="tl-col-item" data-ru="Первые тендеры, EBITDA 30%+" data-en="First tenders, EBITDA 30%+">Первые тендеры, EBITDA 30%+</div>
+            <div class="tl-col-item" data-ru="Запуск retail-канала" data-en="Retail channel launch">Запуск retail-канала</div>
+          </div>
+          <span class="tl-badge green" data-ru="Продажи идут" data-en="Sales active">Продажи идут</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-year">
+        <div class="tl-year-num">2028</div>
+        <div class="tl-year-phase" data-ru="Масштабирование" data-en="Scaling">Масштабирование</div>
+      </div>
+      <div class="tl-body">
+        <div class="tl-col">
+          <div class="tl-col-title">🇹🇷 <span data-ru="Стамбул — R&D" data-en="Istanbul — R&D">Стамбул — R&D</span></div>
+          <div class="tl-col-items">
+            <div class="tl-col-item" data-ru="Запуск Digital Biology Lab MVP" data-en="Digital Biology Lab MVP launch">Запуск Digital Biology Lab MVP</div>
+            <div class="tl-col-item" data-ru="GPU Level 1 (NVIDIA A100)" data-en="GPU Level 1 (NVIDIA A100)">GPU Level 1 (NVIDIA A100)</div>
+            <div class="tl-col-item" data-ru="3–4 производителя в портфеле" data-en="3–4 manufacturers in portfolio">3–4 производителя в портфеле</div>
+          </div>
+          <span class="tl-badge blue">DBL MVP</span>
+        </div>
+        <div class="tl-col">
+          <div class="tl-col-title">🇰🇿 <span data-ru="Казахстан — старт" data-en="Kazakhstan — entry">Казахстан — старт</span></div>
+          <div class="tl-col-items">
+            <div class="tl-col-item" data-ru="Выход через локального партнёра" data-en="Entry via local partner">Выход через локального партнёра</div>
+            <div class="tl-col-item" data-ru="Регистрация первых препаратов" data-en="First drug registrations">Регистрация первых препаратов</div>
+            <div class="tl-col-item" data-ru="Госпитальные тендеры" data-en="Hospital tenders">Госпитальные тендеры</div>
+          </div>
+          <span class="tl-badge green" data-ru="Новый рынок" data-en="New market">Новый рынок</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-year">
+        <div class="tl-year-num">2031+</div>
+        <div class="tl-year-phase" data-ru="Платформа" data-en="Platform">Платформа</div>
+      </div>
+      <div class="tl-body">
+        <div class="tl-col">
+          <div class="tl-col-title">🇹🇷 <span data-ru="Стамбул — платформа" data-en="Istanbul — platform">Стамбул — платформа</span></div>
+          <div class="tl-col-items">
+            <div class="tl-col-item" data-ru="Евразийская AI-платформа (DBL)" data-en="Eurasian AI platform (DBL)">Евразийская AI-платформа (DBL)</div>
+            <div class="tl-col-item" data-ru="SaaS CRO-сервисы для ЕАЭС" data-en="SaaS CRO services for EAEU">SaaS CRO-сервисы для ЕАЭС</div>
+            <div class="tl-col-item" data-ru="IPO Мосбиржа / ADGM Dubai" data-en="IPO MOEX / ADGM Dubai">IPO Мосбиржа / ADGM Dubai</div>
+          </div>
+          <span class="tl-badge gold" data-ru="Оценка $1.7B+" data-en="Valuation $1.7B+">Оценка $1.7B+</span>
+        </div>
+        <div class="tl-col">
+          <div class="tl-col-title">🌍 <span data-ru="Весь ЕАЭС" data-en="Full EAEU">Весь ЕАЭС</span></div>
+          <div class="tl-col-items">
+            <div class="tl-col-item" data-ru="5+ производителей в портфеле" data-en="5+ manufacturers in portfolio">5+ производителей в портфеле</div>
+            <div class="tl-col-item" data-ru="Полное присутствие РФ/РБ/РК" data-en="Full presence RU/BY/KZ">Полное присутствие РФ/РБ/РК</div>
+            <div class="tl-col-item" data-ru="Стратегический exit" data-en="Strategic exit">Стратегический exit</div>
+          </div>
+          <span class="tl-badge green" data-ru="Зрелость" data-en="Maturity">Зрелость</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- MANUFACTURERS -->
+<section class="manuf-sec">
+  <div class="sec-head">
+    <div>
+      <div class="sl" data-ru="Производители" data-en="Manufacturers">Производители</div>
+      <h2 data-ru="Турецкие <span>GMP-партнёры</span>" data-en="Turkish <span>GMP Partners</span>">Турецкие <span>GMP-партнёры</span></h2>
+    </div>
+    <p class="lead" data-ru="Оба производителя находятся в Турции, имеют действующие GMP-сертификаты и многолетний опыт поставок в страны ЕАЭС." data-en="Both manufacturers are based in Turkey, hold valid GMP certificates and have years of experience supplying EAEU countries.">Оба производителя находятся в Турции, имеют действующие GMP-сертификаты и многолетний опыт поставок в страны ЕАЭС.</p>
+  </div>
+  <div class="manuf-grid">
+    <div class="manuf-card">
+      <div class="manuf-card-head">
+        <div class="manuf-logo">V</div>
+        <div>
+          <div class="manuf-name">VEM İlaç</div>
+          <div class="manuf-sub" data-ru="Стамбул, Турция · GMP-сертифицирован" data-en="Istanbul, Turkey · GMP Certified">Стамбул, Турция · GMP-сертифицирован</div>
+        </div>
+      </div>
+      <div class="manuf-drugs">
+        <span class="manuf-drug">Терлипрессин</span>
+        <span class="manuf-drug">Палоносетрон</span>
+        <span class="manuf-drug">Парикальцитол</span>
+        <span class="manuf-drug">Метотрексат</span>
+        <span class="manuf-drug">Эмедастин</span>
+      </div>
+      <div class="manuf-desc" data-ru="Ключевой производственный партнёр. Поставляет 5 из 6 препаратов стартового портфеля. Налажена система Quality Agreement и контроль серий." data-en="Key manufacturing partner. Supplies 5 of 6 drugs in the starter portfolio. Quality Agreement and batch control systems are in place.">Ключевой производственный партнёр. Поставляет 5 из 6 препаратов стартового портфеля. Налажена система Quality Agreement и контроль серий.</div>
+    </div>
+    <div class="manuf-card">
+      <div class="manuf-card-head">
+        <div class="manuf-logo">K</div>
+        <div>
+          <div class="manuf-name">Koçak Farma</div>
+          <div class="manuf-sub" data-ru="Стамбул, Турция · GMP-сертифицирован" data-en="Istanbul, Turkey · GMP Certified">Стамбул, Турция · GMP-сертифицирован</div>
+        </div>
+      </div>
+      <div class="manuf-drugs">
+        <span class="manuf-drug">Kapeda (Капецитабин)</span>
+      </div>
+      <div class="manuf-desc" data-ru="Перспективный партнёр по онкологическому направлению. Kapeda (капецитабин) — препарат с высоким потенциалом в госпитальных тендерах онкологии." data-en="Prospective partner for the oncology segment. Kapeda (capecitabine) — a drug with high potential in oncology hospital tenders.">Перспективный партнёр по онкологическому направлению. Kapeda (капецитабин) — препарат с высоким потенциалом в госпитальных тендерах онкологии.</div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="ft-brand"><div class="ft-mark">İ</div><span class="ft-name">ILACH</span></div>
+  <div class="ft-note" data-ru="© ООО «Илач», 2026" data-en="© LLC «Ilach», 2026">© ООО «Илач», 2026</div>
+  <div class="ft-links">
+    <a href="index.html"         data-ru="Главная"        data-en="Home">Главная</a>
+    <a href="index.html#dbl"     data-ru="Digital Biology" data-en="Digital Biology">Digital Biology</a>
+    <a href="plans.html"         data-ru="Планы"           data-en="Plans">Планы</a>
+    <a href="index.html#contact" data-ru="Контакты"        data-en="Contact">Контакты</a>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/d3@7/dist/d3.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/topojson-client@3/dist/topojson-client.min.js"></script>
+<script>
+let currentLang = 'ru';
+
+// ── Language switcher ─────────────────────────────────────────────────────
+function setLang(lang) {
+  currentLang = lang;
+  document.documentElement.lang = lang;
+  document.querySelectorAll('.lang-btn').forEach(b => {
+    b.classList.toggle('active', b.textContent.toLowerCase() === lang);
+  });
+  document.querySelectorAll('[data-ru][data-en]').forEach(el => {
+    const val = el.getAttribute('data-' + lang);
+    if (!val) return;
+    if (el.tagName === 'H1' || el.tagName === 'H2') el.innerHTML = val;
+    else el.textContent = val;
+  });
+}
+
+// ── Country config ────────────────────────────────────────────────────────
+const COUNTRIES = {
+  turkey:     { name_ru:'Турция', name_en:'Turkey',     iso:'TUR', color:'#d4a017', fill:'rgba(212,160,23,0.75)', fillHover:'rgba(212,160,23,0.95)', city_ru:'Стамбул', city_en:'Istanbul', cx:28.979, cy:41.015, cardId:'card-turkey' },
+  russia:     { name_ru:'Россия', name_en:'Russia',      iso:'RUS', color:'#3ea86e', fill:'rgba(62,168,110,0.75)', fillHover:'rgba(62,168,110,0.95)', city_ru:'Москва',  city_en:'Moscow',   cx:37.617, cy:55.755, cardId:'card-russia' },
+  belarus:    { name_ru:'Беларусь',name_en:'Belarus',   iso:'BLR', color:'#3ea86e', fill:'rgba(62,168,110,0.75)', fillHover:'rgba(62,168,110,0.95)', city_ru:'Минск',   city_en:'Minsk',    cx:27.567, cy:53.902, cardId:'card-belarus' },
+  kazakhstan: { name_ru:'Казахстан',name_en:'Kazakhstan',iso:'KAZ', color:'#3ea86e', fill:'rgba(62,168,110,0.75)', fillHover:'rgba(62,168,110,0.95)', city_ru:'Алматы',  city_en:'Almaty',   cx:76.889, cy:43.238, cardId:'card-kazakhstan' },
+};
+
+const ISO_MAP = { TUR:'turkey', RUS:'russia', BLR:'belarus', KAZ:'kazakhstan' };
+
+let activeCountry = 'turkey';
+let projection, path, svg;
+
+// ── Build D3 Map ──────────────────────────────────────────────────────────
+async function buildMap() {
+  const container = document.getElementById('map-container');
+  const W = container.clientWidth || 680;
+  const H = Math.round(W * 0.58);
+  container.style.height = H + 'px';
+
+  svg = d3.select('#map-container')
+    .append('svg')
+    .attr('width', W).attr('height', H)
+    .style('display','block').style('border-radius','16px');
+
+  // Sea background
+  const defs = svg.append('defs');
+  const grad = defs.append('linearGradient').attr('id','sea').attr('x1',0).attr('y1',0).attr('x2',0).attr('y2',1);
+  grad.append('stop').attr('offset','0%').attr('stop-color','#071810');
+  grad.append('stop').attr('offset','100%').attr('stop-color','#0a2218');
+
+  // Dot pattern
+  const pat = defs.append('pattern').attr('id','dotpat').attr('width',20).attr('height',20).attr('patternUnits','userSpaceOnUse');
+  pat.append('circle').attr('cx',1).attr('cy',1).attr('r',0.5).attr('fill','rgba(62,168,110,0.1)');
+
+  svg.append('rect').attr('width',W).attr('height',H).attr('fill','url(#sea)');
+  svg.append('rect').attr('width',W).attr('height',H).attr('fill','url(#dotpat)').attr('opacity',0.8);
+
+  // Projection centred on the region (Turkey + Russia + Kazakhstan)
+  projection = d3.geoNaturalEarth1()
+    .scale(W / 5.6)
+    .center([60, 55])
+    .translate([W * 0.38, H * 0.42]);
+
+  path = d3.geoPath().projection(projection);
+
+  // Load world topology
+  const world = await d3.json('https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json');
+  const countries = topojson.feature(world, world.objects.countries);
+  const borders   = topojson.mesh(world, world.objects.countries, (a,b) => a !== b);
+
+  // Country name lookup from TopoJSON numeric ISO
+  const numToAlpha = {
+    792:'TUR', 643:'RUS', 112:'BLR', 398:'KAZ'
+  };
+
+  // Draw all countries
+  const countryGroup = svg.append('g').attr('class','countries');
+
+  countryGroup.selectAll('path')
+    .data(countries.features)
+    .enter().append('path')
+    .attr('d', path)
+    .attr('fill', d => {
+      const alpha = numToAlpha[+d.id];
+      const key   = alpha ? ISO_MAP[alpha] : null;
+      if (!key) return 'rgba(180,200,185,0.13)';
+      const cfg = COUNTRIES[key];
+      return key === activeCountry ? cfg.fillHover : cfg.fill;
+    })
+    .attr('stroke', d => {
+      const alpha = numToAlpha[+d.id];
+      const key   = alpha ? ISO_MAP[alpha] : null;
+      if (!key) return 'rgba(255,255,255,0.08)';
+      return COUNTRIES[key].color;
+    })
+    .attr('stroke-width', d => {
+      const alpha = numToAlpha[+d.id];
+      return ISO_MAP[alpha] ? 1.2 : 0.4;
+    })
+    .attr('class', d => {
+      const alpha = numToAlpha[+d.id];
+      return ISO_MAP[alpha] ? 'ilach-country' : 'bg-country';
+    })
+    .attr('data-key', d => {
+      const alpha = numToAlpha[+d.id];
+      return ISO_MAP[alpha] || '';
+    })
+    .style('cursor', d => {
+      const alpha = numToAlpha[+d.id];
+      return ISO_MAP[alpha] ? 'pointer' : 'default';
+    })
+    .on('click', function(event, d) {
+      const alpha = numToAlpha[+d.id];
+      const key   = ISO_MAP[alpha];
+      if (key) selectCountry(key);
+    })
+    .on('mouseenter', function(event, d) {
+      const alpha = numToAlpha[+d.id];
+      const key   = ISO_MAP[alpha];
+      if (key) {
+        d3.select(this).attr('fill', COUNTRIES[key].fillHover);
+        const tooltip = document.getElementById('map-tooltip');
+        const cfg = COUNTRIES[key];
+        tooltip.innerHTML = `<strong>${currentLang==='ru'?cfg.name_ru:cfg.name_en}</strong><br><span style="color:${cfg.color};font-size:11px">${currentLang==='ru'?cfg.city_ru:cfg.city_en}</span>`;
+        tooltip.style.display = 'block';
+        tooltip.style.left = (event.offsetX + 14) + 'px';
+        tooltip.style.top  = (event.offsetY - 10) + 'px';
+      }
+    })
+    .on('mousemove', function(event) {
+      const tooltip = document.getElementById('map-tooltip');
+      tooltip.style.left = (event.offsetX + 14) + 'px';
+      tooltip.style.top  = (event.offsetY - 10) + 'px';
+    })
+    .on('mouseleave', function(event, d) {
+      const alpha = numToAlpha[+d.id];
+      const key   = ISO_MAP[alpha];
+      if (key && key !== activeCountry) {
+        d3.select(this).attr('fill', COUNTRIES[key].fill);
+      }
+      document.getElementById('map-tooltip').style.display = 'none';
+    });
+
+  // Country borders
+  svg.append('path').datum(borders)
+    .attr('fill','none').attr('d',path)
+    .attr('stroke','rgba(255,255,255,0.12)').attr('stroke-width',0.5);
+
+  // ── Flow lines ────────────────────────────────────────────────────────
+  const flowGroup = svg.append('g').attr('class','flows');
+  const flows = [
+    { from:'turkey', to:'belarus' },
+    { from:'turkey', to:'russia'  },
+    { from:'turkey', to:'kazakhstan' },
+  ];
+
+  flows.forEach(({from, to}) => {
+    const [x1,y1] = projection([COUNTRIES[from].cx, COUNTRIES[from].cy]);
+    const [x2,y2] = projection([COUNTRIES[to].cx,   COUNTRIES[to].cy]);
+    const mx = (x1+x2)/2, my = Math.min(y1,y2) - Math.abs(x2-x1)*0.22;
+
+    const lineId = `flow-${from}-${to}`;
+    const totalLen = Math.hypot(x2-x1, y2-y1) * 1.3;
+
+    flowGroup.append('path')
+      .attr('id', lineId)
+      .attr('fill','none')
+      .attr('stroke','rgba(212,160,23,0.35)')
+      .attr('stroke-width', 1.4)
+      .attr('stroke-dasharray', `7 5`)
+      .attr('d', `M${x1},${y1} Q${mx},${my} ${x2},${y2}`);
+
+    // Animate dash
+    flowGroup.select(`#${lineId}`)
+      .attr('stroke-dashoffset', 0)
+      .call(animateDash, totalLen);
+  });
+
+  function animateDash(sel, len) {
+    sel.transition().duration(2000).ease(d3.easeLinear)
+      .attr('stroke-dashoffset', -24)
+      .on('end', () => sel.attr('stroke-dashoffset', 0).call(animateDash, len));
+  }
+
+  // ── City pins ─────────────────────────────────────────────────────────
+  const pinGroup = svg.append('g').attr('class','pins');
+
+  Object.entries(COUNTRIES).forEach(([key, cfg]) => {
+    const [px, py] = projection([cfg.cx, cfg.cy]);
+    const isHQ = key === 'turkey';
+    const r    = isHQ ? 10 : 7;
+    const pulseR = isHQ ? 20 : 15;
+    const col  = cfg.color;
+
+    const g = pinGroup.append('g')
+      .attr('transform', `translate(${px},${py})`)
+      .attr('cursor','pointer')
+      .on('click', () => selectCountry(key));
+
+    // Pulse ring
+    const pulse = g.append('circle').attr('r', pulseR)
+      .attr('fill', 'none').attr('stroke', col).attr('stroke-width', 1.5).attr('opacity', 0.5);
+    (function pulsate() {
+      pulse.attr('r', r+2).attr('opacity', 0.6)
+        .transition().duration(1800).ease(d3.easeSinOut)
+        .attr('r', pulseR).attr('opacity', 0)
+        .on('end', pulsate);
+    })();
+
+    // Main dot
+    g.append('circle').attr('r', r).attr('fill', col);
+    g.append('circle').attr('r', r*0.38).attr('fill','rgba(255,255,255,0.95)');
+
+    // Label
+    const labelY = isHQ ? r + 16 : -(r + 8);
+    g.append('text')
+      .attr('text-anchor','middle').attr('y', labelY)
+      .attr('font-size', 11).attr('font-weight', 600)
+      .attr('font-family','Inter').attr('fill','rgba(255,255,255,0.92)')
+      .attr('class', `pin-lbl-${key}`)
+      .text(currentLang === 'ru' ? cfg.city_ru : cfg.city_en);
+
+    if (isHQ) {
+      g.append('text')
+        .attr('text-anchor','middle').attr('y', labelY + 13)
+        .attr('font-size', 9).attr('font-weight', 600)
+        .attr('font-family','Inter').attr('fill', col).attr('opacity', 0.9)
+        .text('HQ');
+    }
+  });
+
+  // ── Legend ────────────────────────────────────────────────────────────
+  const leg = svg.append('g').attr('transform',`translate(16,${H-52})`);
+  leg.append('rect').attr('width',330).attr('height',40).attr('rx',8).attr('fill','rgba(0,0,0,0.45)');
+  leg.append('circle').attr('cx',18).attr('cy',20).attr('r',6).attr('fill','#d4a017');
+  leg.append('text').attr('x',30).attr('y',25).attr('fill','rgba(255,255,255,0.6)').attr('font-size',11).attr('font-family','Inter').text(currentLang==='ru'?'Штаб-квартира (HQ)':'HQ');
+  leg.append('circle').attr('cx',168).attr('cy',20).attr('r',6).attr('fill','#3ea86e');
+  leg.append('text').attr('x',180).attr('y',25).attr('fill','rgba(255,255,255,0.6)').attr('font-size',11).attr('font-family','Inter').text(currentLang==='ru'?'Центр сбыта':'Sales Centre');
+
+  // Mark active on load
+  selectCountry('turkey');
+}
+
+// ── Select country ─────────────────────────────────────────────────────────
+function selectCountry(id) {
+  activeCountry = id;
+
+  // Cards
+  document.querySelectorAll('.country-card').forEach(c => c.classList.remove('active'));
+  const card = document.getElementById('card-' + id);
+  if (card) { card.classList.add('active'); card.scrollIntoView({behavior:'smooth',block:'nearest'}); }
+
+  // Map fill
+  if (!svg) return;
+  svg.selectAll('.ilach-country').attr('fill', function() {
+    const key = d3.select(this).attr('data-key');
+    if (!key || !COUNTRIES[key]) return 'rgba(180,200,185,0.13)';
+    return key === id ? COUNTRIES[key].fillHover : COUNTRIES[key].fill;
+  });
+}
+
+// ── Init ──────────────────────────────────────────────────────────────────
+buildMap();
+
+// Responsive resize
+window.addEventListener('resize', () => {
+  document.querySelector('#map-container svg')?.remove();
+  buildMap();
+});
+</script>
+</body>
+</html>
