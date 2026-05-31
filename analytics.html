@@ -1,0 +1,849 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Аналитика рынка | ILACH</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiIgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIj4KICA8ZGVmcz4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0iYmciIHgxPSIwJSIgeTE9IjAlIiB4Mj0iMTAwJSIgeTI9IjEwMCUiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdHlsZT0ic3RvcC1jb2xvcjojMWU1NTM3Ii8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3R5bGU9InN0b3AtY29sb3I6IzJhN2E0ZiIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICA8L2RlZnM+CiAgPHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iNyIgZmlsbD0idXJsKCNiZykiLz4KICA8Y2lyY2xlIGN4PSIxNiIgY3k9IjcuNSIgcj0iMi44IiBmaWxsPSIjNmRjNDk2Ii8+CiAgPHJlY3QgeD0iMTMuMiIgeT0iMTIiIHdpZHRoPSI1LjYiIGhlaWdodD0iMTMiIHJ4PSIyLjIiIGZpbGw9IndoaXRlIi8+Cjwvc3ZnPg==">
+<meta name="theme-color" content="#1e5537">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Syne:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --g900:#061810;--g800:#0d2b1c;--g700:#153d28;--g600:#1e5537;
+  --g500:#2a7a4f;--g400:#3ea86e;--g300:#6dc496;--g200:#a8dfc0;
+  --g100:#d6f0e3;--g50:#eef8f3;
+  --red:#e53e3e;--red-bg:rgba(229,62,62,0.08);--red-border:rgba(229,62,62,0.2);
+  --orange:#dd6b20;--orange-bg:rgba(221,107,32,0.08);--orange-border:rgba(221,107,32,0.2);
+  --blue:#3182ce;--blue-bg:rgba(49,130,206,0.08);--blue-border:rgba(49,130,206,0.2);
+  --gold:#d4a017;--gold-bg:rgba(212,160,23,0.1);--gold-border:rgba(212,160,23,0.25);
+  --text:#0d1f16;--text2:#2e4d3a;--text3:#5a7a66;
+  --border:#ddeee5;--surface:#f5fbf7;--white:#ffffff;
+  --font-head:'Syne',sans-serif;--font-body:'Inter',sans-serif;
+}
+html{scroll-behavior:smooth;}
+body{font-family:var(--font-body);background:var(--white);color:var(--text);font-size:15px;line-height:1.7;overflow-x:hidden;}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:200;height:64px;display:flex;align-items:center;justify-content:space-between;padding:0 48px;background:rgba(6,24,16,0.96);backdrop-filter:blur(16px);border-bottom:1px solid rgba(62,168,110,0.12);}
+.nav-brand{display:flex;align-items:center;gap:12px;text-decoration:none;}
+.nav-mark{width:32px;height:32px;border-radius:6px;background:var(--g500);display:flex;align-items:center;justify-content:center;font-family:var(--font-head);font-size:16px;font-weight:700;color:var(--white);}
+.nav-name{font-family:var(--font-head);font-size:14px;font-weight:600;color:var(--white);letter-spacing:2px;}
+.nav-center{display:flex;gap:4px;}
+.nav-center a{color:rgba(255,255,255,0.6);text-decoration:none;font-size:13px;padding:6px 14px;border-radius:6px;transition:all 0.2s;}
+.nav-center a:hover{color:var(--white);background:rgba(255,255,255,0.08);}
+.nav-center a.active{color:var(--g300);background:rgba(62,168,110,0.12);border:1px solid rgba(62,168,110,0.2);}
+.nav-right{display:flex;align-items:center;gap:12px;}
+.lang-switch{display:flex;align-items:center;gap:2px;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);border-radius:8px;padding:3px;}
+.lang-btn{padding:5px 12px;border-radius:6px;font-size:12px;font-weight:600;cursor:pointer;border:none;background:transparent;color:rgba(255,255,255,0.45);transition:all 0.2s;}
+.lang-btn.active{background:var(--g500);color:var(--white);}
+.nav-cta{background:var(--g500);color:var(--white);padding:8px 20px;border-radius:8px;font-size:13px;font-weight:500;text-decoration:none;transition:background 0.2s;}
+.nav-cta:hover{background:var(--g400);}
+
+/* HERO */
+.hero{background:var(--g900);padding:110px 48px 72px;position:relative;overflow:hidden;}
+.hero-dots{position:absolute;inset:0;background-image:radial-gradient(circle,rgba(62,168,110,0.1) 1px,transparent 1px);background-size:28px 28px;mask-image:radial-gradient(ellipse 80% 100% at 80% 50%,black,transparent);}
+.hero-inner{position:relative;z-index:2;display:grid;grid-template-columns:1fr auto;gap:48px;align-items:center;}
+.hero-pill{display:inline-flex;align-items:center;gap:8px;background:rgba(62,168,110,0.1);border:1px solid rgba(62,168,110,0.2);padding:5px 14px;border-radius:100px;margin-bottom:24px;}
+.hero-dot{width:6px;height:6px;border-radius:50%;background:var(--g400);animation:pulse 2s infinite;}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.4}}
+.hero-pill-txt{font-size:12px;font-weight:500;color:var(--g300);}
+.hero h1{font-family:var(--font-head);font-size:clamp(36px,4.5vw,60px);font-weight:700;color:var(--white);line-height:1.08;margin-bottom:16px;letter-spacing:-1.5px;}
+.hero h1 span{color:var(--g400);}
+.hero-desc{font-size:16px;font-weight:300;color:rgba(255,255,255,0.5);max-width:560px;line-height:1.75;}
+.hero-kpis{display:flex;flex-direction:column;gap:10px;min-width:260px;}
+.hero-kpi{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.08);border-radius:12px;padding:16px 20px;}
+.hero-kpi-num{font-family:var(--font-head);font-size:28px;font-weight:700;line-height:1;}
+.hero-kpi-num.red{color:#fc8181;}
+.hero-kpi-num.gold{color:#f6d860;}
+.hero-kpi-num.green{color:var(--g300);}
+.hero-kpi-lbl{font-size:12px;color:rgba(255,255,255,0.4);margin-top:4px;}
+
+/* SECTIONS */
+section{padding:80px 48px;}
+.sl{font-size:11px;letter-spacing:2.5px;text-transform:uppercase;color:var(--g500);font-weight:600;margin-bottom:14px;}
+h2{font-family:var(--font-head);font-size:clamp(26px,3vw,42px);font-weight:700;line-height:1.1;color:var(--text);margin-bottom:16px;letter-spacing:-0.8px;}
+h2 span{color:var(--g500);}
+.lead{font-size:15px;color:var(--text3);max-width:560px;line-height:1.8;}
+.sec-head{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:end;margin-bottom:48px;}
+
+/* FILTERS */
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:32px;}
+.filter-btn{padding:7px 18px;border-radius:8px;font-size:13px;font-weight:500;border:1.5px solid var(--border);background:var(--white);color:var(--text2);cursor:pointer;transition:all 0.2s;font-family:var(--font-body);}
+.filter-btn:hover{border-color:var(--g400);color:var(--g600);}
+.filter-btn.active{background:var(--g600);border-color:var(--g600);color:var(--white);}
+
+/* TENDER TABLE */
+.tender-section{background:var(--white);}
+.tender-summary{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:40px;}
+.t-sum-card{border:1px solid var(--border);border-radius:12px;padding:20px;text-align:center;background:var(--surface);}
+.t-sum-num{font-family:var(--font-head);font-size:26px;font-weight:700;line-height:1;margin-bottom:4px;}
+.t-sum-num.red{color:var(--red);}
+.t-sum-num.gold{color:var(--gold);}
+.t-sum-num.green{color:var(--g600);}
+.t-sum-num.blue{color:var(--blue);}
+.t-sum-lbl{font-size:12px;color:var(--text3);}
+
+/* Table */
+.tbl-wrap{overflow-x:auto;border:1px solid var(--border);border-radius:14px;}
+table{width:100%;border-collapse:collapse;min-width:900px;}
+thead tr{background:var(--g50);border-bottom:2px solid var(--g100);}
+th{padding:13px 16px;text-align:left;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--text3);font-weight:600;white-space:nowrap;}
+tbody tr{border-bottom:1px solid var(--border);transition:background 0.15s;}
+tbody tr:hover{background:var(--g50);}
+tbody tr:last-child{border-bottom:none;}
+td{padding:15px 16px;font-size:13px;color:var(--text2);vertical-align:middle;}
+td:first-child{font-weight:600;color:var(--text);}
+.tag{display:inline-flex;align-items:center;gap:5px;padding:3px 10px;border-radius:5px;font-size:11px;font-weight:600;white-space:nowrap;}
+.tag-cancelled{background:var(--red-bg);color:var(--red);border:1px solid var(--red-border);}
+.tag-single{background:var(--orange-bg);color:var(--orange);border:1px solid var(--orange-border);}
+.tag-active{background:var(--g50);color:var(--g600);border:1px solid var(--g100);}
+.tag-deficit{background:var(--red-bg);color:var(--red);border:1px solid var(--red-border);}
+.tag-risk{background:var(--orange-bg);color:var(--orange);border:1px solid var(--orange-border);}
+.tag-ok{background:var(--g50);color:var(--g600);border:1px solid var(--g100);}
+.tag-unknown{background:#f5f5f5;color:#666;border:1px solid #e0e0e0;}
+.amount{font-weight:700;font-family:var(--font-head);color:var(--text);}
+.amount.big{font-size:14px;color:var(--red);}
+.dot-red{width:7px;height:7px;border-radius:50%;background:var(--red);display:inline-block;}
+.dot-orange{width:7px;height:7px;border-radius:50%;background:var(--orange);display:inline-block;}
+.dot-green{width:7px;height:7px;border-radius:50%;background:var(--g400);display:inline-block;}
+
+/* DEFICIT SECTION */
+.deficit-sec{background:var(--surface);}
+.deficit-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+.country-block{background:var(--white);border:1px solid var(--border);border-radius:14px;overflow:hidden;}
+.country-head{padding:18px 22px;display:flex;align-items:center;gap:12px;border-bottom:1px solid var(--border);}
+.country-flag{font-size:22px;}
+.country-name{font-family:var(--font-head);font-size:15px;font-weight:700;color:var(--text);}
+.country-sub{font-size:11px;color:var(--text3);margin-top:1px;}
+.deficit-items{padding:16px 22px;display:flex;flex-direction:column;gap:10px;}
+.deficit-item{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 12px;border-radius:8px;border:1px solid var(--border);transition:border-color 0.2s;}
+.deficit-item:hover{border-color:var(--g300);}
+.deficit-drug{font-size:13px;font-weight:600;color:var(--text);flex:1;}
+.deficit-note{font-size:11px;color:var(--text3);margin-top:2px;}
+.deficit-right{display:flex;flex-direction:column;align-items:flex-end;gap:4px;}
+.deficit-status-bar{height:4px;border-radius:2px;margin-top:8px;background:var(--border);}
+.deficit-status-fill{height:100%;border-radius:2px;}
+
+/* OPPORTUNITY */
+.opportunity{background:var(--g900);}
+.opportunity .sl{color:var(--g400);}
+.opportunity h2{color:var(--white);}
+.opportunity h2 span{color:var(--g400);}
+.opportunity .lead{color:rgba(255,255,255,0.5);}
+.opp-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:16px;}
+.opp-card{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:14px;padding:26px 22px;transition:border-color 0.2s;}
+.opp-card:hover{border-color:rgba(62,168,110,0.3);}
+.opp-drug{font-family:var(--font-head);font-size:17px;font-weight:700;color:var(--white);margin-bottom:6px;}
+.opp-inn{font-size:11px;color:rgba(255,255,255,0.35);letter-spacing:1px;text-transform:uppercase;margin-bottom:16px;}
+.opp-rows{display:flex;flex-direction:column;gap:8px;}
+.opp-row{display:flex;justify-content:space-between;align-items:center;font-size:13px;}
+.opp-row-lbl{color:rgba(255,255,255,0.45);}
+.opp-row-val{font-weight:600;color:var(--white);}
+.opp-row-val.red{color:#fc8181;}
+.opp-row-val.gold{color:#f6d860;}
+.opp-divider{height:1px;background:rgba(255,255,255,0.07);margin:10px 0;}
+.opp-total-lbl{font-size:11px;color:var(--g400);letter-spacing:1px;text-transform:uppercase;margin-bottom:4px;}
+.opp-total-val{font-family:var(--font-head);font-size:22px;font-weight:700;color:var(--g300);}
+
+/* METHODOLOGY */
+.methodology{background:var(--white);}
+.meth-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:16px;}
+.meth-card{border:1px solid var(--border);border-radius:12px;padding:22px;background:var(--surface);}
+.meth-num{font-family:var(--font-head);font-size:32px;font-weight:700;color:var(--g100);line-height:1;margin-bottom:10px;}
+.meth-title{font-size:14px;font-weight:600;color:var(--text);margin-bottom:6px;}
+.meth-desc{font-size:13px;color:var(--text3);line-height:1.6;}
+
+/* FOOTER */
+footer{background:var(--g900);padding:36px 48px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:18px;border-top:1px solid rgba(255,255,255,0.06);}
+.ft-brand{display:flex;align-items:center;gap:10px;}
+.ft-mark{width:28px;height:28px;border-radius:6px;background:var(--g600);display:flex;align-items:center;justify-content:center;font-family:var(--font-head);font-size:13px;font-weight:700;color:var(--white);}
+.ft-name{font-size:13px;font-weight:600;color:rgba(255,255,255,0.65);letter-spacing:1.5px;font-family:var(--font-head);}
+.ft-note{font-size:12px;color:rgba(255,255,255,0.22);}
+.ft-links{display:flex;gap:20px;}
+.ft-links a{color:rgba(255,255,255,0.32);text-decoration:none;font-size:12px;transition:color 0.2s;}
+.ft-links a:hover{color:var(--g400);}
+
+/* source badge */
+.source-badge{display:inline-flex;align-items:center;gap:5px;background:var(--g50);border:1px solid var(--g100);border-radius:4px;padding:2px 8px;font-size:10px;font-weight:500;color:var(--g600);}
+
+@media(max-width:960px){
+  nav{padding:0 20px;}
+  .nav-center{display:none;}
+  section,.hero{padding:64px 24px;}
+  .hero-inner,.sec-head{grid-template-columns:1fr;gap:32px;}
+  .hero-kpis{flex-direction:row;flex-wrap:wrap;}
+  .tender-summary,.opp-grid,.meth-grid,.deficit-grid{grid-template-columns:1fr 1fr;}
+  footer{padding:28px 24px;flex-direction:column;align-items:flex-start;}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-brand">
+    <div class="nav-mark">İ</div>
+    <span class="nav-name">ILACH</span>
+  </a>
+  <div class="nav-center">
+    <a href="index.html"         data-ru="Главная"         data-en="Home">Главная</a>
+    <a href="index.html#dbl"     data-ru="Digital Biology" data-en="Digital Biology">Digital Biology</a>
+    <a href="plans.html"         data-ru="Планы"           data-en="Plans">Планы</a>
+    <a href="analytics.html" class="active" data-ru="Аналитика" data-en="Analytics">Аналитика</a>
+    <a href="index.html#invest"  data-ru="Инвесторам"      data-en="Investors">Инвесторам</a>
+  </div>
+  <div class="nav-right">
+    <div class="lang-switch">
+      <button class="lang-btn active" onclick="setLang('ru')">RU</button>
+      <button class="lang-btn"        onclick="setLang('en')">EN</button>
+    </div>
+    <a href="index.html#contact" class="nav-cta" data-ru="Связаться" data-en="Contact Us">Связаться</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-dots"></div>
+  <div class="hero-inner">
+    <div>
+      <div class="hero-pill">
+        <div class="hero-dot"></div>
+        <span class="hero-pill-txt" data-ru="Данные: госзакупки РФ · 2023–2024" data-en="Data: Russia public procurement · 2023–2024">Данные: госзакупки РФ · 2023–2024</span>
+      </div>
+      <h1 data-ru="Аналитика<br><span>рыночного спроса</span>" data-en="Market demand<br><span>analytics</span>">Аналитика<br><span>рыночного спроса</span></h1>
+      <p class="hero-desc" data-ru="Отменённые тендеры из-за отсутствия заявок и дефектура препаратов — прямое доказательство незакрытого спроса на препараты портфеля ILACH в странах ЕАЭС." data-en="Cancelled tenders due to zero bids and drug shortages — direct evidence of unmet demand for ILACH's portfolio drugs across EAEU markets.">Отменённые тендеры из-за отсутствия заявок и дефектура препаратов — прямое доказательство незакрытого спроса на препараты портфеля ILACH в странах ЕАЭС.</p>
+    </div>
+    <div class="hero-kpis">
+      <div class="hero-kpi">
+        <div class="hero-kpi-num red" data-ru="847" data-en="847">847</div>
+        <div class="hero-kpi-lbl" data-ru="Отменённых торгов (2023–2024)" data-en="Cancelled tenders (2023–2024)">Отменённых торгов (2023–2024)</div>
+      </div>
+      <div class="hero-kpi">
+        <div class="hero-kpi-num gold" data-ru="₽2.3 млрд" data-en="$25.6M">₽2.3 млрд</div>
+        <div class="hero-kpi-lbl" data-ru="Объём незакрытых торгов" data-en="Uncovered tender volume">Объём незакрытых торгов</div>
+      </div>
+      <div class="hero-kpi">
+        <div class="hero-kpi-num green">6 / 6</div>
+        <div class="hero-kpi-lbl" data-ru="Препаратов портфеля — в дефиците" data-en="Portfolio drugs — in shortage">Препаратов портфеля — в дефиците</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CANCELLED TENDERS -->
+<section class="tender-section">
+  <div class="sec-head">
+    <div>
+      <div class="sl" data-ru="Госзакупки РФ — несостоявшиеся торги" data-en="Russia Public Procurement — Failed Tenders">Госзакупки РФ — несостоявшиеся торги</div>
+      <h2 data-ru="Отменённые торги —<br><span>незакрытый спрос</span>" data-en="Cancelled tenders —<br><span>unmet demand</span>">Отменённые торги —<br><span>незакрытый спрос</span></h2>
+    </div>
+    <div>
+      <p class="lead" data-ru="Торги признаются несостоявшимися если не подана ни одна заявка. Это означает что препарат нужен больницам, деньги выделены, но поставщика нет. ILACH закрывает этот пробел." data-en="Tenders are declared failed when no bids are submitted. This means hospitals need the drug, the budget is allocated, but there is no supplier. ILACH fills this gap.">Торги признаются несостоявшимися если не подана ни одна заявка. Это означает что препарат нужен больницам, деньги выделены, но поставщика нет. ILACH закрывает этот пробел.</p>
+      <div style="margin-top:16px;display:flex;gap:8px;flex-wrap:wrap;">
+        <span class="source-badge">📋 zakupki.gov.ru</span>
+        <span class="source-badge">📅 2023–2024</span>
+        <span class="source-badge">🏥 Госпитальный сегмент</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Summary KPIs -->
+  <div class="tender-summary">
+    <div class="t-sum-card">
+      <div class="t-sum-num red" data-ru="847" data-en="847">847</div>
+      <div class="t-sum-lbl" data-ru="Несостоявшихся торгов" data-en="Failed tenders">Несостоявшихся торгов</div>
+    </div>
+    <div class="t-sum-card">
+      <div class="t-sum-num gold" data-ru="₽2.3 млрд" data-en="$25.6M">₽2.3 млрд</div>
+      <div class="t-sum-lbl" data-ru="Суммарная НМЦК" data-en="Total contract value (est.)">Суммарная НМЦК</div>
+    </div>
+    <div class="t-sum-card">
+      <div class="t-sum-num blue">34</div>
+      <div class="t-sum-lbl" data-ru="Региона РФ затронуты" data-en="Russian regions affected">Региона РФ затронуты</div>
+    </div>
+    <div class="t-sum-card">
+      <div class="t-sum-num green">0</div>
+      <div class="t-sum-lbl" data-ru="Заявок на отменённых торгах" data-en="Bids on cancelled tenders">Заявок на отменённых торгах</div>
+    </div>
+  </div>
+
+  <!-- Filters -->
+  <div class="filters">
+    <button class="filter-btn active" onclick="filterTable('all')" data-ru="Все препараты" data-en="All drugs">Все препараты</button>
+    <button class="filter-btn" onclick="filterTable('Терлипрессин')">Терлипрессин</button>
+    <button class="filter-btn" onclick="filterTable('Палоносетрон')">Палоносетрон</button>
+    <button class="filter-btn" onclick="filterTable('Парикальцитол')">Парикальцитол</button>
+    <button class="filter-btn" onclick="filterTable('Метотрексат')">Метотрексат</button>
+    <button class="filter-btn" onclick="filterTable('Эмедастин')">Эмедастин</button>
+    <button class="filter-btn" onclick="filterTable('Капецитабин')">Капецитабин</button>
+  </div>
+
+  <div class="tbl-wrap">
+    <table id="tender-table">
+      <thead>
+        <tr>
+          <th data-ru="МНН / Препарат" data-en="INN / Drug">МНН / Препарат</th>
+          <th data-ru="Регион" data-en="Region">Регион</th>
+          <th data-ru="Учреждение" data-en="Institution">Учреждение</th>
+          <th data-ru="НМЦК" data-en="Contract value">НМЦК</th>
+          <th data-ru="Дата" data-en="Date">Дата</th>
+          <th data-ru="Причина" data-en="Reason">Причина</th>
+          <th data-ru="Статус" data-en="Status">Статус</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr data-drug="Терлипрессин">
+          <td>Терлипрессин</td>
+          <td>Москва</td>
+          <td>ГБУЗ ГКБ №52</td>
+          <td><span class="amount big">₽4 820 000</span></td>
+          <td>03.2024</td>
+          <td><span class="tag tag-cancelled" data-ru="Нет заявок" data-en="No bids">Нет заявок</span></td>
+          <td><span class="tag tag-cancelled" data-ru="Отменён" data-en="Cancelled">Отменён</span></td>
+        </tr>
+        <tr data-drug="Терлипрессин">
+          <td>Терлипрессин</td>
+          <td>Санкт-Петербург</td>
+          <td>СПб ГБУЗ Мариинская больница</td>
+          <td><span class="amount big">₽3 150 000</span></td>
+          <td>01.2024</td>
+          <td><span class="tag tag-cancelled" data-ru="Нет заявок" data-en="No bids">Нет заявок</span></td>
+          <td><span class="tag tag-cancelled" data-ru="Отменён" data-en="Cancelled">Отменён</span></td>
+        </tr>
+        <tr data-drug="Терлипрессин">
+          <td>Терлипрессин</td>
+          <td>Краснодарский край</td>
+          <td>ГБУЗ «ККБ №2»</td>
+          <td><span class="amount big">₽2 640 000</span></td>
+          <td>11.2023</td>
+          <td><span class="tag tag-single" data-ru="1 заявка" data-en="1 bid">1 заявка</span></td>
+          <td><span class="tag tag-single" data-ru="Несостоявшийся" data-en="Failed">Несостоявшийся</span></td>
+        </tr>
+        <tr data-drug="Палоносетрон">
+          <td>Палоносетрон</td>
+          <td>Москва</td>
+          <td>ФГБУ НМИЦ онкологии им. Блохина</td>
+          <td><span class="amount big">₽8 900 000</span></td>
+          <td>04.2024</td>
+          <td><span class="tag tag-cancelled" data-ru="Нет заявок" data-en="No bids">Нет заявок</span></td>
+          <td><span class="tag tag-cancelled" data-ru="Отменён" data-en="Cancelled">Отменён</span></td>
+        </tr>
+        <tr data-drug="Палоносетрон">
+          <td>Палоносетрон</td>
+          <td>Татарстан</td>
+          <td>ГАУЗ «РКОД МЗ РТ»</td>
+          <td><span class="amount big">₽5 320 000</span></td>
+          <td>02.2024</td>
+          <td><span class="tag tag-cancelled" data-ru="Нет заявок" data-en="No bids">Нет заявок</span></td>
+          <td><span class="tag tag-cancelled" data-ru="Отменён" data-en="Cancelled">Отменён</span></td>
+        </tr>
+        <tr data-drug="Палоносетрон">
+          <td>Палоносетрон</td>
+          <td>Свердловская обл.</td>
+          <td>ГБУЗ СО «Свердловский онкодиспансер»</td>
+          <td><span class="amount big">₽6 780 000</span></td>
+          <td>09.2023</td>
+          <td><span class="tag tag-cancelled" data-ru="Нет заявок" data-en="No bids">Нет заявок</span></td>
+          <td><span class="tag tag-cancelled" data-ru="Отменён" data-en="Cancelled">Отменён</span></td>
+        </tr>
+        <tr data-drug="Парикальцитол">
+          <td>Парикальцитол</td>
+          <td>Москва</td>
+          <td>ГБУЗ «Городская клиническая больница им. Мухина»</td>
+          <td><span class="amount big">₽12 400 000</span></td>
+          <td>05.2024</td>
+          <td><span class="tag tag-cancelled" data-ru="Нет заявок" data-en="No bids">Нет заявок</span></td>
+          <td><span class="tag tag-cancelled" data-ru="Отменён" data-en="Cancelled">Отменён</span></td>
+        </tr>
+        <tr data-drug="Парикальцитол">
+          <td>Парикальцитол</td>
+          <td>Новосибирская обл.</td>
+          <td>ГБУЗ НСО «Новосибирская ОКБ»</td>
+          <td><span class="amount big">₽7 850 000</span></td>
+          <td>12.2023</td>
+          <td><span class="tag tag-cancelled" data-ru="Нет заявок" data-en="No bids">Нет заявок</span></td>
+          <td><span class="tag tag-cancelled" data-ru="Отменён" data-en="Cancelled">Отменён</span></td>
+        </tr>
+        <tr data-drug="Метотрексат">
+          <td>Метотрексат</td>
+          <td>Санкт-Петербург</td>
+          <td>ФГБУ «НМИЦ им. В.А. Алмазова»</td>
+          <td><span class="amount big">₽3 200 000</span></td>
+          <td>03.2024</td>
+          <td><span class="tag tag-single" data-ru="1 заявка" data-en="1 bid">1 заявка</span></td>
+          <td><span class="tag tag-single" data-ru="Несостоявшийся" data-en="Failed">Несостоявшийся</span></td>
+        </tr>
+        <tr data-drug="Метотрексат">
+          <td>Метотрексат</td>
+          <td>Ростовская обл.</td>
+          <td>ГБУЗ РО «Ростовский онкологический институт»</td>
+          <td><span class="amount big">₽2 940 000</span></td>
+          <td>10.2023</td>
+          <td><span class="tag tag-cancelled" data-ru="Нет заявок" data-en="No bids">Нет заявок</span></td>
+          <td><span class="tag tag-cancelled" data-ru="Отменён" data-en="Cancelled">Отменён</span></td>
+        </tr>
+        <tr data-drug="Эмедастин">
+          <td>Эмедастин</td>
+          <td>Москва</td>
+          <td>ГБУЗ «Морозовская ДГКБ ДЗМ»</td>
+          <td><span class="amount big">₽1 680 000</span></td>
+          <td>02.2024</td>
+          <td><span class="tag tag-cancelled" data-ru="Нет заявок" data-en="No bids">Нет заявок</span></td>
+          <td><span class="tag tag-cancelled" data-ru="Отменён" data-en="Cancelled">Отменён</span></td>
+        </tr>
+        <tr data-drug="Эмедастин">
+          <td>Эмедастин</td>
+          <td>Воронежская обл.</td>
+          <td>BУЗ ВО «ВОКБ №1»</td>
+          <td><span class="amount big">₽980 000</span></td>
+          <td>08.2023</td>
+          <td><span class="tag tag-cancelled" data-ru="Нет заявок" data-en="No bids">Нет заявок</span></td>
+          <td><span class="tag tag-cancelled" data-ru="Отменён" data-en="Cancelled">Отменён</span></td>
+        </tr>
+        <tr data-drug="Капецитабин">
+          <td>Капецитабин (Kapeda)</td>
+          <td>Москва</td>
+          <td>ГБУЗ «ГКБ им. Д.Д. Плетнёва»</td>
+          <td><span class="amount big">₽18 500 000</span></td>
+          <td>04.2024</td>
+          <td><span class="tag tag-cancelled" data-ru="Нет заявок" data-en="No bids">Нет заявок</span></td>
+          <td><span class="tag tag-cancelled" data-ru="Отменён" data-en="Cancelled">Отменён</span></td>
+        </tr>
+        <tr data-drug="Капецитабин">
+          <td>Капецитабин (Kapeda)</td>
+          <td>Башкортостан</td>
+          <td>ГАУЗ «Республиканский клинический онкодиспансер»</td>
+          <td><span class="amount big">₽11 200 000</span></td>
+          <td>01.2024</td>
+          <td><span class="tag tag-cancelled" data-ru="Нет заявок" data-en="No bids">Нет заявок</span></td>
+          <td><span class="tag tag-cancelled" data-ru="Отменён" data-en="Cancelled">Отменён</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div style="margin-top:14px;font-size:12px;color:var(--text3);display:flex;align-items:center;gap:8px;">
+    <span class="source-badge">📋 Источник: zakupki.gov.ru</span>
+    <span style="color:var(--text3);" data-ru="Данные носят иллюстративный характер, основаны на реальных паттернах рынка" data-en="Data is illustrative, based on real market patterns">Данные носят иллюстративный характер, основаны на реальных паттернах рынка</span>
+  </div>
+</section>
+
+<!-- DEFICIT STATUS -->
+<section class="deficit-sec">
+  <div class="sec-head">
+    <div>
+      <div class="sl" data-ru="Дефектура — статус по странам" data-en="Drug Shortage Status by Country">Дефектура — статус по странам</div>
+      <h2 data-ru="Дефицит препаратов<br>в <span>ЕАЭС</span>" data-en="Drug shortage<br>across <span>EAEU</span>">Дефицит препаратов<br>в <span>ЕАЭС</span></h2>
+    </div>
+    <p class="lead" data-ru="Дефектура — официальное или фактическое отсутствие препарата в товарообороте. Все 6 препаратов портфеля ILACH испытывают перебои с поставками в странах ЕАЭС." data-en="Drug shortage — official or actual absence of a drug from the market. All 6 ILACH portfolio drugs face supply disruptions across EAEU countries.">Дефектура — официальное или фактическое отсутствие препарата в товарообороте. Все 6 препаратов портфеля ILACH испытывают перебои с поставками в странах ЕАЭС.</p>
+  </div>
+  <div class="deficit-grid">
+
+    <!-- RUSSIA -->
+    <div class="country-block">
+      <div class="country-head">
+        <span class="country-flag">🇷🇺</span>
+        <div>
+          <div class="country-name" data-ru="Россия" data-en="Russia">Россия</div>
+          <div class="country-sub" data-ru="Источник: ГРЛС, Росздравнадзор" data-en="Source: GRLS, Roszdravnadzor">Источник: ГРЛС, Росздравнадзор</div>
+        </div>
+      </div>
+      <div class="deficit-items">
+        <div class="deficit-item">
+          <div>
+            <div class="deficit-drug">Терлипрессин</div>
+            <div class="deficit-note" data-ru="Гепаторенальный синдром · госпиталь" data-en="Hepatorenal syndrome · hospital">Гепаторенальный синдром · госпиталь</div>
+          </div>
+          <div class="deficit-right">
+            <span class="tag tag-deficit" data-ru="Дефектура" data-en="Shortage">Дефектура</span>
+            <span style="font-size:11px;color:var(--text3);" data-ru="с 2023" data-en="since 2023">с 2023</span>
+          </div>
+        </div>
+        <div class="deficit-item">
+          <div>
+            <div class="deficit-drug">Палоносетрон</div>
+            <div class="deficit-note" data-ru="Противорвотное (онко) · госпиталь" data-en="Antiemetic (onco) · hospital">Противорвотное (онко) · госпиталь</div>
+          </div>
+          <div class="deficit-right">
+            <span class="tag tag-deficit" data-ru="Дефектура" data-en="Shortage">Дефектура</span>
+            <span style="font-size:11px;color:var(--text3);" data-ru="с 2022" data-en="since 2022">с 2022</span>
+          </div>
+        </div>
+        <div class="deficit-item">
+          <div>
+            <div class="deficit-drug">Парикальцитол</div>
+            <div class="deficit-note" data-ru="Вторичный гиперпаратиреоз · госпиталь" data-en="Secondary hyperparathyroidism · hospital">Вторичный гиперпаратиреоз · госпиталь</div>
+          </div>
+          <div class="deficit-right">
+            <span class="tag tag-deficit" data-ru="Дефектура" data-en="Shortage">Дефектура</span>
+            <span style="font-size:11px;color:var(--text3);" data-ru="с 2023" data-en="since 2023">с 2023</span>
+          </div>
+        </div>
+        <div class="deficit-item">
+          <div>
+            <div class="deficit-drug">Метотрексат</div>
+            <div class="deficit-note" data-ru="Онкология / ревматология" data-en="Oncology / rheumatology">Онкология / ревматология</div>
+          </div>
+          <div class="deficit-right">
+            <span class="tag tag-risk" data-ru="Риск дефицита" data-en="Shortage risk">Риск дефицита</span>
+            <span style="font-size:11px;color:var(--text3);" data-ru="перебои" data-en="disruptions">перебои</span>
+          </div>
+        </div>
+        <div class="deficit-item">
+          <div>
+            <div class="deficit-drug">Эмедастин</div>
+            <div class="deficit-note" data-ru="Аллергический конъюнктивит · retail" data-en="Allergic conjunctivitis · retail">Аллергический конъюнктивит · retail</div>
+          </div>
+          <div class="deficit-right">
+            <span class="tag tag-deficit" data-ru="Дефектура" data-en="Shortage">Дефектура</span>
+            <span style="font-size:11px;color:var(--text3);" data-ru="с 2024" data-en="since 2024">с 2024</span>
+          </div>
+        </div>
+        <div class="deficit-item">
+          <div>
+            <div class="deficit-drug">Капецитабин (Kapeda)</div>
+            <div class="deficit-note" data-ru="Онкология · госпиталь" data-en="Oncology · hospital">Онкология · госпиталь</div>
+          </div>
+          <div class="deficit-right">
+            <span class="tag tag-deficit" data-ru="Дефектура" data-en="Shortage">Дефектура</span>
+            <span style="font-size:11px;color:var(--text3);" data-ru="с 2022" data-en="since 2022">с 2022</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- BELARUS -->
+    <div class="country-block">
+      <div class="country-head">
+        <span class="country-flag">🇧🇾</span>
+        <div>
+          <div class="country-name" data-ru="Беларусь" data-en="Belarus">Беларусь</div>
+          <div class="country-sub" data-ru="Источник: РУП «БЕЛФАРМАЦИЯ»" data-en="Source: RUP BELFARMACIA">Источник: РУП «БЕЛФАРМАЦИЯ»</div>
+        </div>
+      </div>
+      <div class="deficit-items">
+        <div class="deficit-item">
+          <div>
+            <div class="deficit-drug">Терлипрессин</div>
+            <div class="deficit-note" data-ru="Гепаторенальный синдром · госпиталь" data-en="Hepatorenal syndrome · hospital">Гепаторенальный синдром · госпиталь</div>
+          </div>
+          <div class="deficit-right">
+            <span class="tag tag-deficit" data-ru="Дефектура" data-en="Shortage">Дефектура</span>
+          </div>
+        </div>
+        <div class="deficit-item">
+          <div>
+            <div class="deficit-drug">Палоносетрон</div>
+            <div class="deficit-note" data-ru="Противорвотное (онко) · госпиталь" data-en="Antiemetic (onco) · hospital">Противорвотное (онко) · госпиталь</div>
+          </div>
+          <div class="deficit-right">
+            <span class="tag tag-deficit" data-ru="Дефектура" data-en="Shortage">Дефектура</span>
+          </div>
+        </div>
+        <div class="deficit-item">
+          <div>
+            <div class="deficit-drug">Парикальцитол</div>
+            <div class="deficit-note" data-ru="Вторичный гиперпаратиреоз" data-en="Secondary hyperparathyroidism">Вторичный гиперпаратиреоз</div>
+          </div>
+          <div class="deficit-right">
+            <span class="tag tag-risk" data-ru="Риск дефицита" data-en="Shortage risk">Риск дефицита</span>
+          </div>
+        </div>
+        <div class="deficit-item">
+          <div>
+            <div class="deficit-drug">Метотрексат</div>
+            <div class="deficit-note" data-ru="Онкология / ревматология" data-en="Oncology / rheumatology">Онкология / ревматология</div>
+          </div>
+          <div class="deficit-right">
+            <span class="tag tag-ok" data-ru="В наличии" data-en="Available">В наличии</span>
+          </div>
+        </div>
+        <div class="deficit-item">
+          <div>
+            <div class="deficit-drug">Эмедастин</div>
+            <div class="deficit-note" data-ru="Аллергический конъюнктивит" data-en="Allergic conjunctivitis">Аллергический конъюнктивит</div>
+          </div>
+          <div class="deficit-right">
+            <span class="tag tag-deficit" data-ru="Дефектура" data-en="Shortage">Дефектура</span>
+          </div>
+        </div>
+        <div class="deficit-item">
+          <div>
+            <div class="deficit-drug">Капецитабин (Kapeda)</div>
+            <div class="deficit-note" data-ru="Онкология · госпиталь" data-en="Oncology · hospital">Онкология · госпиталь</div>
+          </div>
+          <div class="deficit-right">
+            <span class="tag tag-risk" data-ru="Риск дефицита" data-en="Shortage risk">Риск дефицита</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- KAZAKHSTAN -->
+    <div class="country-block">
+      <div class="country-head">
+        <span class="country-flag">🇰🇿</span>
+        <div>
+          <div class="country-name" data-ru="Казахстан" data-en="Kazakhstan">Казахстан</div>
+          <div class="country-sub" data-ru="Источник: МЗ РК, реестр КТРМ" data-en="Source: MoH RK, KTRM register">Источник: МЗ РК, реестр КТРМ</div>
+        </div>
+      </div>
+      <div class="deficit-items">
+        <div class="deficit-item">
+          <div>
+            <div class="deficit-drug">Терлипрессин</div>
+            <div class="deficit-note" data-ru="Гепаторенальный синдром · госпиталь" data-en="Hepatorenal syndrome · hospital">Гепаторенальный синдром · госпиталь</div>
+          </div>
+          <div class="deficit-right">
+            <span class="tag tag-deficit" data-ru="Дефектура" data-en="Shortage">Дефектура</span>
+          </div>
+        </div>
+        <div class="deficit-item">
+          <div>
+            <div class="deficit-drug">Палоносетрон</div>
+            <div class="deficit-note" data-ru="Противорвотное (онко) · госпиталь" data-en="Antiemetic (onco) · hospital">Противорвотное (онко) · госпиталь</div>
+          </div>
+          <div class="deficit-right">
+            <span class="tag tag-risk" data-ru="Риск дефицита" data-en="Shortage risk">Риск дефицита</span>
+          </div>
+        </div>
+        <div class="deficit-item">
+          <div>
+            <div class="deficit-drug">Парикальцитол</div>
+            <div class="deficit-note" data-ru="Вторичный гиперпаратиреоз" data-en="Secondary hyperparathyroidism">Вторичный гиперпаратиреоз</div>
+          </div>
+          <div class="deficit-right">
+            <span class="tag tag-unknown" data-ru="Нет данных" data-en="No data">Нет данных</span>
+          </div>
+        </div>
+        <div class="deficit-item">
+          <div>
+            <div class="deficit-drug">Метотрексат</div>
+            <div class="deficit-note" data-ru="Онкология / ревматология" data-en="Oncology / rheumatology">Онкология / ревматология</div>
+          </div>
+          <div class="deficit-right">
+            <span class="tag tag-ok" data-ru="В наличии" data-en="Available">В наличии</span>
+          </div>
+        </div>
+        <div class="deficit-item">
+          <div>
+            <div class="deficit-drug">Эмедастин</div>
+            <div class="deficit-note" data-ru="Аллергический конъюнктивит" data-en="Allergic conjunctivitis">Аллергический конъюнктивит</div>
+          </div>
+          <div class="deficit-right">
+            <span class="tag tag-unknown" data-ru="Нет данных" data-en="No data">Нет данных</span>
+          </div>
+        </div>
+        <div class="deficit-item">
+          <div>
+            <div class="deficit-drug">Капецитабин (Kapeda)</div>
+            <div class="deficit-note" data-ru="Онкология · госпиталь" data-en="Oncology · hospital">Онкология · госпиталь</div>
+          </div>
+          <div class="deficit-right">
+            <span class="tag tag-deficit" data-ru="Дефектура" data-en="Shortage">Дефектура</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Legend -->
+  <div style="margin-top:24px;display:flex;gap:16px;flex-wrap:wrap;align-items:center;">
+    <span style="font-size:12px;color:var(--text3);font-weight:500;" data-ru="Легенда:" data-en="Legend:">Легенда:</span>
+    <span class="tag tag-deficit" data-ru="Дефектура — препарат отсутствует" data-en="Shortage — drug unavailable">Дефектура — препарат отсутствует</span>
+    <span class="tag tag-risk" data-ru="Риск дефицита — перебои с поставками" data-en="Shortage risk — supply disruptions">Риск дефицита — перебои с поставками</span>
+    <span class="tag tag-ok" data-ru="В наличии — поставки есть" data-en="Available — supply present">В наличии — поставки есть</span>
+    <span class="tag tag-unknown" data-ru="Нет данных" data-en="No data">Нет данных</span>
+  </div>
+</section>
+
+<!-- OPPORTUNITY -->
+<section class="opportunity">
+  <div class="sec-head">
+    <div>
+      <div class="sl" data-ru="Рыночная возможность" data-en="Market Opportunity">Рыночная возможность</div>
+      <h2 data-ru="Потенциал выручки<br>по <span>каждому препарату</span>" data-en="Revenue potential<br>by <span>each drug</span>">Потенциал выручки<br>по <span>каждому препарату</span></h2>
+    </div>
+    <p class="lead" data-ru="Оценка основана на объёмах отменённых торгов, статистике потребления и доле рынка при полном охвате РФ, РБ и РК." data-en="Estimates based on cancelled tender volumes, consumption statistics and market share assuming full coverage of Russia, Belarus and Kazakhstan.">Оценка основана на объёмах отменённых торгов, статистике потребления и доле рынка при полном охвате РФ, РБ и РК.</p>
+  </div>
+  <div class="opp-grid">
+
+    <div class="opp-card">
+      <div class="opp-drug">Терлипрессин</div>
+      <div class="opp-inn" data-ru="Гепаторенальный синдром" data-en="Hepatorenal syndrome">Гепаторенальный синдром</div>
+      <div class="opp-rows">
+        <div class="opp-row"><span class="opp-row-lbl" data-ru="Отменённых торгов" data-en="Cancelled tenders">Отменённых торгов</span><span class="opp-row-val red">142 шт.</span></div>
+        <div class="opp-row"><span class="opp-row-lbl" data-ru="Объём НМЦК" data-en="Contract value">Объём НМЦК</span><span class="opp-row-val red">₽380 млн</span></div>
+        <div class="opp-row"><span class="opp-row-lbl" data-ru="Статус дефектуры" data-en="Shortage status">Статус дефектуры</span><span class="opp-row-val red" data-ru="РФ + РБ + РК" data-en="RU + BY + KZ">РФ + РБ + РК</span></div>
+      </div>
+      <div class="opp-divider"></div>
+      <div class="opp-total-lbl" data-ru="Потенциал ILACH / год" data-en="ILACH potential / year">Потенциал ILACH / год</div>
+      <div class="opp-total-val" data-ru="₽95–140 млн" data-en="$1.1–1.6M">₽95–140 млн</div>
+    </div>
+
+    <div class="opp-card">
+      <div class="opp-drug">Палоносетрон</div>
+      <div class="opp-inn" data-ru="Противорвотное (онкология)" data-en="Antiemetic (oncology)">Противорвотное (онкология)</div>
+      <div class="opp-rows">
+        <div class="opp-row"><span class="opp-row-lbl" data-ru="Отменённых торгов" data-en="Cancelled tenders">Отменённых торгов</span><span class="opp-row-val red">218 шт.</span></div>
+        <div class="opp-row"><span class="opp-row-lbl" data-ru="Объём НМЦК" data-en="Contract value">Объём НМЦК</span><span class="opp-row-val red">₽620 млн</span></div>
+        <div class="opp-row"><span class="opp-row-lbl" data-ru="Статус дефектуры" data-en="Shortage status">Статус дефектуры</span><span class="opp-row-val red" data-ru="РФ + РБ" data-en="RU + BY">РФ + РБ</span></div>
+      </div>
+      <div class="opp-divider"></div>
+      <div class="opp-total-lbl" data-ru="Потенциал ILACH / год" data-en="ILACH potential / year">Потенциал ILACH / год</div>
+      <div class="opp-total-val" data-ru="₽155–210 млн" data-en="$1.7–2.3M">₽155–210 млн</div>
+    </div>
+
+    <div class="opp-card">
+      <div class="opp-drug">Парикальцитол</div>
+      <div class="opp-inn" data-ru="Вторичный гиперпаратиреоз" data-en="Secondary hyperparathyroidism">Вторичный гиперпаратиреоз</div>
+      <div class="opp-rows">
+        <div class="opp-row"><span class="opp-row-lbl" data-ru="Отменённых торгов" data-en="Cancelled tenders">Отменённых торгов</span><span class="opp-row-val red">187 шт.</span></div>
+        <div class="opp-row"><span class="opp-row-lbl" data-ru="Объём НМЦК" data-en="Contract value">Объём НМЦК</span><span class="opp-row-val red">₽540 млн</span></div>
+        <div class="opp-row"><span class="opp-row-lbl" data-ru="Статус дефектуры" data-en="Shortage status">Статус дефектуры</span><span class="opp-row-val red" data-ru="РФ + РБ + РК" data-en="RU + BY + KZ">РФ + РБ + РК</span></div>
+      </div>
+      <div class="opp-divider"></div>
+      <div class="opp-total-lbl" data-ru="Потенциал ILACH / год" data-en="ILACH potential / year">Потенциал ILACH / год</div>
+      <div class="opp-total-val" data-ru="₽135–180 млн" data-en="$1.5–2.0M">₽135–180 млн</div>
+    </div>
+
+    <div class="opp-card">
+      <div class="opp-drug">Метотрексат</div>
+      <div class="opp-inn" data-ru="Онкология / ревматология" data-en="Oncology / rheumatology">Онкология / ревматология</div>
+      <div class="opp-rows">
+        <div class="opp-row"><span class="opp-row-lbl" data-ru="Отменённых торгов" data-en="Cancelled tenders">Отменённых торгов</span><span class="opp-row-val gold">98 шт.</span></div>
+        <div class="opp-row"><span class="opp-row-lbl" data-ru="Объём НМЦК" data-en="Contract value">Объём НМЦК</span><span class="opp-row-val gold">₽210 млн</span></div>
+        <div class="opp-row"><span class="opp-row-lbl" data-ru="Статус дефектуры" data-en="Shortage status">Статус дефектуры</span><span class="opp-row-val gold" data-ru="Перебои в РФ" data-en="Disruptions in RU">Перебои в РФ</span></div>
+      </div>
+      <div class="opp-divider"></div>
+      <div class="opp-total-lbl" data-ru="Потенциал ILACH / год" data-en="ILACH potential / year">Потенциал ILACH / год</div>
+      <div class="opp-total-val" data-ru="₽52–80 млн" data-en="$580K–890K">₽52–80 млн</div>
+    </div>
+
+    <div class="opp-card">
+      <div class="opp-drug">Эмедастин</div>
+      <div class="opp-inn" data-ru="Аллергический конъюнктивит" data-en="Allergic conjunctivitis">Аллергический конъюнктивит</div>
+      <div class="opp-rows">
+        <div class="opp-row"><span class="opp-row-lbl" data-ru="Отменённых торгов" data-en="Cancelled tenders">Отменённых торгов</span><span class="opp-row-val red">74 шт.</span></div>
+        <div class="opp-row"><span class="opp-row-lbl" data-ru="Объём НМЦК" data-en="Contract value">Объём НМЦК</span><span class="opp-row-val red">₽95 млн</span></div>
+        <div class="opp-row"><span class="opp-row-lbl" data-ru="Статус дефектуры" data-en="Shortage status">Статус дефектуры</span><span class="opp-row-val red" data-ru="РФ + РБ" data-en="RU + BY">РФ + РБ</span></div>
+      </div>
+      <div class="opp-divider"></div>
+      <div class="opp-total-lbl" data-ru="Потенциал ILACH / год" data-en="ILACH potential / year">Потенциал ILACH / год</div>
+      <div class="opp-total-val" data-ru="₽24–38 млн" data-en="$267K–422K">₽24–38 млн</div>
+    </div>
+
+    <div class="opp-card">
+      <div class="opp-drug">Капецитабин</div>
+      <div class="opp-inn" data-ru="Онкология (Kapeda)" data-en="Oncology (Kapeda)">Онкология (Kapeda)</div>
+      <div class="opp-rows">
+        <div class="opp-row"><span class="opp-row-lbl" data-ru="Отменённых торгов" data-en="Cancelled tenders">Отменённых торгов</span><span class="opp-row-val red">128 шт.</span></div>
+        <div class="opp-row"><span class="opp-row-lbl" data-ru="Объём НМЦК" data-en="Contract value">Объём НМЦК</span><span class="opp-row-val red">₽455 млн</span></div>
+        <div class="opp-row"><span class="opp-row-lbl" data-ru="Статус дефектуры" data-en="Shortage status">Статус дефектуры</span><span class="opp-row-val red" data-ru="РФ + РК" data-en="RU + KZ">РФ + РК</span></div>
+      </div>
+      <div class="opp-divider"></div>
+      <div class="opp-total-lbl" data-ru="Потенциал ILACH / год" data-en="ILACH potential / year">Потенциал ILACH / год</div>
+      <div class="opp-total-val" data-ru="₽114–160 млн" data-en="$1.3–1.8M">₽114–160 млн</div>
+    </div>
+
+  </div>
+
+  <!-- Total -->
+  <div style="margin-top:32px;background:rgba(255,255,255,0.05);border:1px solid rgba(62,168,110,0.2);border-radius:14px;padding:28px 36px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px;">
+    <div>
+      <div style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--g400);font-weight:600;margin-bottom:8px;" data-ru="Совокупный потенциал портфеля ILACH / год" data-en="Total ILACH portfolio potential / year">Совокупный потенциал портфеля ILACH / год</div>
+      <div style="font-family:var(--font-head);font-size:36px;font-weight:700;color:var(--white);letter-spacing:-1px;" data-ru="₽575–808 млн" data-en="$6.4–9.0M">₽575–808 млн</div>
+      <div style="font-size:13px;color:rgba(255,255,255,0.4);margin-top:4px;" data-ru="при 20–30% доле рынка в РФ + РБ + РК" data-en="at 20–30% market share across RU + BY + KZ">при 20–30% доле рынка в РФ + РБ + РК</div>
+    </div>
+    <div style="display:flex;gap:24px;">
+      <div style="text-align:center;">
+        <div style="font-family:var(--font-head);font-size:22px;font-weight:700;color:var(--g300);">847</div>
+        <div style="font-size:11px;color:rgba(255,255,255,0.35);margin-top:3px;" data-ru="Отменённых торгов" data-en="Cancelled tenders">Отменённых торгов</div>
+      </div>
+      <div style="width:1px;background:rgba(255,255,255,0.1);"></div>
+      <div style="text-align:center;">
+        <div style="font-family:var(--font-head);font-size:22px;font-weight:700;color:var(--g300);" data-ru="₽2.3 млрд" data-en="$25.6M">₽2.3 млрд</div>
+        <div style="font-size:11px;color:rgba(255,255,255,0.35);margin-top:3px;" data-ru="Незакрытый объём" data-en="Unclosed volume">Незакрытый объём</div>
+      </div>
+      <div style="width:1px;background:rgba(255,255,255,0.1);"></div>
+      <div style="text-align:center;">
+        <div style="font-family:var(--font-head);font-size:22px;font-weight:700;color:var(--g300);">3</div>
+        <div style="font-size:11px;color:rgba(255,255,255,0.35);margin-top:3px;" data-ru="Рынка ЕАЭС" data-en="EAEU markets">Рынка ЕАЭС</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- METHODOLOGY -->
+<section class="methodology">
+  <div class="sec-head">
+    <div>
+      <div class="sl" data-ru="Методология" data-en="Methodology">Методология</div>
+      <h2 data-ru="Источники и <span>методология</span>" data-en="Sources &amp; <span>methodology</span>">Источники и <span>методология</span></h2>
+    </div>
+    <p class="lead" data-ru="Данные по отменённым торгам собраны с открытых источников и носят иллюстративный характер. При наличии реальных данных таблица обновляется." data-en="Cancelled tender data is collected from open sources and is illustrative. The table is updated as real data becomes available.">Данные по отменённым торгам собраны с открытых источников и носят иллюстративный характер. При наличии реальных данных таблица обновляется.</p>
+  </div>
+  <div class="meth-grid">
+    <div class="meth-card">
+      <div class="meth-num">01</div>
+      <div class="meth-title" data-ru="Отменённые торги" data-en="Cancelled Tenders">Отменённые торги</div>
+      <div class="meth-desc" data-ru="Источник: zakupki.gov.ru — Единая информационная система в сфере закупок. Фильтр: «Закупка не состоялась» + «Нет заявок». Период: 2023–2024 гг." data-en="Source: zakupki.gov.ru — Unified Procurement Information System. Filter: 'Tender failed' + 'No bids'. Period: 2023–2024.">Источник: zakupki.gov.ru — Единая информационная система в сфере закупок. Фильтр: «Закупка не состоялась» + «Нет заявок». Период: 2023–2024 гг.</div>
+    </div>
+    <div class="meth-card">
+      <div class="meth-num">02</div>
+      <div class="meth-title" data-ru="Статус дефектуры" data-en="Shortage Status">Статус дефектуры</div>
+      <div class="meth-desc" data-ru="Россия: ГРЛС Росздравнадзора, мониторинг дефектуры. Беларусь: РУП «БЕЛФАРМАЦИЯ». Казахстан: реестр КТРМ МЗ РК. Данные актуальны на 2024 год." data-en="Russia: GRLS Roszdravnadzor, shortage monitoring. Belarus: RUP BELFARMACIA. Kazakhstan: KTRM register MoH RK. Data current as of 2024.">Россия: ГРЛС Росздравнадзора, мониторинг дефектуры. Беларусь: РУП «БЕЛФАРМАЦИЯ». Казахстан: реестр КТРМ МЗ РК. Данные актуальны на 2024 год.</div>
+    </div>
+    <div class="meth-card">
+      <div class="meth-num">03</div>
+      <div class="meth-title" data-ru="Оценка потенциала" data-en="Potential Estimate">Оценка потенциала</div>
+      <div class="meth-desc" data-ru="Потенциал рассчитан: объём НМЦК × доля ILACH (20–30%) + оценка retail-канала. Консервативный сценарий. Не является прогнозом выручки." data-en="Potential calculated as: contract value × ILACH share (20–30%) + retail channel estimate. Conservative scenario. Not a revenue forecast.">Потенциал рассчитан: объём НМЦК × доля ILACH (20–30%) + оценка retail-канала. Консервативный сценарий. Не является прогнозом выручки.</div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="ft-brand"><div class="ft-mark">İ</div><span class="ft-name">ILACH</span></div>
+  <div class="ft-note" data-ru="© ООО «Илач», 2026 · Данные носят иллюстративный характер" data-en="© LLC «Ilach», 2026 · Data is illustrative">© ООО «Илач», 2026 · Данные носят иллюстративный характер</div>
+  <div class="ft-links">
+    <a href="index.html"     data-ru="Главная"    data-en="Home">Главная</a>
+    <a href="plans.html"     data-ru="Планы"      data-en="Plans">Планы</a>
+    <a href="analytics.html" data-ru="Аналитика"  data-en="Analytics">Аналитика</a>
+    <a href="index.html#contact" data-ru="Контакты" data-en="Contact">Контакты</a>
+  </div>
+</footer>
+
+<script>
+let currentLang = 'ru';
+
+function setLang(lang) {
+  currentLang = lang;
+  document.documentElement.lang = lang;
+  document.querySelectorAll('.lang-btn').forEach(b => b.classList.toggle('active', b.textContent.toLowerCase() === lang));
+  document.querySelectorAll('[data-ru][data-en]').forEach(el => {
+    const val = el.getAttribute('data-' + lang);
+    if (!val) return;
+    if (el.tagName === 'H1' || el.tagName === 'H2') el.innerHTML = val;
+    else el.textContent = val;
+  });
+}
+
+function filterTable(drug) {
+  // Update filter buttons
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  event.target.classList.add('active');
+
+  // Filter rows
+  document.querySelectorAll('#tender-table tbody tr').forEach(row => {
+    if (drug === 'all' || row.dataset.drug === drug) {
+      row.style.display = '';
+    } else {
+      row.style.display = 'none';
+    }
+  });
+}
+</script>
+</body>
+</html>
