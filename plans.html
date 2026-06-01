@@ -71,7 +71,7 @@ h2 span{color:var(--g500);}
 .geo-section h2 span{color:var(--g400);}
 .geo-section .lead{color:rgba(255,255,255,0.5);}
 
-.geo-layout{display:grid;grid-template-columns:1fr 420px;gap:48px;align-items:start;margin-top:56px;}
+.geo-layout{display:flex;flex-direction:column;gap:40px;margin-top:56px;}
 
 /* SVG Map */
 .map-wrap{position:relative;}
@@ -90,7 +90,7 @@ h2 span{color:var(--g500);}
 .pin-label{font-family:'Inter',sans-serif;font-size:11px;font-weight:600;fill:var(--white);pointer-events:none;}
 
 /* Country cards panel */
-.country-cards{display:flex;flex-direction:column;gap:12px;}
+.country-cards{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;}
 .country-card{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:14px;padding:20px 22px;cursor:pointer;transition:all 0.22s;position:relative;overflow:hidden;}
 .country-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--g400);transform:scaleY(0);transform-origin:top;transition:transform 0.25s;}
 .country-card.hq-card::before{background:#d4a017;}
@@ -105,10 +105,10 @@ h2 span{color:var(--g500);}
 .card-role.sales-role{color:var(--g400);}
 .card-country{font-family:var(--font-head);font-size:16px;font-weight:700;color:var(--white);}
 .card-city{font-size:12px;color:rgba(255,255,255,0.4);}
-.card-desc{font-size:13px;color:rgba(255,255,255,0.5);line-height:1.65;display:none;}
-.country-card.active .card-desc,.country-card:hover .card-desc{display:block;}
-.card-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px;display:none;}
-.country-card.active .card-tags,.country-card:hover .card-tags{display:flex;}
+.card-desc{font-size:13px;color:rgba(255,255,255,0.5);line-height:1.65;}
+
+.card-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px;}
+
 .card-tag{padding:3px 10px;border-radius:5px;font-size:11px;font-weight:500;}
 .card-tag.gold{background:rgba(212,160,23,0.15);color:#f0c040;}
 .card-tag.green{background:rgba(62,168,110,0.15);color:var(--g300);}
@@ -189,7 +189,7 @@ footer{background:var(--g900);padding:36px 48px;display:flex;justify-content:spa
   section,.geo-section,.manuf-sec,.markets{padding:64px 24px;}
   .hero{padding:100px 24px 60px;}
   .hero-stats{display:none;}
-  .sec-head,.geo-layout,.manuf-grid{grid-template-columns:1fr;gap:36px;}
+  .sec-head,.manuf-grid{grid-template-columns:1fr;gap:36px;}
   .strategy-grid,.markets-grid{grid-template-columns:1fr 1fr;}
   .tl-body{flex-direction:column;gap:20px;}
   footer{padding:28px 24px;flex-direction:column;align-items:flex-start;}
@@ -205,11 +205,12 @@ footer{background:var(--g900);padding:36px 48px;display:flex;justify-content:spa
     <span class="nav-name">ILACH</span>
   </a>
   <div class="nav-center">
-    <a href="index.html"  data-ru="Главная"        data-en="Home">Главная</a>
+    <a href="index.html" data-ru="О компании" data-en="About">О компании</a>
     <a href="index.html#dbl" data-ru="Digital Biology" data-en="Digital Biology">Digital Biology</a>
-    <a href="plans.html" class="active" data-ru="Планы компании" data-en="Company Plans">Планы компании</a>
+    <a href="plans.html" class="active" data-ru="Планы" data-en="Plans">Планы</a>
+    <a href="analytics.html" data-ru="Аналитика" data-en="Analytics">Аналитика</a>
+    <a href="team.html" data-ru="Команда" data-en="Team">Команда</a>
     <a href="index.html#invest" data-ru="Инвесторам" data-en="Investors">Инвесторам</a>
-    <a href="index.html#contact" data-ru="Контакты" data-en="Contacts">Контакты</a>
   </div>
   <div class="nav-right">
     <div class="lang-switch">
@@ -258,7 +259,7 @@ footer{background:var(--g900);padding:36px 48px;display:flex;justify-content:spa
   <div class="geo-layout">
 
     <!-- World Map — D3.js + TopoJSON -->
-    <div class="map-wrap" id="map-container" style="border-radius:16px;border:1px solid rgba(255,255,255,0.1);overflow:hidden;background:#071a10;min-height:420px;position:relative;">
+    <div class="map-wrap" id="map-container" style="border-radius:16px;border:1px solid rgba(255,255,255,0.1);overflow:hidden;background:#071a10;min-height:500px;position:relative;">
       <canvas id="map-canvas" style="display:none;"></canvas>
       <!-- Tooltip -->
       <div id="map-tooltip" style="display:none;position:absolute;background:rgba(6,24,16,0.95);border:1px solid rgba(62,168,110,0.3);border-radius:8px;padding:8px 14px;font-size:12px;color:white;pointer-events:none;z-index:10;font-family:'Inter',sans-serif;"></div>
@@ -629,8 +630,8 @@ let projection, path, svg;
 // ── Build D3 Map ──────────────────────────────────────────────────────────
 async function buildMap() {
   const container = document.getElementById('map-container');
-  const W = container.clientWidth || 680;
-  const H = Math.round(W * 0.58);
+  const W = container.clientWidth || 900;
+  const H = Math.round(W * 0.52);
   container.style.height = H + 'px';
 
   svg = d3.select('#map-container')
@@ -652,10 +653,11 @@ async function buildMap() {
   svg.append('rect').attr('width',W).attr('height',H).attr('fill','url(#dotpat)').attr('opacity',0.8);
 
   // Projection centred on the region (Turkey + Russia + Kazakhstan)
+  // Centered on Turkey–EAEU region (lon 55, lat 50), zoomed in
   projection = d3.geoNaturalEarth1()
-    .scale(W / 5.6)
-    .center([60, 55])
-    .translate([W * 0.38, H * 0.42]);
+    .scale(W / 3.8)
+    .center([58, 50])
+    .translate([W * 0.46, H * 0.52]);
 
   path = d3.geoPath().projection(projection);
 
