@@ -903,8 +903,15 @@ footer{background:var(--g900);padding:40px 48px;display:flex;flex-direction:colu
       <!-- Status message -->
       <div id="formStatus" style="display:none;padding:14px 18px;border-radius:9px;font-size:14px;font-weight:500;"></div>
 
-      <button type="submit" class="btn-sub" id="submitBtn"
+      <div>
+        <button type="submit" class="btn-sub" id="submitBtn"
         data-ru="Отправить запрос" data-en="Send Request">Отправить запрос</button>
+        <p style="margin-top:12px;font-size:12px;color:var(--text3);line-height:1.6;">
+          <span data-ru="Отправляя форму, вы соглашаетесь с" data-en="By submitting this form, you agree to our">Отправляя форму, вы соглашаетесь с</span>
+          <a id="privacy-link" href="privacy.html" target="_blank" style="color:var(--g500);text-decoration:underline;">Политикой конфиденциальности</a>
+          <span data-ru="и даёте согласие на обработку персональных данных." data-en="and consent to the processing of your personal data.">и даёте согласие на обработку персональных данных.</span>
+        </p>
+      </div>
     </form>
   </div>
 </section>
@@ -942,7 +949,7 @@ footer{background:var(--g900);padding:40px 48px;display:flex;flex-direction:colu
     </div>
   </div>
   <div class="ft-bottom">
-    <div class="ft-note" data-ru="© ООО «Илач», 2026 · Конфиденциально. Только для потенциальных инвесторов." data-en="© LLC «Ilach», 2026 · Confidential. For prospective investors only.">© ООО «Илач», 2026 · Конфиденциально. Только для потенциальных инвесторов.</div>
+    <div class="ft-note">© ИП Ахметзянов Д.И., 2026 &nbsp;·&nbsp; <a href="privacy.html" style="color:rgba(255,255,255,0.35);text-decoration:none;" onmouseover="this.style.color='#6dc496'" onmouseout="this.style.color='rgba(255,255,255,0.35)'">Политика конфиденциальности</a></div>
     <div class="ft-email"><a href="mailto:info@i-lach.com">info@i-lach.com</a></div>
   </div>
 </footer>
@@ -1016,6 +1023,12 @@ async function submitForm(e) {
 let currentLang = 'ru';
 
 function setLang(lang) {
+  // Update privacy link language
+  const pl = document.getElementById('privacy-link');
+  if (pl) {
+    pl.href = lang === 'en' ? 'privacy-en.html' : 'privacy.html';
+    pl.textContent = lang === 'en' ? 'Privacy Policy' : 'Политикой конфиденциальности';
+  }
   currentLang = lang;
   document.documentElement.lang = lang;
 

@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Политика конфиденциальности | ILACH</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiIgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIj48ZGVmcz48bGluZWFyR3JhZGllbnQgaWQ9ImJnIiB4MT0iMCUiIHkxPSIwJSIgeDI9IjEwMCUiIHkyPSIxMDAlIj48c3RvcCBvZmZzZXQ9IjAlIiBzdHlsZT0ic3RvcC1jb2xvcjojMWU1NTM3Ii8+PHN0b3Agb2Zmc2V0PSIxMDAlIiBzdHlsZT0ic3RvcC1jb2xvcjojMmE3YTRmIi8+PC9saW5lYXJHcmFkaWVudD48L2RlZnM+PHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iNyIgZmlsbD0idXJsKCNiZykiLz48Y2lyY2xlIGN4PSIxNiIgY3k9IjcuNSIgcj0iMi44IiBmaWxsPSIjNmRjNDk2Ii8+PHJlY3QgeD0iMTMuMiIgeT0iMTIiIHdpZHRoPSI1LjYiIGhlaWdodD0iMTMiIHJ4PSIyLjIiIGZpbGw9IndoaXRlIi8+PC9zdmc+">
+<meta name="theme-color" content="#1e5537">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Syne:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --g900:#061810;--g800:#0d2b1c;--g700:#153d28;--g600:#1e5537;
+  --g500:#2a7a4f;--g400:#3ea86e;--g300:#6dc496;--g100:#d6f0e3;--g50:#eef8f3;
+  --text:#0d1f16;--text2:#2e4d3a;--text3:#5a7a66;
+  --border:#ddeee5;--surface:#f5fbf7;--white:#ffffff;
+  --font-head:"Syne",sans-serif;--font-body:"Inter",sans-serif;
+}
+html{scroll-behavior:smooth;}
+body{font-family:var(--font-body);background:var(--white);color:var(--text);font-size:15px;line-height:1.7;}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:200;height:64px;display:flex;align-items:center;justify-content:space-between;padding:0 48px;background:rgba(6,24,16,0.96);backdrop-filter:blur(16px);border-bottom:1px solid rgba(62,168,110,0.12);}
+.nav-brand{display:flex;align-items:center;gap:12px;text-decoration:none;}
+.nav-mark{width:32px;height:32px;border-radius:6px;background:var(--g500);display:flex;align-items:center;justify-content:center;font-family:var(--font-head);font-size:16px;font-weight:700;color:var(--white);}
+.nav-name{font-family:var(--font-head);font-size:14px;font-weight:600;color:var(--white);letter-spacing:2px;}
+.nav-back{color:rgba(255,255,255,0.6);text-decoration:none;font-size:13px;padding:6px 14px;border-radius:6px;transition:all 0.2s;display:flex;align-items:center;gap:6px;}
+.nav-back:hover{color:var(--white);background:rgba(255,255,255,0.08);}
+.nav-back svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2;}
+
+.hero{background:var(--g900);padding:110px 48px 64px;position:relative;overflow:hidden;}
+.hero-dots{position:absolute;inset:0;background-image:radial-gradient(circle,rgba(62,168,110,0.08) 1px,transparent 1px);background-size:28px 28px;}
+.hero-inner{position:relative;z-index:2;max-width:780px;}
+.hero-tag{font-size:11px;letter-spacing:2.5px;text-transform:uppercase;color:var(--g400);font-weight:600;margin-bottom:16px;}
+.hero h1{font-family:var(--font-head);font-size:clamp(32px,4vw,52px);font-weight:700;color:var(--white);line-height:1.1;margin-bottom:16px;letter-spacing:-1px;}
+.hero-sub{font-size:14px;color:rgba(255,255,255,0.45);line-height:1.7;}
+.hero-sub strong{color:rgba(255,255,255,0.7);}
+
+.content{max-width:780px;margin:0 auto;padding:64px 48px 100px;}
+
+.updated{display:inline-flex;align-items:center;gap:8px;background:var(--g50);border:1px solid var(--g100);border-radius:8px;padding:8px 16px;font-size:13px;color:var(--text3);margin-bottom:48px;}
+.updated svg{width:14px;height:14px;stroke:var(--g500);fill:none;stroke-width:2;}
+
+.section{margin-bottom:48px;}
+.section-num{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--g500);margin-bottom:8px;}
+.section h2{font-family:var(--font-head);font-size:20px;font-weight:700;color:var(--text);margin-bottom:16px;letter-spacing:-0.3px;}
+.section p{font-size:14px;color:var(--text2);line-height:1.8;margin-bottom:12px;}
+.section ul{list-style:none;display:flex;flex-direction:column;gap:8px;margin-bottom:12px;}
+.section ul li{font-size:14px;color:var(--text2);display:flex;gap:10px;align-items:flex-start;}
+.section ul li::before{content:"→";color:var(--g400);flex-shrink:0;font-weight:700;font-size:12px;margin-top:2px;}
+
+.divider{height:1px;background:var(--border);margin:40px 0;}
+
+.operator-card{background:var(--surface);border:1px solid var(--border);border-left:4px solid var(--g500);border-radius:0 12px 12px 0;padding:24px 28px;margin-bottom:32px;}
+.operator-card h3{font-family:var(--font-head);font-size:16px;font-weight:700;color:var(--text);margin-bottom:14px;}
+.operator-row{display:flex;gap:12px;margin-bottom:8px;}
+.operator-label{font-size:12px;font-weight:600;letter-spacing:0.5px;color:var(--text3);min-width:160px;flex-shrink:0;}
+.operator-value{font-size:13px;color:var(--text2);}
+.operator-value a{color:var(--g600);text-decoration:none;}
+.operator-value a:hover{text-decoration:underline;}
+
+.rights-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px;}
+.right-card{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:16px;}
+.right-card-title{font-size:13px;font-weight:600;color:var(--text);margin-bottom:4px;}
+.right-card-desc{font-size:12px;color:var(--text3);line-height:1.6;}
+
+footer{background:var(--g900);padding:32px 48px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;border-top:1px solid rgba(255,255,255,0.06);}
+.ft-brand{display:flex;align-items:center;gap:10px;}
+.ft-mark{width:28px;height:28px;border-radius:6px;background:var(--g600);display:flex;align-items:center;justify-content:center;font-family:var(--font-head);font-size:13px;font-weight:700;color:var(--white);}
+.ft-name{font-size:13px;font-weight:600;color:rgba(255,255,255,0.65);letter-spacing:1.5px;font-family:var(--font-head);}
+.ft-note{font-size:12px;color:rgba(255,255,255,0.25);}
+
+@media(max-width:768px){
+  nav{padding:0 20px;}
+  .hero{padding:96px 24px 48px;}
+  .content{padding:48px 24px 80px;}
+  .rights-grid{grid-template-columns:1fr;}
+  footer{padding:28px 24px;flex-direction:column;align-items:flex-start;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-brand">
+    <div class="nav-mark">İ</div>
+    <span class="nav-name">ILACH</span>
+  </a>
+  <a href="privacy-en.html" style="color:rgba(255,255,255,0.5);text-decoration:none;font-size:12px;font-weight:600;padding:5px 10px;border:1px solid rgba(255,255,255,0.15);border-radius:6px;margin-right:8px;">EN version</a>
+  <a href="index.html" class="nav-back">
+    <svg viewBox="0 0 24 24"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+    На главную
+  </a>
+</nav>
+
+<section class="hero">
+  <div class="hero-dots"></div>
+  <div class="hero-inner">
+    <div class="hero-tag">Юридические документы</div>
+    <h1>Политика конфиденциальности</h1>
+    <p class="hero-sub">
+      Настоящая Политика определяет порядок обработки персональных данных на сайте <strong>i-lach.com</strong>.
+      Оператором персональных данных является <strong>ИП Ахметзянов Данис Ильмасович</strong>.
+    </p>
+  </div>
+</section>
+
+<div class="content">
+
+  <div class="updated">
+    <svg viewBox="0 0 24 24"><path d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+    Дата последнего обновления: 01 июня 2026 г.
+  </div>
+
+  <!-- Оператор -->
+  <div class="section">
+    <div class="section-num">01</div>
+    <h2>Оператор персональных данных</h2>
+    <div class="operator-card">
+      <h3>ИП Ахметзянов Данис Ильмасович</h3>
+      <div class="operator-row"><span class="operator-label">Полное наименование</span><span class="operator-value">Индивидуальный предприниматель Ахметзянов Данис Ильмасович</span></div>
+      <div class="operator-row"><span class="operator-label">ИНН</span><span class="operator-value">164308531997</span></div>
+      <div class="operator-row"><span class="operator-label">ОГРНИП</span><span class="operator-value">322169000071330</span></div>
+      <div class="operator-row"><span class="operator-label">Юридический адрес</span><span class="operator-value">420021, Республика Татарстан, г. Казань, ул. Седова, д. 20А</span></div>
+      <div class="operator-row"><span class="operator-label">Телефон</span><span class="operator-value"><a href="tel:+79393069888">+7 939 306-98-88</a></span></div>
+      <div class="operator-row"><span class="operator-label">E-mail</span><span class="operator-value"><a href="mailto:info@i-lach.com">info@i-lach.com</a></span></div>
+      <div class="operator-row"><span class="operator-label">Сайт</span><span class="operator-value"><a href="https://i-lach.com" target="_blank">https://i-lach.com</a></span></div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- Что собираем -->
+  <div class="section">
+    <div class="section-num">02</div>
+    <h2>Какие данные мы собираем</h2>
+    <p>При заполнении формы обратной связи на сайте мы собираем следующие персональные данные:</p>
+    <ul>
+      <li>Имя и фамилия (для обращения к вам)</li>
+      <li>Наименование компании (при наличии)</li>
+      <li>Адрес электронной почты (для ответа на обращение)</li>
+      <li>Тема обращения и текст сообщения</li>
+      <li>Язык интерфейса и дата отправки (технические данные формы)</li>
+    </ul>
+    <p>Мы не собираем специальные категории персональных данных (данные о здоровье, расовой принадлежности, политических взглядах и т.п.).</p>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- Цели обработки -->
+  <div class="section">
+    <div class="section-num">03</div>
+    <h2>Цели и правовые основания обработки</h2>
+    <p>Ваши персональные данные обрабатываются исключительно в следующих целях:</p>
+    <ul>
+      <li>Ответ на ваше обращение, поступившее через форму на сайте</li>
+      <li>Установление деловой коммуникации с потенциальными инвесторами и партнёрами</li>
+      <li>Исполнение требований законодательства РФ в области обработки персональных данных</li>
+    </ul>
+    <p>Правовое основание обработки — <strong>согласие субъекта персональных данных</strong> (ст. 6 Федерального закона № 152-ФЗ «О персональных данных»), которое вы даёте при отправке формы.</p>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- Хранение -->
+  <div class="section">
+    <div class="section-num">04</div>
+    <h2>Хранение и защита данных</h2>
+    <p>Персональные данные передаются через защищённое HTTPS-соединение и хранятся на серверах сервиса Formspree (США), обрабатывающего формы обратной связи. Formspree соответствует требованиям GDPR и применяет технические и организационные меры защиты данных.</p>
+    <p>Мы не продаём, не сдаём в аренду и не передаём ваши данные третьим лицам в коммерческих целях. Данные могут быть переданы только по требованию уполномоченных государственных органов в соответствии с законодательством РФ.</p>
+    <p>Срок хранения персональных данных — не более <strong>3 лет</strong> с момента последнего взаимодействия, если иное не предусмотрено законодательством или договором.</p>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- Права субъекта -->
+  <div class="section">
+    <div class="section-num">05</div>
+    <h2>Ваши права</h2>
+    <p>В соответствии с Федеральным законом № 152-ФЗ вы имеете право:</p>
+    <div class="rights-grid">
+      <div class="right-card">
+        <div class="right-card-title">Доступ к данным</div>
+        <div class="right-card-desc">Запросить информацию о том, какие ваши данные обрабатываются и на каком основании</div>
+      </div>
+      <div class="right-card">
+        <div class="right-card-title">Исправление</div>
+        <div class="right-card-desc">Потребовать исправления неточных или устаревших персональных данных</div>
+      </div>
+      <div class="right-card">
+        <div class="right-card-title">Удаление</div>
+        <div class="right-card-desc">Отозвать согласие и потребовать удаления ваших данных из нашей системы</div>
+      </div>
+      <div class="right-card">
+        <div class="right-card-title">Жалоба</div>
+        <div class="right-card-desc">Обратиться с жалобой в Роскомнадзор — уполномоченный орган по защите персональных данных</div>
+      </div>
+    </div>
+    <p>Для реализации любого из указанных прав направьте запрос на электронную почту: <a href="mailto:info@i-lach.com" style="color:var(--g600)">info@i-lach.com</a>. Мы ответим в течение 30 дней.</p>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- Cookies -->
+  <div class="section">
+    <div class="section-num">06</div>
+    <h2>Файлы cookie и аналитика</h2>
+    <p>Сайт использует следующие инструменты аналитики:</p>
+    <ul>
+      <li><strong>Google Analytics (G-VFXNQVCG4L)</strong> — обезличенная статистика посещений. Google может передавать данные на серверы в США. Вы можете отказаться через настройки браузера или <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" style="color:var(--g600)">плагин Google Analytics Opt-out</a>.</li>
+      <li><strong>Яндекс.Метрика (109296134)</strong> — обезличенная статистика, включая вебвизор. Данные обрабатываются на серверах в России. Отказ — через <a href="https://yandex.ru/legal/confidential/" target="_blank" style="color:var(--g600)">настройки Яндекса</a>.</li>
+    </ul>
+    <p>Cookie-файлы не содержат персональных данных. Вы можете отключить их в настройках вашего браузера, однако это может повлиять на работу отдельных функций сайта.</p>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- Изменения -->
+  <div class="section">
+    <div class="section-num">07</div>
+    <h2>Изменения в политике</h2>
+    <p>Оператор вправе вносить изменения в настоящую Политику. Актуальная версия всегда доступна по адресу <a href="https://i-lach.com/privacy.html" style="color:var(--g600)">i-lach.com/privacy.html</a>. При существенных изменениях мы уведомим пользователей путём размещения соответствующего уведомления на сайте.</p>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- Контакты -->
+  <div class="section">
+    <div class="section-num">08</div>
+    <h2>Контакты оператора</h2>
+    <p>По всем вопросам, связанным с обработкой персональных данных, обращайтесь:</p>
+    <ul>
+      <li>E-mail: <a href="mailto:info@i-lach.com" style="color:var(--g600)">info@i-lach.com</a></li>
+      <li>Телефон: <a href="tel:+79393069888" style="color:var(--g600)">+7 939 306-98-88</a></li>
+      <li>Адрес: 420021, Республика Татарстан, г. Казань, ул. Седова, д. 20А</li>
+    </ul>
+  </div>
+
+</div>
+
+<footer>
+  <div class="ft-brand"><div class="ft-mark">İ</div><span class="ft-name">ILACH</span></div>
+  <div class="ft-note">© ИП Ахметзянов Д.И., 2026 &nbsp;·&nbsp; <a href="privacy-en.html" style="color:rgba(255,255,255,0.35);text-decoration:none;" onmouseover="this.style.color='#6dc496'" onmouseout="this.style.color='rgba(255,255,255,0.35)'">English version</a></div>
+</footer>
+
+</body>
+</html>
