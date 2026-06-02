@@ -178,6 +178,7 @@ footer{background:var(--g900);padding:36px 48px;display:flex;justify-content:spa
   padding:14px 24px;border-radius:10px;
   font-size:15px;font-weight:600;text-align:center;
   text-decoration:none;transition:background 0.2s;
+  display:block;width:fit-content;margin:0 auto;min-width:180px;
 }
 .mobile-menu-cta:hover{background:var(--g400);}
 .mobile-lang{display:flex;gap:8px;}
@@ -254,8 +255,11 @@ footer{background:var(--g900);padding:36px 48px;display:flex;justify-content:spa
 
   /* Team founder */
   .founder-sec{padding:60px 20px !important;}
-  .founder-photo-outer{width:200px !important;height:200px !important;}
-  .founder-photo{width:200px !important;height:200px !important;}
+  .founder-photo-wrap{align-items:center !important;}
+  .founder-photo-outer{width:220px !important;height:220px !important;margin:0 auto;}
+  .founder-photo{width:220px !important;height:220px !important;object-fit:cover !important;object-position:center top !important;}
+  .founder-photo-ring{inset:-6px !important;}
+  .founder-photo-ring2{inset:-14px !important;}
   .founder-name{font-size:28px !important;}
   .team-grid{grid-template-columns:1fr !important;}
 
