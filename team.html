@@ -177,9 +177,9 @@ footer{background:var(--g900);padding:36px 48px;display:flex;justify-content:spa
   background:var(--g500);color:var(--white);
   padding:15px;border-radius:10px;
   font-size:15px;font-weight:600;
-  text-align:center;text-decoration:none;
-  transition:background 0.2s;
-  display:block;width:100%;box-sizing:border-box;
+  text-decoration:none;transition:background 0.2s;
+  display:flex;align-items:center;justify-content:center;
+  width:100%;box-sizing:border-box;
 }
 .mobile-menu-cta:hover{background:var(--g400);}
 .mobile-lang{display:flex;gap:8px;}
@@ -270,25 +270,19 @@ footer{background:var(--g900);padding:36px 48px;display:flex;justify-content:spa
   }
   .founder-photo-ring{
     position:absolute !important;
-    top:-8px !important;left:-8px !important;
-    right:-8px !important;bottom:-8px !important;
-    width:calc(100% + 16px) !important;
-    height:calc(100% + 16px) !important;
+    inset:-8px !important;
     border-radius:50% !important;
     border:2px solid var(--g300) !important;
     opacity:0.5 !important;
-    inset:auto !important;
+    width:auto !important;height:auto !important;
   }
   .founder-photo-ring2{
     position:absolute !important;
-    top:-18px !important;left:-18px !important;
-    right:-18px !important;bottom:-18px !important;
-    width:calc(100% + 36px) !important;
-    height:calc(100% + 36px) !important;
+    inset:-18px !important;
     border-radius:50% !important;
     border:1px solid var(--g300) !important;
     opacity:0.2 !important;
-    inset:auto !important;
+    width:auto !important;height:auto !important;
   }
   .founder-name{font-size:28px !important;}
   .team-grid{grid-template-columns:1fr !important;}
