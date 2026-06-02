@@ -350,7 +350,27 @@ footer{background:var(--g900);padding:36px 48px;display:flex;justify-content:spa
     </div>
     <a href="index.html#contact" class="nav-cta" data-ru="Связаться" data-en="Contact Us">Связаться</a>
   </div>
+  <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Меню">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
+
+<!-- Mobile Menu -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html" data-ru="О компании" data-en="About" onclick="closeMobileMenu()">О компании</a>
+  <a href="index.html#dbl" data-ru="Digital Biology" data-en="Digital Biology" onclick="closeMobileMenu()">Digital Biology</a>
+  <a href="index.html#invest" data-ru="Инвесторам" data-en="Investors" onclick="closeMobileMenu()">Инвесторам</a>
+  <a href="plans.html" data-ru="Планы" data-en="Plans" onclick="closeMobileMenu()">Планы</a>
+  <a href="analytics.html" class="active" data-ru="Аналитика" data-en="Analytics" onclick="closeMobileMenu()">Аналитика</a>
+  <a href="team.html" data-ru="Команда" data-en="Team" onclick="closeMobileMenu()">Команда</a>
+  <div class="mobile-menu-footer">
+    <div class="mobile-lang">
+      <button class="lang-btn active" id="mob-ru" onclick="setLang('ru');updateMobileLang('ru')">RU</button>
+      <button class="lang-btn" id="mob-en" onclick="setLang('en');updateMobileLang('en')">EN</button>
+    </div>
+    <a href="index.html#contact" class="mobile-menu-cta" onclick="closeMobileMenu()">Связаться</a>
+  </div>
+</div>
 
 <!-- HERO -->
 <section class="hero">
