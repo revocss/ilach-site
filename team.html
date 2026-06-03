@@ -356,13 +356,14 @@ footer{background:var(--g900);padding:36px 48px;display:flex;justify-content:spa
     <div class="nav-mark">İ</div>
     <span class="nav-name">ILACH</span>
   </a>
-  <div class="nav-center">
+    <div class="nav-center">
     <a href="index.html" data-ru="О компании" data-en="About">О компании</a>
     <a href="index.html#dbl" data-ru="Digital Biology" data-en="Digital Biology">Digital Biology</a>
     <a href="index.html#invest" data-ru="Инвесторам" data-en="Investors">Инвесторам</a>
-    <a href="plans.html" data-ru="Планы" data-en="Plans">Планы</a>
     <a href="analytics.html" data-ru="Аналитика" data-en="Analytics">Аналитика</a>
     <a href="team.html" class="active" data-ru="Команда" data-en="Team">Команда</a>
+    <a href="investment.html" data-ru="Инвестиции" data-en="Investment">Инвестиции</a>
+    <a href="market.html" data-ru="Рынок" data-en="Market">Рынок</a>
   </div>
   <div class="nav-right">
     <div class="lang-switch">
@@ -381,9 +382,12 @@ footer{background:var(--g900);padding:36px 48px;display:flex;justify-content:spa
   <a href="index.html" data-ru="О компании" data-en="About" onclick="closeMobileMenu()">О компании</a>
   <a href="index.html#dbl" data-ru="Digital Biology" data-en="Digital Biology" onclick="closeMobileMenu()">Digital Biology</a>
   <a href="index.html#invest" data-ru="Инвесторам" data-en="Investors" onclick="closeMobileMenu()">Инвесторам</a>
-  <a href="plans.html" data-ru="Планы" data-en="Plans" onclick="closeMobileMenu()">Планы</a>
   <a href="analytics.html" data-ru="Аналитика" data-en="Analytics" onclick="closeMobileMenu()">Аналитика</a>
   <a href="team.html" class="active" data-ru="Команда" data-en="Team" onclick="closeMobileMenu()">Команда</a>
+  <a href="investment.html" data-ru="Инвестиции" data-en="Investment" onclick="closeMobileMenu()">Инвестиции</a>
+  <a href="market.html" data-ru="Рынок" data-en="Market" onclick="closeMobileMenu()">Рынок</a>
+  <a href="news.html" data-ru="Новости" data-en="News" onclick="closeMobileMenu()">Новости</a>
+  <a href="documents.html" data-ru="Документы" data-en="Documents" onclick="closeMobileMenu()">Документы</a>
   <div class="mobile-menu-footer">
     <div class="mobile-lang">
       <button class="lang-btn active" id="mob-ru" onclick="setLang('ru',true);updateMobileLang('ru')">RU</button>
@@ -635,15 +639,15 @@ footer{background:var(--g900);padding:36px 48px;display:flex;justify-content:spa
 </section>
 
 <footer>
-  <div class="ft-brand"><div class="ft-mark">İ</div><span class="ft-name">ILACH</span></div>
-  <div class="ft-note" data-ru="© ООО «Илач», 2026" data-en="© LLC «Ilach», 2026">© ООО «Илач», 2026</div>
-  <div class="ft-links">
-    <a href="index.html"     data-ru="Главная"    data-en="Home">Главная</a>
-    <a href="plans.html"     data-ru="Планы"      data-en="Plans">Планы</a>
-    <a href="analytics.html" data-ru="Аналитика"  data-en="Analytics">Аналитика</a>
-    <a href="team.html"      data-ru="Команда"    data-en="Team">Команда</a>
-    <a href="index.html#contact" data-ru="Контакты" data-en="Contact">Контакты</a>
+  <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:32px;">
+    <div><div style="display:flex;align-items:center;gap:10px;margin-bottom:12px;"><div style="width:28px;height:28px;border-radius:6px;background:#1e5537;display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-size:13px;font-weight:700;color:white;">İ</div><span style="font-size:13px;font-weight:600;color:rgba(255,255,255,0.65);letter-spacing:1.5px;font-family:'Syne',sans-serif;">ILACH</span></div><div style="font-size:12px;color:rgba(255,255,255,0.35);line-height:1.7;" data-ru="Фармацевтический оператор нового поколения" data-en="Next-generation pharmaceutical operator">Фармацевтический оператор нового поколения</div></div>
+    <div style="display:flex;gap:40px;flex-wrap:wrap;">
+      <div><div style="font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-bottom:12px;font-weight:600;" data-ru="Компания" data-en="Company">Компания</div><div style="display:flex;flex-direction:column;gap:8px;"><a href="index.html" style="color:rgba(255,255,255,0.5);text-decoration:none;font-size:13px;" data-ru="О компании" data-en="About">О компании</a><a href="team.html" style="color:rgba(255,255,255,0.5);text-decoration:none;font-size:13px;" data-ru="Команда" data-en="Team">Команда</a><a href="news.html" style="color:rgba(255,255,255,0.5);text-decoration:none;font-size:13px;" data-ru="Новости" data-en="News">Новости</a><a href="documents.html" style="color:rgba(255,255,255,0.5);text-decoration:none;font-size:13px;" data-ru="Документы" data-en="Documents">Документы</a></div></div>
+      <div><div style="font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-bottom:12px;font-weight:600;" data-ru="Продукт" data-en="Product">Продукт</div><div style="display:flex;flex-direction:column;gap:8px;"><a href="plans.html" style="color:rgba(255,255,255,0.5);text-decoration:none;font-size:13px;" data-ru="Планы" data-en="Plans">Планы</a><a href="analytics.html" style="color:rgba(255,255,255,0.5);text-decoration:none;font-size:13px;" data-ru="Аналитика" data-en="Analytics">Аналитика</a><a href="biology-infrastructure.html" style="color:rgba(255,255,255,0.5);text-decoration:none;font-size:13px;">Digital Biology</a><a href="market.html" style="color:rgba(255,255,255,0.5);text-decoration:none;font-size:13px;" data-ru="Рынок" data-en="Market">Рынок</a></div></div>
+      <div><div style="font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-bottom:12px;font-weight:600;" data-ru="Инвесторам" data-en="Investors">Инвесторам</div><div style="display:flex;flex-direction:column;gap:8px;"><a href="investment.html" style="color:rgba(255,255,255,0.5);text-decoration:none;font-size:13px;" data-ru="Инвестиции" data-en="Investment">Инвестиции</a><a href="documents.html" style="color:rgba(255,255,255,0.5);text-decoration:none;font-size:13px;" data-ru="Документы" data-en="Documents">Документы</a><a href="index.html#contact" style="color:rgba(255,255,255,0.5);text-decoration:none;font-size:13px;" data-ru="Связаться" data-en="Contact">Связаться</a><a href="privacy.html" style="color:rgba(255,255,255,0.5);text-decoration:none;font-size:13px;" data-ru="Конфиденциальность" data-en="Privacy">Конфиденциальность</a></div></div>
+    </div>
   </div>
+  <div style="border-top:1px solid rgba(255,255,255,0.06);padding-top:24px;margin-top:32px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;"><span style="font-size:12px;color:rgba(255,255,255,0.22);">© ИП Ахметзянов Д.И., 2026 &nbsp;·&nbsp; <a href="privacy.html" style="color:rgba(255,255,255,0.35);text-decoration:none;">Политика конфиденциальности</a></span><span style="font-size:12px;color:rgba(255,255,255,0.2);">i-lach.com</span></div>
 </footer>
 
 <script>

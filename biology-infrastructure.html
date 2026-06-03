@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="ru"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Digital Biology Infrastructure | ILACH</title>
+<meta name="description" content="ILACH Digital Biology Infrastructure — оцифровка биологических процессов, моделирование белков и AI-driven drug discovery.">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+PHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iNyIgZmlsbD0iIzFlNTUzNyIvPjxjaXJjbGUgY3g9IjE2IiBjeT0iNy41IiByPSIyLjgiIGZpbGw9IiM2ZGM0OTYiLz48cmVjdCB4PSIxMy4yIiB5PSIxMiIgd2lkdGg9IjUuNiIgaGVpZ2h0PSIxMyIgcng9IjIuMiIgZmlsbD0id2hpdGUiLz48L3N2Zz4=">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Syne:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{--g900:#061810;--g800:#0d2b1c;--g700:#153d28;--g600:#1e5537;--g500:#2a7a4f;--g400:#3ea86e;--g300:#6dc496;--g200:#a8dfc0;--g100:#d6f0e3;--g50:#eef8f3;--text:#0d1f16;--text2:#2e4d3a;--text3:#5a7a66;--border:#ddeee5;--surface:#f5fbf7;--white:#ffffff;--font-head:"Syne",sans-serif;--font-body:"Inter",sans-serif;}
+html{scroll-behavior:smooth;}body{font-family:var(--font-body);background:var(--white);color:var(--text);font-size:15px;line-height:1.7;overflow-x:hidden;}
+.hero{background:var(--g900);padding:110px 48px 80px;position:relative;overflow:hidden;}.hero-dots{position:absolute;inset:0;background-image:radial-gradient(circle,rgba(62,168,110,0.1) 1px,transparent 1px);background-size:28px 28px;}
+.hero-inner{position:relative;z-index:2;max-width:760px;}.hero-pill{display:inline-flex;align-items:center;gap:8px;background:rgba(62,168,110,0.1);border:1px solid rgba(62,168,110,0.2);padding:6px 14px;border-radius:100px;margin-bottom:24px;}
+.hero-dot{width:6px;height:6px;border-radius:50%;background:var(--g400);animation:pulse 2s infinite;}@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.4}}
+.hero-pill-txt{font-size:12px;font-weight:500;color:var(--g300);}
+.hero h1{font-family:var(--font-head);font-size:clamp(36px,5vw,60px);font-weight:700;color:var(--white);line-height:1.08;margin-bottom:20px;letter-spacing:-1.5px;}.hero h1 span{color:var(--g400);}
+.hero-desc{font-size:17px;color:rgba(255,255,255,0.5);line-height:1.75;max-width:600px;}
+section{padding:80px 48px;}.sl{font-size:11px;letter-spacing:2.5px;text-transform:uppercase;color:var(--g500);font-weight:600;margin-bottom:14px;}
+h2{font-family:var(--font-head);font-size:clamp(26px,3vw,40px);font-weight:700;line-height:1.1;color:var(--text);margin-bottom:16px;letter-spacing:-0.8px;}h2 span{color:var(--g500);}
+.lead{font-size:15px;color:var(--text3);max-width:580px;line-height:1.8;}
+.dark-sec{background:var(--g900);}.dark-sec .sl{color:var(--g400);}.dark-sec h2{color:var(--white);}.dark-sec h2 span{color:var(--g400);}.dark-sec .lead{color:rgba(255,255,255,0.5);}
+footer{background:var(--g900);padding:40px 48px;border-top:1px solid rgba(255,255,255,0.06);}
+nav{position:fixed;top:0;left:0;right:0;z-index:200;height:64px;display:flex;align-items:center;justify-content:space-between;padding:0 48px;background:rgba(6,24,16,0.96);backdrop-filter:blur(16px);border-bottom:1px solid rgba(62,168,110,0.12);}
+.nav-brand{display:flex;align-items:center;gap:12px;text-decoration:none;}
+.nav-mark{width:32px;height:32px;border-radius:6px;background:var(--g500);display:flex;align-items:center;justify-content:center;font-family:var(--font-head);font-size:16px;font-weight:700;color:var(--white);}
+.nav-name{font-family:var(--font-head);font-size:14px;font-weight:600;color:var(--white);letter-spacing:2px;}
+.nav-center{display:flex;gap:4px;}.nav-center a{color:rgba(255,255,255,0.6);text-decoration:none;font-size:13px;padding:6px 14px;border-radius:6px;transition:all 0.2s;}
+.nav-center a:hover,.nav-center a.active{color:var(--white);background:rgba(255,255,255,0.08);}.nav-center a.active{color:var(--g300);background:rgba(62,168,110,0.15);}
+.nav-right{display:flex;align-items:center;gap:12px;}
+.lang-switch{display:flex;align-items:center;gap:2px;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);border-radius:8px;padding:3px;}
+.lang-btn{padding:5px 12px;border-radius:6px;font-size:12px;font-weight:600;cursor:pointer;border:none;background:transparent;color:rgba(255,255,255,0.45);transition:all 0.2s;}.lang-btn.active{background:var(--g500);color:var(--white);}
+.nav-cta{background:var(--g500);color:var(--white);padding:8px 20px;border-radius:8px;font-size:13px;font-weight:500;text-decoration:none;transition:background 0.2s;}.nav-cta:hover{background:var(--g400);}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;border:none;background:transparent;z-index:300;}
+.hamburger span{display:block;width:22px;height:2px;background:var(--white);border-radius:2px;transition:all 0.3s ease;}
+.hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}.hamburger.open span:nth-child(2){opacity:0;transform:scaleX(0);}.hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+.mobile-menu{display:none;position:fixed;top:64px;left:0;right:0;bottom:0;background:rgba(6,24,16,0.98);backdrop-filter:blur(20px);z-index:150;flex-direction:column;padding:32px 28px;gap:8px;overflow-y:auto;transform:translateX(100%);transition:transform 0.3s cubic-bezier(0.4,0,0.2,1);}
+.mobile-menu.open{transform:translateX(0);}.mobile-menu a{color:rgba(255,255,255,0.75);text-decoration:none;font-size:18px;font-weight:500;font-family:var(--font-head);padding:16px 0;border-bottom:1px solid rgba(255,255,255,0.08);display:flex;align-items:center;justify-content:space-between;transition:color 0.2s;}
+.mobile-menu a:last-child{border-bottom:none;}.mobile-menu a:hover,.mobile-menu a.active{color:var(--g400);}.mobile-menu a.active::after{content:"●";font-size:8px;color:var(--g400);}
+.mobile-menu-footer{margin-top:auto;padding-top:24px;display:flex;flex-direction:column;gap:12px;}
+.mobile-menu-cta{background:var(--g500);color:var(--white);padding:15px;border-radius:10px;font-size:15px;font-weight:600;text-decoration:none;transition:background 0.2s;display:flex;align-items:center;justify-content:center;width:100%;box-sizing:border-box;}
+.mobile-menu .mobile-menu-cta{display:flex !important;align-items:center !important;justify-content:center !important;text-align:center !important;padding:15px !important;}
+.mobile-lang{display:flex;gap:8px;}.mobile-lang button{flex:1;padding:10px;border-radius:8px;font-size:14px;font-weight:600;cursor:pointer;border:1.5px solid rgba(255,255,255,0.15);background:transparent;color:rgba(255,255,255,0.5);transition:all 0.2s;font-family:var(--font-body);}.mobile-lang button.active{background:var(--g500);border-color:var(--g500);color:var(--white);}
+@media(max-width:768px){nav{padding:0 18px;height:60px;}.nav-center{display:none !important;}.nav-right .lang-switch{display:none;}.nav-right .nav-cta{display:none;}.hamburger{display:flex;}.mobile-menu{display:flex;}}
+.pipeline{display:flex;align-items:center;gap:0;margin-top:40px;flex-wrap:wrap;}
+.pipe-step{flex:1;min-width:140px;background:rgba(62,168,110,0.07);border:1px solid rgba(62,168,110,0.18);border-radius:12px;padding:20px 16px;text-align:center;position:relative;}
+.pipe-arrow{font-size:22px;color:var(--g400);padding:0 8px;flex-shrink:0;}
+.pipe-icon{font-size:28px;margin-bottom:8px;}
+.pipe-num{font-size:10px;font-weight:700;letter-spacing:2px;color:var(--g500);margin-bottom:6px;}
+.pipe-name{font-size:13px;font-weight:600;color:var(--text);}
+.pipe-name-en{font-size:11px;color:var(--text3);margin-top:3px;}
+.what-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:32px;}
+.what-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:22px;}
+.what-icon{width:38px;height:38px;border-radius:9px;background:var(--g50);display:flex;align-items:center;justify-content:center;margin-bottom:12px;}
+.what-icon svg{width:18px;height:18px;stroke:var(--g500);fill:none;stroke-width:1.8;}
+.what-title{font-size:14px;font-weight:600;color:var(--text);margin-bottom:6px;}
+.what-desc{font-size:13px;color:var(--text3);line-height:1.6;}
+.why-block{background:var(--g900);}
+.why-block .sl{color:var(--g400);}
+.why-block h2{color:var(--white);}
+.why-block .lead{color:rgba(255,255,255,0.55);max-width:720px;font-size:16px;}
+@media(max-width:768px){body{overflow-x:hidden;}*{max-width:100%;word-break:break-word;}section{padding:56px 20px !important;}h2{font-size:clamp(22px,6vw,34px) !important;}.lead{max-width:100% !important;font-size:14px !important;}footer{padding:28px 20px !important;}footer > div:first-child{flex-direction:column;gap:24px !important;}}
+@media(max-width:768px){.pipeline{flex-direction:column;}.pipe-arrow{transform:rotate(90deg);}.what-grid{grid-template-columns:1fr !important;}}
+</style></head><body>
+<nav><a href="index.html" class="nav-brand"><div class="nav-mark">İ</div><span class="nav-name">ILACH</span></a>
+  <div class="nav-center">
+    <a href="index.html" data-ru="О компании" data-en="About">О компании</a>
+    <a href="index.html#dbl" class="active" data-ru="Digital Biology" data-en="Digital Biology">Digital Biology</a>
+    <a href="index.html#invest" data-ru="Инвесторам" data-en="Investors">Инвесторам</a>
+    <a href="analytics.html" data-ru="Аналитика" data-en="Analytics">Аналитика</a>
+    <a href="team.html" data-ru="Команда" data-en="Team">Команда</a>
+    <a href="investment.html" data-ru="Инвестиции" data-en="Investment">Инвестиции</a>
+    <a href="market.html" data-ru="Рынок" data-en="Market">Рынок</a>
+  </div>
+  <div class="nav-right"><div class="lang-switch"><button class="lang-btn active" onclick="setLang('ru',true)">RU</button><button class="lang-btn" onclick="setLang('en',true)">EN</button></div><a href="index.html#contact" class="nav-cta" data-ru="Связаться" data-en="Contact Us">Связаться</a></div>
+  <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Меню"><span></span><span></span><span></span></button>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html" data-ru="О компании" data-en="About" onclick="closeMobileMenu()">О компании</a>
+  <a href="index.html#dbl" class="active" data-ru="Digital Biology" data-en="Digital Biology" onclick="closeMobileMenu()">Digital Biology</a>
+  <a href="index.html#invest" data-ru="Инвесторам" data-en="Investors" onclick="closeMobileMenu()">Инвесторам</a>
+  <a href="analytics.html" data-ru="Аналитика" data-en="Analytics" onclick="closeMobileMenu()">Аналитика</a>
+  <a href="team.html" data-ru="Команда" data-en="Team" onclick="closeMobileMenu()">Команда</a>
+  <a href="investment.html" data-ru="Инвестиции" data-en="Investment" onclick="closeMobileMenu()">Инвестиции</a>
+  <a href="market.html" data-ru="Рынок" data-en="Market" onclick="closeMobileMenu()">Рынок</a>
+  <div class="mobile-menu-footer"><div class="mobile-lang"><button class="lang-btn active" id="mob-ru" onclick="setLang('ru',true);updateMobileLang('ru')">RU</button><button class="lang-btn" id="mob-en" onclick="setLang('en',true);updateMobileLang('en')">EN</button></div><a href="index.html#contact" class="mobile-menu-cta" onclick="closeMobileMenu()">Связаться</a></div>
+</div>
+<section class="hero"><div class="hero-dots"></div><div class="hero-inner">
+  <div class="hero-pill"><div class="hero-dot"></div><span class="hero-pill-txt">Digital Biology · AI Drug Discovery</span></div>
+  <h1 data-ru="Digital Biology<br><span>Infrastructure</span>" data-en="Digital Biology<br><span>Infrastructure</span>">Digital Biology<br><span>Infrastructure</span></h1>
+  <p class="hero-desc" data-ru="Инфраструктура для оцифровки биологических процессов, моделирования белков и развития AI-driven drug discovery." data-en="Infrastructure for digitizing biological processes, protein modeling and AI-driven drug discovery.">Инфраструктура для оцифровки биологических процессов, моделирования белков и развития AI-driven drug discovery.</p>
+</div></section>
+
+<section>
+  <div class="sl" data-ru="Производственный конвейер" data-en="Pipeline">Производственный конвейер</div>
+  <h2 data-ru="От лаборатории к <span>препарату</span>" data-en="From laboratory to <span>drug</span>">От лаборатории к <span>препарату</span></h2>
+  <div class="pipeline">
+    <div class="pipe-step"><div class="pipe-num">01</div><div class="pipe-name" data-ru="Лаборатория" data-en="Laboratory">Лаборатория</div></div>
+    <div class="pipe-arrow">→</div>
+    <div class="pipe-step"><div class="pipe-num">02</div><div class="pipe-name" data-ru="Оцифровка белков" data-en="Protein Digitization">Оцифровка белков</div></div>
+    <div class="pipe-arrow">→</div>
+    <div class="pipe-step"><div class="pipe-num">03</div><div class="pipe-name" data-ru="Биологическая БД" data-en="Biological Database">Биологическая БД</div></div>
+    <div class="pipe-arrow">→</div>
+    <div class="pipe-step"><div class="pipe-num">04</div><div class="pipe-name" data-ru="AI-моделирование" data-en="AI Modeling">AI-моделирование</div></div>
+    <div class="pipe-arrow">→</div>
+    <div class="pipe-step"><div class="pipe-num">05</div><div class="pipe-name" data-ru="Разработка препаратов" data-en="Drug Development">Разработка препаратов</div></div>
+  </div>
+</section>
+
+<section style="background:var(--surface);">
+  <div class="sl" data-ru="Что создаётся" data-en="What Is Being Built">Что создаётся</div>
+  <h2 data-ru="Инфраструктура <span>Digital Biology</span>" data-en="<span>Digital Biology</span> Infrastructure">Инфраструктура <span>Digital Biology</span></h2>
+  <p class="lead" data-ru="ILACH планирует создать инфраструктуру, которая объединяет лабораторию, данные и AI." data-en="ILACH plans to create infrastructure combining laboratory, data and AI.">ILACH планирует создать инфраструктуру, которая объединяет лабораторию, данные и AI.</p>
+  <div class="what-grid">
+    <div class="what-card"><div class="what-icon"><svg viewBox="0 0 24 24"><path d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/></svg></div><div class="what-title" data-ru="Фармацевтическая лаборатория" data-en="Pharmaceutical Laboratory">Фармацевтическая лаборатория</div><div class="what-desc" data-ru="Базовая инфраструктура для работы с биологическими образцами" data-en="Core infrastructure for working with biological samples">Базовая инфраструктура для работы с биологическими образцами</div></div>
+    <div class="what-card"><div class="what-icon"><svg viewBox="0 0 24 24"><path d="M9 3H5a2 2 0 00-2 2v4m6-6h10a2 2 0 012 2v4M9 3v18m0 0h10a2 2 0 002-2V9M9 21H5a2 2 0 01-2-2V9m0 0h18"/></svg></div><div class="what-title" data-ru="Центр оцифровки белков" data-en="Protein Digitization Center">Центр оцифровки белков</div><div class="what-desc" data-ru="Перевод биологических данных в цифровой формат" data-en="Converting biological data into digital format">Перевод биологических данных в цифровой формат</div></div>
+    <div class="what-card"><div class="what-icon"><svg viewBox="0 0 24 24"><path d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4"/></svg></div><div class="what-title" data-ru="Биологическая база данных" data-en="Biological Database">Биологическая база данных</div><div class="what-desc" data-ru="Структурированное хранилище биологических и молекулярных данных" data-en="Structured repository of biological and molecular data">Структурированное хранилище биологических и молекулярных данных</div></div>
+    <div class="what-card"><div class="what-icon"><svg viewBox="0 0 24 24"><path d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg></div><div class="what-title" data-ru="Вычислительная инфраструктура" data-en="Computing Infrastructure">Вычислительная инфраструктура</div><div class="what-desc" data-ru="Серверная и облачная база для AI-вычислений" data-en="Server and cloud base for AI computations">Серверная и облачная база для AI-вычислений</div></div>
+    <div class="what-card"><div class="what-icon"><svg viewBox="0 0 24 24"><path d="M13 10V3L4 14h7v7l9-11h-7z"/></svg></div><div class="what-title" data-ru="AI-модели" data-en="AI Models">AI-модели</div><div class="what-desc" data-ru="Для анализа биологических процессов и поиска мишеней" data-en="For biological process analysis and target identification">Для анализа биологических процессов и поиска мишеней</div></div>
+    <div class="what-card"><div class="what-icon"><svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/></svg></div><div class="what-title" data-ru="Платформа Drug Discovery" data-en="Drug Discovery Platform">Платформа Drug Discovery</div><div class="what-desc" data-ru="Поиск новых лекарственных молекул и терапевтических решений" data-en="Discovery of new drug molecules and therapeutic solutions">Поиск новых лекарственных молекул и терапевтических решений</div></div>
+  </div>
+</section>
+
+<section class="why-block">
+  <div class="sl" data-ru="Почему это важно" data-en="Why It Matters">Почему это важно</div>
+  <h2 data-ru="Данные как основа <span>новой фармацевтики</span>" data-en="Data as the foundation of <span>new pharma</span>">Данные как основа <span>новой фармацевтики</span></h2>
+  <p class="lead" data-ru="Digital Biology позволяет перейти от классической фармацевтической модели к модели, где биологические процессы становятся данными. Это создает основу для ускоренного моделирования белков, анализа мишеней, поиска новых молекул и оптимизации разработки препаратов." data-en="Digital Biology enables the transition from a classical pharmaceutical model to a model where biological processes become data. This creates the foundation for accelerated protein modeling, target analysis, molecule discovery and drug development optimization.">Digital Biology позволяет перейти от классической фармацевтической модели к модели, где биологические процессы становятся данными. Это создает основу для ускоренного моделирования белков, анализа мишеней, поиска новых молекул и оптимизации разработки препаратов.</p>
+</section>
+
+<footer>
+  <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:32px;">
+    <div><div style="display:flex;align-items:center;gap:10px;margin-bottom:12px;"><div style="width:28px;height:28px;border-radius:6px;background:var(--g600);display:flex;align-items:center;justify-content:center;font-family:var(--font-head);font-size:13px;font-weight:700;color:var(--white);">İ</div><span style="font-size:13px;font-weight:600;color:rgba(255,255,255,0.65);letter-spacing:1.5px;font-family:var(--font-head);">ILACH</span></div><div style="font-size:12px;color:rgba(255,255,255,0.35);line-height:1.7;" data-ru="Фармацевтический оператор нового поколения" data-en="Next-generation pharmaceutical operator">Фармацевтический оператор нового поколения</div></div>
+    <div style="display:flex;gap:40px;flex-wrap:wrap;">
+      <div><div style="font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-bottom:12px;font-weight:600;" data-ru="Компания" data-en="Company">Компания</div><div style="display:flex;flex-direction:column;gap:8px;"><a href="index.html" style="color:rgba(255,255,255,0.5);text-decoration:none;font-size:13px;" data-ru="О компании" data-en="About">О компании</a><a href="team.html" style="color:rgba(255,255,255,0.5);text-decoration:none;font-size:13px;" data-ru="Команда" data-en="Team">Команда</a><a href="news.html" style="color:rgba(255,255,255,0.5);text-decoration:none;font-size:13px;" data-ru="Новости" data-en="News">Новости</a><a href="documents.html" style="color:rgba(255,255,255,0.5);text-decoration:none;font-size:13px;" data-ru="Документы" data-en="Documents">Документы</a></div></div>
+      <div><div style="font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-bottom:12px;font-weight:600;" data-ru="Продукт" data-en="Product">Продукт</div><div style="display:flex;flex-direction:column;gap:8px;"><a href="plans.html" style="color:rgba(255,255,255,0.5);text-decoration:none;font-size:13px;" data-ru="Планы" data-en="Plans">Планы</a><a href="analytics.html" style="color:rgba(255,255,255,0.5);text-decoration:none;font-size:13px;" data-ru="Аналитика" data-en="Analytics">Аналитика</a><a href="biology-infrastructure.html" style="color:rgba(255,255,255,0.5);text-decoration:none;font-size:13px;">Digital Biology</a><a href="market.html" style="color:rgba(255,255,255,0.5);text-decoration:none;font-size:13px;" data-ru="Рынок" data-en="Market">Рынок</a></div></div>
+      <div><div style="font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-bottom:12px;font-weight:600;" data-ru="Инвесторам" data-en="Investors">Инвесторам</div><div style="display:flex;flex-direction:column;gap:8px;"><a href="investment.html" style="color:rgba(255,255,255,0.5);text-decoration:none;font-size:13px;" data-ru="Инвестиции" data-en="Investment">Инвестиции</a><a href="documents.html" style="color:rgba(255,255,255,0.5);text-decoration:none;font-size:13px;" data-ru="Документы" data-en="Documents">Документы</a><a href="index.html#contact" style="color:rgba(255,255,255,0.5);text-decoration:none;font-size:13px;" data-ru="Связаться" data-en="Contact">Связаться</a><a href="privacy.html" style="color:rgba(255,255,255,0.5);text-decoration:none;font-size:13px;" data-ru="Конфиденциальность" data-en="Privacy">Конфиденциальность</a></div></div>
+    </div>
+  </div>
+  <div style="border-top:1px solid rgba(255,255,255,0.06);padding-top:24px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;"><span style="font-size:12px;color:rgba(255,255,255,0.22);">© ИП Ахметзянов Д.И., 2026 · <a href="privacy.html" style="color:rgba(255,255,255,0.35);text-decoration:none;">Политика конфиденциальности</a></span><span style="font-size:12px;color:rgba(255,255,255,0.2);">i-lach.com</span></div>
+</footer>
+<script>
+let currentLang='ru';
+function setLang(lang,manual){currentLang=lang;if(manual)localStorage.setItem('ilach_lang',lang);document.documentElement.lang=lang;document.querySelectorAll('.lang-btn').forEach(b=>b.classList.toggle('active',b.textContent.toLowerCase()===lang));document.querySelectorAll('#mob-ru,#mob-en').forEach(b=>b.classList.toggle('active',b.id==='mob-'+lang));document.querySelectorAll('[data-ru][data-en]').forEach(el=>{const val=el.getAttribute('data-'+lang)||el.getAttribute('data-en');if(!val)return;if(el.tagName==='H1'||el.tagName==='H2')el.innerHTML=val;else el.textContent=val;});}
+function toggleMenu(){const m=document.getElementById('mobileMenu'),b=document.getElementById('hamburger');const open=m.classList.toggle('open');b.classList.toggle('open',open);document.body.style.overflow=open?'hidden':'';}
+function closeMobileMenu(){const m=document.getElementById('mobileMenu'),b=document.getElementById('hamburger');m.classList.remove('open');b.classList.remove('open');document.body.style.overflow='';}
+function updateMobileLang(lang){document.getElementById('mob-ru')?.classList.toggle('active',lang==='ru');document.getElementById('mob-en')?.classList.toggle('active',lang==='en');document.querySelectorAll('#mobileMenu a[data-ru]').forEach(el=>{const val=el.getAttribute('data-'+lang)||el.getAttribute('data-en');if(val)el.textContent=val;});const cta=document.querySelector('.mobile-menu-cta');if(cta)cta.textContent=lang==='en'?'Contact Us':'Связаться';}
+window.addEventListener('resize',()=>{if(window.innerWidth>768)closeMobileMenu();});
+(function(){let sx=0;const m=document.getElementById('mobileMenu');if(!m)return;m.addEventListener('touchstart',e=>{sx=e.touches[0].clientX;},{passive:true});m.addEventListener('touchend',e=>{if(e.changedTouches[0].clientX-sx>60)closeMobileMenu();},{passive:true});})();
+(async function(){const saved=localStorage.getItem('ilach_lang');if(saved==='ru'||saved==='en'){setLang(saved);return;}const RU=['RU','BY','KZ','KG','TJ','UZ','AM','AZ','UA','MD','GE'];try{const r=await fetch('https://ipapi.co/json/',{signal:AbortSignal.timeout(3000)});const d=await r.json();setLang(RU.includes(d.country_code)?'ru':'en');}catch{setLang((navigator.language||'').toLowerCase().startsWith('ru')?'ru':'en');}})();
+</script>
+</body></html>
