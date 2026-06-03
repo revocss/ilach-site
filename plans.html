@@ -791,20 +791,33 @@ function setLang(lang) {
   document.querySelectorAll('.lang-btn').forEach(b => {
     b.classList.toggle('active', b.textContent.toLowerCase() === lang);
   });
+  document.querySelectorAll('#mob-ru,#mob-en').forEach(b => {
+    b.classList.toggle('active', b.id === 'mob-' + lang);
+  });
   document.querySelectorAll('[data-ru][data-en]').forEach(el => {
-    const val = el.getAttribute('data-' + lang);
+    const val = el.getAttribute('data-' + lang) || el.getAttribute('data-en');
     if (!val) return;
     if (el.tagName === 'H1' || el.tagName === 'H2') el.innerHTML = val;
     else el.textContent = val;
   });
+  // Update D3 map city pin labels
+  if (typeof COUNTRIES !== 'undefined' && typeof svg !== 'undefined' && svg) {
+    Object.entries(COUNTRIES).forEach(([key, cfg]) => {
+      const cityName = lang === 'ru' ? cfg.city_ru : cfg.city_en;
+      svg.selectAll('.pin-lbl-' + key).text(lang === 'ru' ? cfg.city_ru : cfg.city_en);
+    });
+    // Update tooltip
+    const tooltip = document.getElementById('map-tooltip');
+    if (tooltip) tooltip.style.display = 'none';
+  }
 }
 
 // ── Country config ────────────────────────────────────────────────────────
 const COUNTRIES = {
-  turkey:     { name_ru:'Турция', name_en:'Turkey',     iso:'TUR', color:'#d4a017', fill:'rgba(212,160,23,0.75)', fillHover:'rgba(212,160,23,0.95)', city_ru:'Стамбул', city_en:'Istanbul', cx:28.979, cy:41.015, cardId:'card-turkey' },
-  russia:     { name_ru:'Россия', name_en:'Russia',      iso:'RUS', color:'#3ea86e', fill:'rgba(62,168,110,0.75)', fillHover:'rgba(62,168,110,0.95)', city_ru:'Москва',  city_en:'Moscow',   cx:37.617, cy:55.755, cardId:'card-russia' },
-  belarus:    { name_ru:'Беларусь',name_en:'Belarus',   iso:'BLR', color:'#3ea86e', fill:'rgba(62,168,110,0.75)', fillHover:'rgba(62,168,110,0.95)', city_ru:'Минск',   city_en:'Minsk',    cx:27.567, cy:53.902, cardId:'card-belarus' },
-  kazakhstan: { name_ru:'Казахстан',name_en:'Kazakhstan',iso:'KAZ', color:'#3ea86e', fill:'rgba(62,168,110,0.75)', fillHover:'rgba(62,168,110,0.95)', city_ru:'Алматы',  city_en:'Almaty',   cx:76.889, cy:43.238, cardId:'card-kazakhstan' },
+  turkey:     { name_ru:'Турция', name_en:'Turkey',      iso:'TUR', color:'#d4a017', fill:'rgba(212,160,23,0.75)', fillHover:'rgba(212,160,23,0.95)', city_ru:'Стамбул', city_en:'Istanbul', cx:28.979, cy:41.015, cardId:'card-turkey' },
+  russia:     { name_ru:'Россия', name_en:'Russia',        iso:'RUS', color:'#3ea86e', fill:'rgba(62,168,110,0.75)', fillHover:'rgba(62,168,110,0.95)', city_ru:'Москва',  city_en:'Moscow',  cx:37.617, cy:55.755, cardId:'card-russia' },
+  belarus:    { name_ru:'Беларусь',name_en:'Belarus',  iso:'BLR', color:'#3ea86e', fill:'rgba(62,168,110,0.75)', fillHover:'rgba(62,168,110,0.95)', city_ru:'Минск',   city_en:'Minsk',    cx:27.567, cy:53.902, cardId:'card-belarus' },
+  kazakhstan: { name_ru:'Казахстан',name_en:'Kazakhstan',  iso:'KAZ', color:'#3ea86e', fill:'rgba(62,168,110,0.75)', fillHover:'rgba(62,168,110,0.95)', city_ru:'Алматы',  city_en:'Almaty',   cx:76.889, cy:43.238, cardId:'card-kazakhstan' },
 };
 
 const ISO_MAP = { TUR:'turkey', RUS:'russia', BLR:'belarus', KAZ:'kazakhstan' };
@@ -1072,11 +1085,14 @@ function updateMobileLang(lang) {
   document.getElementById('mob-en')?.classList.toggle('active', lang === 'en');
   // Update mobile menu link texts
   document.querySelectorAll('#mobileMenu a[data-ru]').forEach(el => {
-    const val = el.getAttribute('data-' + lang);
+    const val = el.getAttribute('data-' + lang) || el.getAttribute('data-en') || el.getAttribute('data-ru');
     if (val) el.textContent = val;
   });
   const cta = document.querySelector('.mobile-menu-cta');
-  if (cta) cta.textContent = lang === 'en' ? 'Contact Us' : 'Связаться';
+  if (cta) {
+    if (lang === 'en') cta.textContent = 'Contact Us';
+    else cta.textContent = 'Связаться';
+  }
 }
 // Close menu on resize to desktop
 window.addEventListener('resize', () => {

@@ -1216,7 +1216,7 @@ function setLang(lang) {
   });
 
   document.querySelectorAll('[data-ru][data-en]').forEach(el => {
-    const val = el.getAttribute('data-' + lang);
+    const val = el.getAttribute('data-' + lang) || el.getAttribute('data-en');
     if (!val) return;
     if (el.tagName === 'H1' || el.tagName === 'H2') {
       el.innerHTML = val;
@@ -1251,11 +1251,14 @@ function updateMobileLang(lang) {
   document.getElementById('mob-en')?.classList.toggle('active', lang === 'en');
   // Update mobile menu link texts
   document.querySelectorAll('#mobileMenu a[data-ru]').forEach(el => {
-    const val = el.getAttribute('data-' + lang);
+    const val = el.getAttribute('data-' + lang) || el.getAttribute('data-en') || el.getAttribute('data-ru');
     if (val) el.textContent = val;
   });
   const cta = document.querySelector('.mobile-menu-cta');
-  if (cta) cta.textContent = lang === 'en' ? 'Contact Us' : 'Связаться';
+  if (cta) {
+    if (lang === 'en') cta.textContent = 'Contact Us';
+    else cta.textContent = 'Связаться';
+  }
 }
 // Close menu on resize to desktop
 window.addEventListener('resize', () => {
