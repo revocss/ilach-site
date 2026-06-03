@@ -356,5 +356,20 @@ window.addEventListener('resize',()=>{if(window.innerWidth>768)closeMobileMenu()
   }
 })();
 </script>
+<script>
+(async function autoDetectLang() {
+  const saved = localStorage.getItem('ilach_lang');
+  if (saved === 'ru' || saved === 'en') { setLang(saved); return; }
+  const RU_COUNTRIES = ['RU','BY','KZ','KG','TJ','UZ','AM','AZ','UA','MD','GE'];
+  try {
+    const res = await fetch('https://ipapi.co/json/', { signal: AbortSignal.timeout(3000) });
+    const data = await res.json();
+    setLang(RU_COUNTRIES.includes(data.country_code) ? 'ru' : 'en');
+  } catch {
+    const bl = (navigator.language || '').toLowerCase();
+    setLang(bl.startsWith('ru') ? 'ru' : 'en');
+  }
+})();
+</script>
 </body>
 </html>

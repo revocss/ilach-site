@@ -158,4 +158,19 @@ window.addEventListener('resize',()=>{if(window.innerWidth>768)closeMobileMenu()
 (function(){let sx=0;const m=document.getElementById('mobileMenu');if(!m)return;m.addEventListener('touchstart',e=>{sx=e.touches[0].clientX;},{passive:true});m.addEventListener('touchend',e=>{if(e.changedTouches[0].clientX-sx>60)closeMobileMenu();},{passive:true});})();
 (async function(){const saved=localStorage.getItem('ilach_lang');if(saved==='ru'||saved==='en'){setLang(saved);return;}const RU=['RU','BY','KZ','KG','TJ','UZ','AM','AZ','UA','MD','GE'];try{const r=await fetch('https://ipapi.co/json/',{signal:AbortSignal.timeout(3000)});const d=await r.json();setLang(RU.includes(d.country_code)?'ru':'en');}catch{setLang((navigator.language||'').toLowerCase().startsWith('ru')?'ru':'en');}})();
 </script>
+<script>
+(async function autoDetectLang() {
+  const saved = localStorage.getItem('ilach_lang');
+  if (saved === 'ru' || saved === 'en') { setLang(saved); return; }
+  const RU_COUNTRIES = ['RU','BY','KZ','KG','TJ','UZ','AM','AZ','UA','MD','GE'];
+  try {
+    const res = await fetch('https://ipapi.co/json/', { signal: AbortSignal.timeout(3000) });
+    const data = await res.json();
+    setLang(RU_COUNTRIES.includes(data.country_code) ? 'ru' : 'en');
+  } catch {
+    const bl = (navigator.language || '').toLowerCase();
+    setLang(bl.startsWith('ru') ? 'ru' : 'en');
+  }
+})();
+</script>
 </body></html>
