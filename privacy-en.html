@@ -445,7 +445,7 @@ footer{background:var(--g900);padding:32px 48px;display:flex;justify-content:spa
     </div>
   </div>
   <div style="border-top:1px solid rgba(255,255,255,0.06);padding-top:24px;margin-top:32px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;">
-    <span style="font-size:12px;color:rgba(255,255,255,0.22);"><span data-ru="© ИП Ахметзянов Д.И., 2026 · " data-en="© IE Akhmetzyanov D.I., 2026 · ">© ИП Ахметзянов Д.И., 2026 &nbsp;·&nbsp; </span><a href="privacy.html" style="color:rgba(255,255,255,0.35);text-decoration:none;"><span data-ru="Политика конфиденциальности" data-en="Privacy Policy">Политика конфиденциальности</span></a></span>
+    <span style="font-size:12px;color:rgba(255,255,255,0.22);"><span data-ru="© ИП Ахметзянов Д.И., 2026 · " data-en="© IE Akhmetzyanov D.I., 2026 · ">© ИП Ахметзянов Д.И., 2026 &nbsp;·&nbsp; </span><a href="privacy-en.html" style="color:rgba(255,255,255,0.35);text-decoration:none;">Privacy Policy</a></span>
     <span style="font-size:12px;color:rgba(255,255,255,0.2);">i-lach.com</span>
   </div>
 </footer>
@@ -494,24 +494,30 @@ window.addEventListener('resize', () => {
 </script>
 <script>
 // ── Auto-detect language by country ─────────────────────────────────────
+
+
+</script>
+<script>
+function setLang(lang) {
+  document.documentElement.lang = lang;
+  document.querySelectorAll('[data-ru][data-en]').forEach(el => {
+    const val = el.getAttribute('data-' + lang) || el.getAttribute('data-en');
+    if (!val) return;
+    if (el.tagName === 'H1' || el.tagName === 'H2') el.innerHTML = val;
+    else el.textContent = val;
+  });
+}
+
 (async function autoDetectLang() {
-  // If user already chose a language manually — respect it
   const saved = localStorage.getItem('ilach_lang');
-  if (saved === 'ru' || saved === 'en') {
-    setLang(saved);
-    return;
-  }
-  // Russian-speaking countries → RU, everything else → EN
-  const RU_COUNTRIES = ['RU', 'BY', 'KZ', 'KG', 'TJ', 'UZ', 'AM', 'AZ', 'UA', 'MD', 'GE'];
+  if (saved === 'ru' || saved === 'en') { setLang(saved); return; }
+  const RU = ['RU','BY','KZ','KG','TJ','UZ','AM','AZ','UA','MD','GE'];
   try {
-    const res = await fetch('https://ipapi.co/json/', { signal: AbortSignal.timeout(3000) });
-    const data = await res.json();
-    const lang = RU_COUNTRIES.includes(data.country_code) ? 'ru' : 'en';
-    setLang(lang);
+    const r = await fetch('https://ipapi.co/json/', {signal: AbortSignal.timeout(3000)});
+    const d = await r.json();
+    setLang(RU.includes(d.country_code) ? 'ru' : 'en');
   } catch {
-    // Fallback: use browser language
-    const browserLang = (navigator.language || '').toLowerCase();
-    setLang(browserLang.startsWith('ru') ? 'ru' : 'en');
+    setLang((navigator.language||'').toLowerCase().startsWith('ru') ? 'ru' : 'en');
   }
 })();
 </script>
