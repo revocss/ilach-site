@@ -1,0 +1,215 @@
+/* ================================================================
+   DANISEI GROUP — Main JS v3
+   ================================================================ */
+'use strict';
+
+/* ── Mobile nav ─────────────────────────────────────────────── */
+(function () {
+  var toggle = document.getElementById('navToggle');
+  var menu   = document.getElementById('navMenu');
+  if (!toggle || !menu) return;
+  toggle.addEventListener('click', function () {
+    var open = menu.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', String(open));
+    toggle.querySelector('.icon-menu') && (toggle.querySelector('.icon-menu').style.display = open ? 'none'  : 'block');
+    toggle.querySelector('.icon-close') && (toggle.querySelector('.icon-close').style.display = open ? 'block' : 'none');
+  });
+  document.addEventListener('click', function (e) {
+    if (!toggle.contains(e.target) && !menu.contains(e.target)) {
+      menu.classList.remove('open');
+    }
+  });
+  menu.querySelectorAll('a').forEach(function (a) {
+    a.addEventListener('click', function () { menu.classList.remove('open'); });
+  });
+})();
+
+/* ── Header scroll effect ───────────────────────────────────── */
+(function () {
+  var header = document.querySelector('.site-header');
+  if (!header) return;
+  window.addEventListener('scroll', function () {
+    header.classList.toggle('scrolled', window.scrollY > 40);
+  }, { passive: true });
+})();
+
+/* ── Tabs ───────────────────────────────────────────────────── */
+window.initTabs = function (containerId) {
+  var c = document.getElementById(containerId);
+  if (!c) return;
+  var btns  = c.querySelectorAll('.tab-btn');
+  var panes = c.querySelectorAll('.tab-pane');
+  btns.forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      btns.forEach(function (b) { b.classList.remove('active'); });
+      panes.forEach(function (p) { p.classList.remove('active'); });
+      btn.classList.add('active');
+      var target = c.querySelector('#' + btn.dataset.tab);
+      if (target) target.classList.add('active');
+    });
+  });
+};
+
+/* ── Product filter ─────────────────────────────────────────── */
+window.initProductFilter = function (gridId, searchId) {
+  var grid = document.getElementById(gridId);
+  var searchEl = searchId ? document.getElementById(searchId) : null;
+  if (!grid) return;
+  var cards = Array.from(grid.querySelectorAll('[data-cat]'));
+  var currentCat = 'all';
+  var currentSearch = '';
+
+  function applyFilter() {
+    cards.forEach(function (card) {
+      var matchCat    = currentCat === 'all' || card.dataset.cat === currentCat;
+      var matchSearch = !currentSearch || (card.dataset.name || '').includes(currentSearch);
+      card.style.display = (matchCat && matchSearch) ? '' : 'none';
+    });
+  }
+  document.querySelectorAll('.filter-chip').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      document.querySelectorAll('.filter-chip').forEach(function (b) { b.classList.remove('active'); });
+      btn.classList.add('active');
+      currentCat = btn.dataset.filter || 'all';
+      applyFilter();
+    });
+  });
+  if (searchEl) {
+    searchEl.addEventListener('input', function () {
+      currentSearch = searchEl.value.toLowerCase().trim();
+      applyFilter();
+    });
+  }
+};
+
+/* ── Intersection Observer: fade-in on scroll ──────────────── */
+(function () {
+  if (!('IntersectionObserver' in window)) return;
+  var obs = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (e.isIntersecting) {
+        e.target.classList.add('in-view');
+        obs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.reveal').forEach(function (el) { obs.observe(el); });
+})();
+
+/* ── Auto-init tabs & product filters (replaces inline page scripts) ──── */
+document.addEventListener('DOMContentLoaded', function () {
+  ['dentTabs', 'eqTabs'].forEach(function (id) {
+    if (document.getElementById(id)) initTabs(id);
+  });
+  if (document.getElementById('pharmaGrid')) {
+    initProductFilter('pharmaGrid', 'pharmaSearch');
+  }
+});
+
+/* ── Contact form — Formspree AJAX ─────────────────────────── */
+(function () {
+  'use strict';
+
+  function initFormspreeForm(form) {
+    var action = (form.getAttribute('action') || '').trim();
+    if (action.indexOf('formspree.io') === -1) {
+      console.warn('[Danisei Form] Skipping form — no Formspree action:', form);
+      return;
+    }
+
+    var btn    = form.querySelector('[type="submit"]');
+    var msgOk  = form.querySelector('.form-msg-ok');
+    var msgErr = form.querySelector('.form-msg-err');
+
+    /* Guard: elements must exist */
+    if (!btn)  { console.error('[Danisei Form] No submit button found'); return; }
+
+    console.log('[Danisei Form] Initialized on:', form.id || form.className, '→', action);
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      e.stopPropagation();
+
+      console.log('[Danisei Form] Submit started');
+
+      /* Reset UI */
+      if (msgOk)  { msgOk.style.display  = 'none'; }
+      if (msgErr) { msgErr.style.display = 'none'; }
+
+      /* Build FormData */
+      var formData = new FormData(form);
+      console.log('[Danisei Form] FormData entries:');
+      formData.forEach(function (val, key) { console.log('  ' + key + ':', val); });
+
+      /* Disable button */
+      btn.disabled = true;
+      var origText = btn.textContent;
+      btn.textContent = btn.dataset.sending || 'Sending…';
+
+      console.log('[Danisei Form] POSTing to:', action);
+
+      fetch(action, {
+        method: 'POST',
+        body: formData,
+        headers: { 'Accept': 'application/json' }
+      })
+      .then(function (res) {
+        console.log('[Danisei Form] Response status:', res.status, res.statusText);
+        console.log('[Danisei Form] Response ok:', res.ok);
+
+        if (res.ok) {
+          console.log('[Danisei Form] SUCCESS — showing success message');
+          form.reset();
+          /* Fire analytics event */
+          document.dispatchEvent(new CustomEvent('danisei:form_sent', {
+            detail: { formName: form.dataset.formName || 'contact' }
+          }));
+          if (msgOk) {
+            msgOk.style.display = 'block';
+            msgOk.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+          }
+          btn.disabled = false;
+          btn.textContent = origText;
+        } else {
+          return res.text().then(function (body) {
+            console.error('[Danisei Form] Server error body:', body);
+            throw new Error('HTTP ' + res.status);
+          });
+        }
+      })
+      .catch(function (err) {
+        console.error('[Danisei Form] FETCH ERROR:', err);
+        if (msgErr) {
+          msgErr.style.display = 'block';
+          msgErr.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+        btn.disabled = false;
+        btn.textContent = origText;
+      });
+    }, true); /* useCapture=true — fires before any other listeners */
+  }
+
+  /* Init all contact forms on the page */
+  document.querySelectorAll('.contact-form').forEach(initFormspreeForm);
+})();
+
+/* ── Smooth anchor scroll ───────────────────────────────────── */
+document.querySelectorAll('a[href^="#"]').forEach(function (a) {
+  a.addEventListener('click', function (e) {
+    var target = document.querySelector(a.getAttribute('href'));
+    if (!target) return;
+    e.preventDefault();
+    window.scrollTo({ top: target.getBoundingClientRect().top + window.scrollY - 80, behavior: 'smooth' });
+  });
+});
+
+/* ── Cookie consent ─────────────────────────────────────────── */
+(function () {
+  if (localStorage.getItem('dn_cookie_ok')) return;
+  var bar = document.createElement('div');
+  bar.id = 'cookieBar';
+  bar.innerHTML =
+    '<span>We use cookies to improve your experience. By continuing, you agree to our cookie policy.</span>' +
+    '<button onclick="this.parentElement.remove();localStorage.setItem(\'dn_cookie_ok\',1)" class="cookie-accept">Accept</button>';
+  document.body.appendChild(bar);
+})();
