@@ -85,7 +85,6 @@ html,body{height:100%;font-family:var(--font-body);background:var(--g900);overfl
 #vault-content a, #vault-content button{cursor:pointer;}
 /* Block iframe pointer events so text inside can't be selected */
 .doc-frame-wrap iframe{
-  pointer-events:none;
   -webkit-user-select:none;
   user-select:none;
 }
@@ -470,7 +469,7 @@ function openDoc(file, title, subtitle, tag, docId) {
       </div>
     </div>
     <div class="doc-frame-wrap">
-      <iframe src="${file}" title="${title}" sandbox="allow-scripts allow-same-origin" referrerpolicy="no-referrer"></iframe>
+      <iframe src="${file}" title="${title}" sandbox="allow-scripts allow-same-origin" referrerpolicy="no-referrer" onload="injectIframeProtection(this)"></iframe>
     </div>
   `;
 }
@@ -482,6 +481,37 @@ function plural(n, a, b, c) {
   if (m2 === 1) return a;
   if (m2 >= 2 && m2 <= 4) return b;
   return c;
+}
+
+// Inject copy protection into iframe document
+function injectIframeProtection(iframe) {
+  try {
+    const doc = iframe.contentDocument || iframe.contentWindow.document;
+    if (!doc) return;
+    // CSS: block selection inside iframe
+    const style = doc.createElement('style');
+    style.textContent = `
+      * {
+        -webkit-user-select: none !important;
+        -moz-user-select: none !important;
+        user-select: none !important;
+      }
+    `;
+    doc.head.appendChild(style);
+    // Block copy/cut inside iframe
+    doc.addEventListener('copy',  e => { e.preventDefault(); return false; });
+    doc.addEventListener('cut',   e => { e.preventDefault(); return false; });
+    doc.addEventListener('contextmenu', e => e.preventDefault());
+    doc.addEventListener('selectstart', e => e.preventDefault());
+    doc.addEventListener('dragstart',   e => e.preventDefault());
+    doc.addEventListener('keydown', e => {
+      const k = e.key.toLowerCase();
+      if ((e.ctrlKey || e.metaKey) && ['s','p','a','c','u','x'].includes(k)) e.preventDefault();
+    });
+  } catch(err) {
+    // Cross-origin iframe — CSS overlay used instead
+    console.warn('iframe protection skipped (cross-origin)');
+  }
 }
 </script>
 </body>
