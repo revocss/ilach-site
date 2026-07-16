@@ -58,9 +58,17 @@ footer{background:var(--g900);padding:40px 48px;display:flex;flex-direction:colu
 .security-notice{background:rgba(212,160,23,0.06);border:1px solid rgba(212,160,23,0.2);border-radius:12px;padding:16px 20px;display:flex;gap:12px;align-items:flex-start;margin-top:32px;}
 .security-notice svg{width:18px;height:18px;stroke:#92700a;fill:none;stroke-width:1.8;flex-shrink:0;margin-top:1px;}
 .security-notice p{font-size:13px;color:#7a5c00;line-height:1.65;}
-.cta-inner{max-width:600px;margin:0 auto;text-align:center;}
-.cta-btn{display:inline-flex;align-items:center;gap:10px;background:var(--g500);color:var(--white);padding:16px 36px;border-radius:12px;font-size:15px;font-weight:600;text-decoration:none;transition:background 0.2s;margin-top:28px;}
+.cta-sec{background:var(--g900);padding:80px 48px;}
+.cta-inner{max-width:640px;margin:0 auto;text-align:center;}
+.cta-inner .sl{color:var(--g400);margin-bottom:16px;}
+.cta-inner h2{font-family:var(--font-head);font-size:clamp(28px,4vw,44px);font-weight:700;color:var(--white);letter-spacing:-1px;margin-bottom:16px;}
+.cta-inner .lead{color:rgba(255,255,255,0.5);font-size:16px;line-height:1.75;margin:0 auto 32px;max-width:520px;}
+.cta-btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;background:var(--g500);color:var(--white);padding:16px 36px;border-radius:12px;font-size:15px;font-weight:600;text-decoration:none;transition:background 0.2s;}
 .cta-btn:hover{background:var(--g400);}
+.cta-row{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;}
+.cta-btn-outline{display:inline-flex;align-items:center;justify-content:center;gap:10px;background:transparent;color:var(--g300);padding:15px 32px;border-radius:12px;font-size:15px;font-weight:600;text-decoration:none;border:1.5px solid rgba(62,168,110,0.35);transition:all 0.2s;}
+.cta-btn-outline:hover{border-color:var(--g400);background:rgba(62,168,110,0.08);}
+@media(max-width:768px){.cta-sec{padding:56px 20px !important;}.cta-row{flex-direction:column;align-items:center;}}
 @media(max-width:768px){body{overflow-x:hidden;}*{max-width:100%;word-break:break-word;}section{padding:56px 20px !important;}h2{font-size:clamp(22px,6vw,34px) !important;}.lead{max-width:100% !important;font-size:14px !important;}footer{padding:28px 20px !important;}footer > div:first-child{flex-direction:column;gap:24px !important;}}
 @media(max-width:768px){.docs-grid{grid-template-columns:1fr !important;}}
 </style></head><body>
@@ -166,10 +174,13 @@ footer{background:var(--g900);padding:40px 48px;display:flex;flex-direction:colu
 
 <section class="cta-sec">
   <div class="cta-inner">
-    <div class="sl" style="color:var(--g400);" data-ru="Запрос документов" data-en="Document Request">Запрос документов</div>
-    <h2 style="color:var(--white);font-family:var(--font-head);" data-ru="Получить <span style='color:var(--g400)'>материалы</span>" data-en="Get <span style='color:var(--g400)'>materials</span>">Получить <span style="color:var(--g400)">материалы</span></h2>
-    <p class="lead" style="color:rgba(255,255,255,0.5);margin:0 auto;" data-ru="Свяжитесь с ILACH для получения investor deck, финансовой модели и детального плана развития." data-en="Contact ILACH to receive the investor deck, financial model and detailed development plan.">Свяжитесь с ILACH для получения investor deck, финансовой модели и детального плана развития.</p>
-    <a href="index.html#contact" class="cta-btn" data-ru="Запросить документы →" data-en="Request documents →">Запросить документы →</a>
+    <div class="sl" data-ru="Запрос документов" data-en="Document Request">Запрос документов</div>
+    <h2 data-ru="Получить <span style='color:var(--g400)'>материалы</span>" data-en="Get <span style='color:var(--g400)'>materials</span>">Получить <span style="color:var(--g400)">материалы</span></h2>
+    <p class="lead" data-ru="Свяжитесь с ILACH для получения investor deck, финансовой модели и детального плана развития. Доступ к защищённому хранилищу предоставляется по запросу." data-en="Contact ILACH to receive the investor deck, financial model and detailed development plan. Access to the secure document vault is provided upon request.">Свяжитесь с ILACH для получения investor deck, финансовой модели и детального плана развития. Доступ к защищённому хранилищу предоставляется по запросу.</p>
+    <div class="cta-row">
+      <a href="index.html#contact" class="cta-btn" data-ru="Запросить доступ →" data-en="Request Access →">Запросить доступ →</a>
+      <a href="vault.html" class="cta-btn-outline" data-ru="🔒 Войти в хранилище" data-en="🔒 Enter Vault">🔒 Войти в хранилище</a>
+    </div>
   </div>
 </section>
 
