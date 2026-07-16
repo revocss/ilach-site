@@ -15,369 +15,355 @@
   --g500:#2a7a4f;--g400:#3ea86e;--g300:#6dc496;--g50:#eef8f3;
   --text:#0d1f16;--text2:#2e4d3a;--text3:#5a7a66;
   --border:#ddeee5;--surface:#f5fbf7;--white:#ffffff;
-  --red:#e53e3e;--gold:#d4a017;
+  --gold:#d4a017;--red:#e53e3e;
   --font-head:'Syne',sans-serif;--font-body:'Inter',sans-serif;
 }
-html,body{height:100%;font-family:var(--font-body);overflow-x:hidden;}
+html,body{height:100%;font-family:var(--font-body);background:var(--g900);overflow-x:hidden;}
 
-/* ── LOGIN SCREEN ──────────────────────────────────────────────────── */
+/* ── LOGIN ─────────────────────────────────────────────────────────── */
 #login-screen{
-  min-height:100vh;background:var(--g900);
-  display:flex;align-items:center;justify-content:center;
-  padding:24px;
-  background-image:radial-gradient(circle,rgba(62,168,110,0.07) 1px,transparent 1px);
+  min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px;
+  background:var(--g900);
+  background-image:radial-gradient(circle,rgba(62,168,110,0.08) 1px,transparent 1px);
   background-size:28px 28px;
 }
-.login-box{
-  width:100%;max-width:420px;
-  background:rgba(255,255,255,0.03);
-  border:1px solid rgba(62,168,110,0.2);
-  border-radius:20px;padding:48px 40px;
-  text-align:center;
-}
+.login-box{width:100%;max-width:400px;background:rgba(255,255,255,0.03);border:1px solid rgba(62,168,110,0.2);border-radius:20px;padding:44px 36px;text-align:center;}
 .login-logo{display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:32px;}
-.login-mark{width:36px;height:36px;border-radius:8px;background:var(--g600);display:flex;align-items:center;justify-content:center;font-family:var(--font-head);font-size:18px;font-weight:700;color:var(--white);}
-.login-name{font-family:var(--font-head);font-size:16px;font-weight:600;color:var(--white);letter-spacing:2px;}
-.lock-icon{width:56px;height:56px;border-radius:16px;background:rgba(62,168,110,0.1);border:1px solid rgba(62,168,110,0.2);display:flex;align-items:center;justify-content:center;margin:0 auto 20px;}
-.lock-icon svg{width:26px;height:26px;stroke:var(--g400);fill:none;stroke-width:1.5;}
-.login-title{font-family:var(--font-head);font-size:22px;font-weight:700;color:var(--white);margin-bottom:8px;}
-.login-sub{font-size:13px;color:rgba(255,255,255,0.4);line-height:1.6;margin-bottom:32px;}
-.login-field{margin-bottom:14px;text-align:left;}
-.login-field label{display:block;font-size:12px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:6px;}
-.login-field input{
-  width:100%;padding:12px 16px;
-  background:rgba(255,255,255,0.06);
-  border:1px solid rgba(255,255,255,0.12);
-  border-radius:10px;font-size:14px;color:var(--white);
-  font-family:var(--font-body);outline:none;transition:border-color 0.2s;
-}
-.login-field input:focus{border-color:rgba(62,168,110,0.5);}
-.login-field input::placeholder{color:rgba(255,255,255,0.25);}
-.login-error{display:none;background:rgba(229,62,62,0.08);border:1px solid rgba(229,62,62,0.25);border-radius:8px;padding:10px 14px;font-size:13px;color:#fc8181;margin-bottom:14px;text-align:left;}
+.login-mark{width:34px;height:34px;border-radius:8px;background:var(--g600);display:flex;align-items:center;justify-content:center;font-family:var(--font-head);font-size:17px;font-weight:700;color:var(--white);}
+.login-logo-name{font-family:var(--font-head);font-size:15px;font-weight:600;color:var(--white);letter-spacing:2px;}
+.lock-wrap{width:58px;height:58px;border-radius:16px;background:rgba(62,168,110,0.1);border:1px solid rgba(62,168,110,0.2);display:flex;align-items:center;justify-content:center;margin:0 auto 18px;}
+.lock-wrap svg{width:26px;height:26px;stroke:var(--g400);fill:none;stroke-width:1.5;}
+.login-title{font-family:var(--font-head);font-size:22px;font-weight:700;color:var(--white);margin-bottom:6px;}
+.login-sub{font-size:13px;color:rgba(255,255,255,0.38);line-height:1.65;margin-bottom:28px;}
+.login-error{display:none;background:rgba(229,62,62,0.09);border:1px solid rgba(229,62,62,0.22);border-radius:9px;padding:10px 14px;font-size:13px;color:#fc8181;margin-bottom:12px;text-align:left;}
 .login-error.show{display:block;}
-.login-btn{
-  width:100%;padding:14px;border-radius:10px;
-  background:var(--g500);border:none;color:var(--white);
-  font-size:14px;font-weight:600;font-family:var(--font-body);
-  cursor:pointer;transition:background 0.2s;
-}
+.login-field{margin-bottom:12px;text-align:left;}
+.login-field label{display:block;font-size:11px;font-weight:600;letter-spacing:1.2px;text-transform:uppercase;color:rgba(255,255,255,0.35);margin-bottom:6px;}
+.login-field input{width:100%;padding:12px 16px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.11);border-radius:10px;font-size:14px;color:var(--white);font-family:var(--font-body);outline:none;transition:border-color 0.2s;}
+.login-field input:focus{border-color:rgba(62,168,110,0.5);}
+.login-field input::placeholder{color:rgba(255,255,255,0.22);}
+.login-btn{width:100%;padding:13px;border-radius:10px;background:var(--g500);border:none;color:var(--white);font-size:14px;font-weight:600;font-family:var(--font-body);cursor:pointer;transition:background 0.2s;margin-top:4px;}
 .login-btn:hover{background:var(--g400);}
-.login-attempts{margin-top:12px;font-size:12px;color:rgba(255,255,255,0.25);text-align:center;}
-.login-back{display:block;margin-top:24px;font-size:13px;color:rgba(255,255,255,0.3);text-decoration:none;transition:color 0.2s;}
+.login-hint{margin-top:11px;font-size:12px;color:rgba(255,255,255,0.22);}
+.login-back{display:block;margin-top:22px;font-size:13px;color:rgba(255,255,255,0.28);text-decoration:none;transition:color 0.2s;}
 .login-back:hover{color:var(--g300);}
 
-/* ── VAULT CONTENT ─────────────────────────────────────────────────── */
-#vault-content{display:none;min-height:100vh;background:var(--surface);}
+/* ── VAULT ─────────────────────────────────────────────────────────── */
+#vault-content{display:none;min-height:100vh;background:#f8faf8;}
 
 /* Top bar */
 .vault-bar{
-  background:var(--g900);padding:0 48px;height:60px;
+  background:var(--g900);height:58px;padding:0 40px;
   display:flex;align-items:center;justify-content:space-between;
   border-bottom:1px solid rgba(62,168,110,0.12);
   position:sticky;top:0;z-index:100;
 }
-.vault-bar-left{display:flex;align-items:center;gap:12px;}
-.vault-bar-mark{width:28px;height:28px;border-radius:6px;background:var(--g600);display:flex;align-items:center;justify-content:center;font-family:var(--font-head);font-size:13px;font-weight:700;color:var(--white);}
-.vault-bar-name{font-family:var(--font-head);font-size:13px;font-weight:600;color:var(--white);letter-spacing:1.5px;}
-.vault-bar-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(62,168,110,0.1);border:1px solid rgba(62,168,110,0.25);border-radius:6px;padding:4px 10px;font-size:11px;font-weight:600;color:var(--g300);}
-.vault-bar-badge svg{width:11px;height:11px;stroke:var(--g400);fill:none;stroke-width:2;}
-.vault-bar-right{display:flex;align-items:center;gap:12px;}
-.vault-user{font-size:12px;color:rgba(255,255,255,0.4);}
-.vault-logout{padding:6px 14px;border-radius:7px;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.1);color:rgba(255,255,255,0.5);font-size:12px;font-weight:500;cursor:pointer;font-family:var(--font-body);transition:all 0.2s;}
-.vault-logout:hover{background:rgba(229,62,62,0.1);border-color:rgba(229,62,62,0.25);color:#fc8181;}
+.vb-left{display:flex;align-items:center;gap:14px;}
+.vb-mark{width:28px;height:28px;border-radius:6px;background:var(--g600);display:flex;align-items:center;justify-content:center;font-family:var(--font-head);font-size:13px;font-weight:700;color:var(--white);}
+.vb-name{font-family:var(--font-head);font-size:13px;font-weight:600;color:var(--white);letter-spacing:1.5px;}
+.vb-badge{display:inline-flex;align-items:center;gap:5px;background:rgba(62,168,110,0.1);border:1px solid rgba(62,168,110,0.22);border-radius:6px;padding:4px 10px;font-size:11px;font-weight:600;color:var(--g300);}
+.vb-badge svg{width:10px;height:10px;stroke:var(--g400);fill:none;stroke-width:2.5;}
+.vb-right{display:flex;align-items:center;gap:10px;}
+.vb-session{font-size:12px;color:rgba(255,255,255,0.35);}
+.vb-logout{padding:5px 12px;border-radius:7px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.09);color:rgba(255,255,255,0.45);font-size:12px;font-weight:500;cursor:pointer;font-family:var(--font-body);transition:all 0.2s;}
+.vb-logout:hover{background:rgba(229,62,62,0.1);border-color:rgba(229,62,62,0.2);color:#fc8181;}
 
-/* Notice bar */
-.vault-notice{background:rgba(212,160,23,0.08);border-bottom:1px solid rgba(212,160,23,0.2);padding:10px 48px;display:flex;align-items:center;gap:10px;}
-.vault-notice svg{width:15px;height:15px;stroke:#d4a017;fill:none;stroke-width:2;flex-shrink:0;}
-.vault-notice p{font-size:12px;color:#92700a;}
-
-/* Vault body */
-.vault-body{max-width:960px;margin:0 auto;padding:48px 40px;}
-.vault-section{margin-bottom:48px;}
-.vault-section-title{font-family:var(--font-head);font-size:18px;font-weight:700;color:var(--text);margin-bottom:4px;}
-.vault-section-sub{font-size:13px;color:var(--text3);margin-bottom:20px;}
-.vault-docs{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;}
-.vault-doc{
-  background:var(--white);border:1px solid var(--border);border-radius:14px;
-  padding:22px;display:flex;flex-direction:column;gap:12px;
-  transition:border-color 0.2s;
-}
-.vault-doc:hover{border-color:var(--g300);}
-.vault-doc-head{display:flex;align-items:center;gap:12px;}
-.vault-doc-icon{width:40px;height:40px;border-radius:10px;background:var(--g50);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
-.vault-doc-icon svg{width:18px;height:18px;stroke:var(--g500);fill:none;stroke-width:1.8;}
-.vault-doc-name{font-size:14px;font-weight:600;color:var(--text);}
-.vault-doc-size{font-size:11px;color:var(--text3);}
-.vault-doc-desc{font-size:13px;color:var(--text3);line-height:1.6;}
-.vault-doc-footer{display:flex;align-items:center;justify-content:space-between;margin-top:4px;}
-.vault-doc-status{display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:600;}
-.vault-doc-status.available{color:var(--g600);}
-.vault-doc-status.available::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--g400);display:inline-block;}
-.vault-doc-status.soon{color:var(--gold);}
-.vault-doc-status.soon::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--gold);display:inline-block;}
-
-/* No-copy protection */
-.vault-body{user-select:none;-webkit-user-select:none;}
-.vault-body iframe{pointer-events:none;}
+/* Notice strip */
+.vault-notice{background:rgba(212,160,23,0.07);border-bottom:1px solid rgba(212,160,23,0.18);padding:9px 40px;display:flex;align-items:center;gap:9px;}
+.vault-notice svg{width:14px;height:14px;stroke:#d4a017;fill:none;stroke-width:2;flex-shrink:0;}
+.vault-notice p{font-size:12px;color:#92700a;line-height:1.5;}
 
 /* Watermark */
-.watermark{
-  position:fixed;inset:0;pointer-events:none;z-index:50;
-  display:flex;align-items:center;justify-content:center;
-  opacity:0.04;transform:rotate(-30deg);
-  font-family:var(--font-head);font-size:48px;font-weight:700;
-  color:var(--g600);white-space:nowrap;letter-spacing:4px;
-}
+.wm{position:fixed;inset:0;pointer-events:none;z-index:9;display:flex;align-items:center;justify-content:center;opacity:0.04;transform:rotate(-28deg);font-family:var(--font-head);font-size:52px;font-weight:700;color:var(--g600);white-space:nowrap;letter-spacing:6px;}
 
-/* PDF viewer */
-.pdf-modal{display:none;position:fixed;inset:0;z-index:200;background:rgba(0,0,0,0.85);align-items:center;justify-content:center;padding:20px;}
-.pdf-modal.open{display:flex;}
-.pdf-modal-inner{background:var(--white);border-radius:14px;width:100%;max-width:860px;max-height:90vh;display:flex;flex-direction:column;overflow:hidden;}
-.pdf-modal-bar{padding:14px 20px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--border);}
-.pdf-modal-title{font-size:14px;font-weight:600;color:var(--text);}
-.pdf-modal-close{width:32px;height:32px;border-radius:8px;background:var(--surface);border:1px solid var(--border);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:16px;color:var(--text3);transition:all 0.2s;}
-.pdf-modal-close:hover{background:rgba(229,62,62,0.08);color:var(--red);}
-.pdf-modal-warn{padding:8px 20px;background:rgba(212,160,23,0.08);border-bottom:1px solid rgba(212,160,23,0.15);font-size:12px;color:#7a5c00;display:flex;align-items:center;gap:6px;}
-.pdf-modal-warn svg{width:13px;height:13px;stroke:#d4a017;fill:none;stroke-width:2;flex-shrink:0;}
-.pdf-modal-body{flex:1;overflow:hidden;position:relative;}
-.pdf-modal-body iframe{width:100%;height:100%;border:none;pointer-events:none;}
+/* Body layout */
+.vault-body{display:grid;grid-template-columns:260px 1fr;min-height:calc(100vh - 100px);}
 
-/* View btn */
-.vault-view-btn{display:inline-flex;align-items:center;gap:6px;padding:8px 16px;border-radius:8px;background:var(--g600);color:var(--white);border:none;font-size:12px;font-weight:600;cursor:pointer;font-family:var(--font-body);transition:background 0.2s;}
-.vault-view-btn:hover{background:var(--g500);}
-.vault-view-btn svg{width:13px;height:13px;stroke:currentColor;fill:none;stroke-width:2;}
+/* Sidebar */
+.vault-sidebar{background:var(--white);border-right:1px solid var(--border);padding:24px 0;position:sticky;top:58px;height:calc(100vh - 100px);overflow-y:auto;}
+.sidebar-section{margin-bottom:8px;}
+.sidebar-section-title{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--text3);padding:0 20px;margin-bottom:6px;margin-top:16px;}
+.sidebar-link{display:flex;align-items:flex-start;gap:10px;padding:9px 20px;cursor:pointer;transition:background 0.15s;text-decoration:none;border-left:3px solid transparent;}
+.sidebar-link:hover{background:var(--g50);}
+.sidebar-link.active{background:var(--g50);border-left-color:var(--g500);}
+.sl-num{font-size:10px;font-weight:700;color:rgba(0,0,0,0.25);flex-shrink:0;margin-top:2px;width:18px;}
+.sl-text{font-size:12px;font-weight:500;color:var(--text2);line-height:1.5;}
+.sidebar-link.active .sl-text{color:var(--g700);font-weight:600;}
 
+/* Stats in sidebar */
+.sidebar-stats{margin:16px 16px 0;background:var(--g50);border:1px solid var(--g100);border-radius:10px;padding:14px;}
+.stat-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;}
+.stat-row:last-child{margin-bottom:0;}
+.stat-lbl{font-size:11px;color:var(--text3);}
+.stat-val{font-size:13px;font-weight:700;color:var(--g600);}
+
+/* Main viewer */
+.vault-main{display:flex;flex-direction:column;}
+.doc-header{background:var(--white);border-bottom:1px solid var(--border);padding:20px 32px;display:flex;align-items:flex-start;justify-content:space-between;gap:16px;}
+.doc-title-wrap{}
+.doc-tag{display:inline-flex;padding:3px 9px;border-radius:5px;font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:7px;}
+.doc-tag.blue{background:#dbeafe;color:#1e40af;}
+.doc-tag.green{background:var(--g50);color:var(--g700);}
+.doc-tag.purple{background:#ede9fe;color:#5b21b6;}
+.doc-title{font-family:var(--font-head);font-size:20px;font-weight:700;color:var(--text);letter-spacing:-0.4px;}
+.doc-meta{font-size:12px;color:var(--text3);margin-top:4px;}
+.doc-read-badge{display:inline-flex;align-items:center;gap:6px;padding:6px 14px;border-radius:8px;background:var(--g50);border:1px solid var(--g100);font-size:12px;font-weight:600;color:var(--g600);white-space:nowrap;}
+.doc-read-badge svg{width:13px;height:13px;stroke:var(--g500);fill:none;stroke-width:2;}
+
+/* iframe area */
+.doc-frame-wrap{flex:1;position:relative;background:#f0f0f0;min-height:600px;}
+.doc-frame-wrap iframe{width:100%;height:100%;border:none;min-height:700px;}
+.doc-placeholder{display:flex;flex-direction:column;align-items:center;justify-content:center;height:500px;color:var(--text3);gap:12px;}
+.doc-placeholder svg{width:40px;height:40px;stroke:var(--g300);fill:none;stroke-width:1.2;}
+.doc-placeholder p{font-size:14px;}
+
+/* Welcome screen */
+.vault-welcome{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:60px 40px;text-align:center;}
+.vault-welcome-icon{width:64px;height:64px;border-radius:18px;background:var(--g50);border:1px solid var(--g100);display:flex;align-items:center;justify-content:center;margin:0 auto 20px;}
+.vault-welcome-icon svg{width:30px;height:30px;stroke:var(--g500);fill:none;stroke-width:1.5;}
+.vault-welcome h2{font-family:var(--font-head);font-size:22px;font-weight:700;color:var(--text);margin-bottom:10px;}
+.vault-welcome p{font-size:14px;color:var(--text3);line-height:1.7;max-width:420px;}
+
+/* Mobile */
 @media(max-width:768px){
+  .vault-body{grid-template-columns:1fr;}
+  .vault-sidebar{position:static;height:auto;border-right:none;border-bottom:1px solid var(--border);}
   .vault-bar{padding:0 16px;}
-  .vault-body{padding:28px 16px;}
-  .vault-docs{grid-template-columns:1fr;}
-  .vault-notice{padding:10px 16px;}
+  .vault-notice{padding:9px 16px;}
+  .doc-header{padding:16px 20px;flex-direction:column;}
 }
 </style>
 </head>
 <body>
 
-<!-- ── LOGIN SCREEN ──────────────────────────────────────────────── -->
+<!-- ── LOGIN ─────────────────────────────────────────────────────── -->
 <div id="login-screen">
   <div class="login-box">
     <div class="login-logo">
       <div class="login-mark">İ</div>
-      <span class="login-name">ILACH</span>
+      <span class="login-logo-name">ILACH</span>
     </div>
-    <div class="lock-icon">
+    <div class="lock-wrap">
       <svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
     </div>
     <div class="login-title">Document Vault</div>
-    <p class="login-sub">Защищённое хранилище документов ILACH.<br>Доступ предоставляется по запросу.</p>
+    <p class="login-sub">Защищённое хранилище аналитических<br>материалов ILACH</p>
 
-    <div id="login-error" class="login-error">Неверный пароль. Попробуйте ещё раз.</div>
+    <div id="login-error" class="login-error"></div>
 
     <div class="login-field">
       <label>Пароль доступа</label>
-      <input type="password" id="vault-password" placeholder="Введите пароль" autocomplete="off">
+      <input type="password" id="vault-pw" placeholder="Введите пароль" autocomplete="off">
     </div>
 
     <button class="login-btn" onclick="tryLogin()">Войти →</button>
-
-    <div id="attempts-info" class="login-attempts"></div>
-
+    <div id="login-hint" class="login-hint"></div>
     <a href="documents.html" class="login-back">← Назад к документам</a>
   </div>
 </div>
 
-<!-- ── VAULT CONTENT ─────────────────────────────────────────────── -->
+<!-- ── VAULT ──────────────────────────────────────────────────────── -->
 <div id="vault-content">
 
   <div class="vault-bar">
-    <div class="vault-bar-left">
-      <div class="vault-bar-mark">İ</div>
-      <span class="vault-bar-name">ILACH</span>
-      <span class="vault-bar-badge">
+    <div class="vb-left">
+      <div class="vb-mark">İ</div>
+      <span class="vb-name">ILACH</span>
+      <span class="vb-badge">
         <svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
-        Document Vault
+        Secure Vault
       </span>
     </div>
-    <div class="vault-bar-right">
-      <span class="vault-user" id="vault-session-info">Сессия активна</span>
-      <button class="vault-logout" onclick="logout()">Выйти</button>
+    <div class="vb-right">
+      <span class="vb-session" id="vb-session">—</span>
+      <button class="vb-logout" onclick="logout()">Выйти</button>
     </div>
   </div>
 
   <div class="vault-notice">
     <svg viewBox="0 0 24 24"><path d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
-    <p>Конфиденциально. Копирование, скриншоты и передача третьим лицам запрещены. Все просмотры журналируются.</p>
+    <p>Конфиденциально · Только для ознакомления · Копирование, скачивание и передача третьим лицам запрещены · Все просмотры фиксируются</p>
   </div>
 
-  <div class="watermark" id="watermark">CONFIDENTIAL · ILACH</div>
+  <div class="wm" id="wm">CONFIDENTIAL · ILACH</div>
 
   <div class="vault-body">
 
-    <div class="vault-section">
-      <div class="vault-section-title">📊 Инвестиционные материалы</div>
-      <div class="vault-section-sub">Доступные документы для ознакомления</div>
-      <div class="vault-docs">
+    <!-- Sidebar -->
+    <div class="vault-sidebar">
 
-        <div class="vault-doc">
-          <div class="vault-doc-head">
-            <div class="vault-doc-icon"><svg viewBox="0 0 24 24"><path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg></div>
-            <div>
-              <div class="vault-doc-name">Investor Deck — RU</div>
-              <div class="vault-doc-size">PDF · 291 KB · 2026</div>
-            </div>
-          </div>
-          <div class="vault-doc-desc">Инвестиционная презентация ILACH. Стратегия, рынки, команда, финансовая модель.</div>
-          <div class="vault-doc-footer">
-            <span class="vault-doc-status available">Доступно</span>
-            <button class="vault-view-btn" onclick="openPDF('ILACH_InvestorDeck_2026_RU.pdf','Investor Deck — RU')">
-              <svg viewBox="0 0 24 24"><path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
-              Просмотреть
-            </button>
-          </div>
+      <!-- Read counter stats -->
+      <div class="sidebar-stats">
+        <div class="stat-row">
+          <span class="stat-lbl">Просмотров сегодня</span>
+          <span class="stat-val" id="stat-today">—</span>
         </div>
-
-        <div class="vault-doc">
-          <div class="vault-doc-head">
-            <div class="vault-doc-icon"><svg viewBox="0 0 24 24"><path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg></div>
-            <div>
-              <div class="vault-doc-name">Investor Deck — EN</div>
-              <div class="vault-doc-size">PDF · 279 KB · 2026</div>
-            </div>
-          </div>
-          <div class="vault-doc-desc">ILACH investment presentation. Strategy, markets, team, financial model.</div>
-          <div class="vault-doc-footer">
-            <span class="vault-doc-status available">Available</span>
-            <button class="vault-view-btn" onclick="openPDF('ILACH_InvestorDeck_2026_EN.pdf','Investor Deck — EN')">
-              <svg viewBox="0 0 24 24"><path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
-              View
-            </button>
-          </div>
+        <div class="stat-row">
+          <span class="stat-lbl">Всего просмотров</span>
+          <span class="stat-val" id="stat-total">—</span>
         </div>
-
-        <div class="vault-doc">
-          <div class="vault-doc-head">
-            <div class="vault-doc-icon"><svg viewBox="0 0 24 24"><path d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg></div>
-            <div>
-              <div class="vault-doc-name">Финансовая модель</div>
-              <div class="vault-doc-size">По запросу</div>
-            </div>
-          </div>
-          <div class="vault-doc-desc">Детальная финансовая модель с прогнозами выручки и сценарным анализом.</div>
-          <div class="vault-doc-footer">
-            <span class="vault-doc-status soon">Скоро</span>
-            <button class="vault-view-btn" style="background:#aaa;cursor:default;" disabled>Недоступно</button>
-          </div>
+        <div class="stat-row">
+          <span class="stat-lbl">Уникальных сессий</span>
+          <span class="stat-val" id="stat-sessions">—</span>
         </div>
+      </div>
 
-        <div class="vault-doc">
-          <div class="vault-doc-head">
-            <div class="vault-doc-icon"><svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/></svg></div>
-            <div>
-              <div class="vault-doc-name">Due Diligence Pack</div>
-              <div class="vault-doc-size">После NDA</div>
-            </div>
-          </div>
-          <div class="vault-doc-desc">Полный пакет документов: юридические, финансовые, регуляторные материалы.</div>
-          <div class="vault-doc-footer">
-            <span class="vault-doc-status soon">После NDA</span>
-            <button class="vault-view-btn" style="background:#aaa;cursor:default;" disabled>Недоступно</button>
-          </div>
-        </div>
+      <div class="sidebar-section">
+        <div class="sidebar-section-title">01 · Госзакупки РФ</div>
+        <a class="sidebar-link" onclick="openDoc('01-goszakupki-rf.html','Анализ госзакупок РФ','Отменённые торги · 2023–2024','blue','01')">
+          <span class="sl-num">01</span><span class="sl-text">Анализ госзакупок РФ</span>
+        </a>
+        <a class="sidebar-link" onclick="openDoc('01a-metodologiya-portfelya.html','Методология портфеля','Верификация · Источники','blue','01a')">
+          <span class="sl-num">01a</span><span class="sl-text">Методология портфеля</span>
+        </a>
+      </div>
 
+      <div class="sidebar-section">
+        <div class="sidebar-section-title">02 · Анализ МНН</div>
+        <a class="sidebar-link" onclick="openDoc('02-analiz-mnn.html','Анализ МНН и рынка','Детальный анализ по МНН','green','02')">
+          <span class="sl-num">02</span><span class="sl-text">Анализ МНН и рынка</span>
+        </a>
+        <a class="sidebar-link" onclick="openDoc('02a-verifikaciya-eis.html','Верификация ЕИС','Данные с zakupki.gov.ru','green','02a')">
+          <span class="sl-num">02a</span><span class="sl-text">Верификация ЕИС</span>
+        </a>
+        <a class="sidebar-link" onclick="openDoc('02b-sverka-finmodeli.html','Сверка финансовой модели','Расчёты и проверка','green','02b')">
+          <span class="sl-num">02b</span><span class="sl-text">Сверка финансовой модели</span>
+        </a>
+      </div>
+
+      <div class="sidebar-section">
+        <div class="sidebar-section-title">03 · Продуктовый анализ</div>
+        <a class="sidebar-link" onclick="openDoc('03-1-terlipressin.html','Терлипрессин','Гепаторенальный синдром','purple','03-1')">
+          <span class="sl-num">03.1</span><span class="sl-text">Терлипрессин</span>
+        </a>
+        <a class="sidebar-link" onclick="openDoc('03-2-palonosetron.html','Палоносетрон','Противорвотное (онко)','purple','03-2')">
+          <span class="sl-num">03.2</span><span class="sl-text">Палоносетрон</span>
+        </a>
+        <a class="sidebar-link" onclick="openDoc('03-3-parikalcitol.html','Парикальцитол','Вторичный гиперпаратиреоз','purple','03-3')">
+          <span class="sl-num">03.3</span><span class="sl-text">Парикальцитол</span>
+        </a>
+        <a class="sidebar-link" onclick="openDoc('03-4-metotreksat.html','Метотрексат','Онкология / ревматология','purple','03-4')">
+          <span class="sl-num">03.4</span><span class="sl-text">Метотрексат</span>
+        </a>
+        <a class="sidebar-link" onclick="openDoc('03-5-emedastin.html','Эмедастин','Аллергический конъюнктивит','purple','03-5')">
+          <span class="sl-num">03.5</span><span class="sl-text">Эмедастин</span>
+        </a>
+        <a class="sidebar-link" onclick="openDoc('03-6-kapecitabin.html','Капецитабин (Kapeda)','Онкология · госпитальный сегмент','purple','03-6')">
+          <span class="sl-num">03.6</span><span class="sl-text">Капецитабин (Kapeda)</span>
+        </a>
       </div>
     </div>
 
-    <div style="background:rgba(212,160,23,0.06);border:1px solid rgba(212,160,23,0.2);border-radius:12px;padding:16px 20px;display:flex;gap:12px;align-items:flex-start;">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#92700a" stroke-width="2" style="flex-shrink:0;margin-top:1px;"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
-      <p style="font-size:13px;color:#7a5c00;line-height:1.65;">Доступ к этой странице предоставляется индивидуально. Для получения финансовой модели, бизнес-плана и Due Diligence Pack свяжитесь с командой ILACH. <a href="index.html#contact" style="color:var(--g600);font-weight:600;">Запросить доступ →</a></p>
+    <!-- Main content -->
+    <div class="vault-main" id="vault-main">
+      <div class="vault-welcome">
+        <div class="vault-welcome-icon">
+          <svg viewBox="0 0 24 24"><path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+        </div>
+        <h2>Выберите документ</h2>
+        <p>Используйте боковое меню для навигации по аналитическим материалам ILACH. Все просмотры фиксируются в системе.</p>
+      </div>
     </div>
 
-  </div>
-</div>
-
-<!-- ── PDF MODAL ──────────────────────────────────────────────────── -->
-<div id="pdf-modal" class="pdf-modal">
-  <div class="pdf-modal-inner">
-    <div class="pdf-modal-bar">
-      <span class="pdf-modal-title" id="pdf-modal-title">Документ</span>
-      <button class="pdf-modal-close" onclick="closePDF()">✕</button>
-    </div>
-    <div class="pdf-modal-warn">
-      <svg viewBox="0 0 24 24"><path d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
-      Конфиденциально. Скачивание и копирование запрещены.
-    </div>
-    <div class="pdf-modal-body">
-      <iframe id="pdf-frame" src="" title="Document Viewer"></iframe>
-    </div>
   </div>
 </div>
 
 <script>
-// ── Config ──────────────────────────────────────────────────────────
-// Пароли: можно добавить несколько для разных инвесторов
+// ── Config ─────────────────────────────────────────────────────────
 const PASSWORDS = {
-  'ILACH2026':    'Investor',
-  'PARTNER2026':  'Partner',
+  'ILACH2026':   'Investor',
+  'PARTNER2026': 'Partner',
+  'ANALYST2026': 'Analyst',
 };
-
 const MAX_ATTEMPTS = 5;
-const LOCKOUT_MS   = 10 * 60 * 1000; // 10 минут
+const LOCKOUT_MIN  = 10;
 
-// ── State ───────────────────────────────────────────────────────────
-let attempts = parseInt(sessionStorage.getItem('vault_attempts') || '0');
-let lockedUntil = parseInt(sessionStorage.getItem('vault_locked') || '0');
+// ── Counters (stored in localStorage — shared on same device) ──────
+// For real cross-device stats, you'd need a backend.
+// We use localStorage + a unique session ID to track unique sessions.
+function getStats() {
+  try { return JSON.parse(localStorage.getItem('vault_stats') || '{}'); } catch { return {}; }
+}
+function saveStats(s) { localStorage.setItem('vault_stats', JSON.stringify(s)); }
 
-// ── Init ────────────────────────────────────────────────────────────
+function recordView(docId) {
+  const s = getStats();
+  const today = new Date().toISOString().slice(0,10);
+  s.total = (s.total || 0) + 1;
+  s.today_date = s.today_date || '';
+  if (s.today_date !== today) { s.today = 0; s.today_date = today; }
+  s.today = (s.today || 0) + 1;
+  const sid = sessionStorage.getItem('vault_session_id');
+  s.sessions = s.sessions || {};
+  s.sessions[sid] = true;
+  s.docs = s.docs || {};
+  s.docs[docId] = (s.docs[docId] || 0) + 1;
+  saveStats(s);
+  updateStatDisplay();
+}
+
+function updateStatDisplay() {
+  const s = getStats();
+  const today = new Date().toISOString().slice(0,10);
+  const todayCount = s.today_date === today ? (s.today || 0) : 0;
+  document.getElementById('stat-today').textContent = todayCount;
+  document.getElementById('stat-total').textContent = s.total || 0;
+  document.getElementById('stat-sessions').textContent = Object.keys(s.sessions||{}).length;
+}
+
+// ── Session ID ──────────────────────────────────────────────────────
+function ensureSession() {
+  if (!sessionStorage.getItem('vault_session_id')) {
+    sessionStorage.setItem('vault_session_id', 'sid_' + Date.now() + '_' + Math.random().toString(36).slice(2,8));
+  }
+}
+
+// ── Auth ────────────────────────────────────────────────────────────
+let attempts = parseInt(sessionStorage.getItem('v_att') || '0');
+let lockedUntil = parseInt(sessionStorage.getItem('v_lock') || '0');
+
 window.addEventListener('load', () => {
+  ensureSession();
   if (sessionStorage.getItem('vault_auth') === 'ok') {
     showVault(sessionStorage.getItem('vault_role') || 'Investor');
   }
-  // Enter key
-  document.getElementById('vault-password').addEventListener('keydown', e => {
+  document.getElementById('vault-pw').addEventListener('keydown', e => {
     if (e.key === 'Enter') tryLogin();
   });
 });
 
-// ── Login ───────────────────────────────────────────────────────────
 function tryLogin() {
   const now = Date.now();
-
-  // Check lockout
   if (lockedUntil > now) {
     const mins = Math.ceil((lockedUntil - now) / 60000);
-    showError(`Доступ заблокирован. Попробуйте через ${mins} мин.`);
+    showErr('Заблокировано. Попробуйте через ' + mins + ' мин.');
     return;
   }
-
-  const pwd = document.getElementById('vault-password').value.trim();
+  const pwd = document.getElementById('vault-pw').value.trim();
   const role = PASSWORDS[pwd];
-
   if (role) {
     sessionStorage.setItem('vault_auth', 'ok');
     sessionStorage.setItem('vault_role', role);
-    sessionStorage.removeItem('vault_attempts');
-    sessionStorage.removeItem('vault_locked');
+    sessionStorage.removeItem('v_att');
+    sessionStorage.removeItem('v_lock');
     attempts = 0;
     showVault(role);
   } else {
     attempts++;
-    sessionStorage.setItem('vault_attempts', attempts);
-
+    sessionStorage.setItem('v_att', attempts);
     if (attempts >= MAX_ATTEMPTS) {
-      lockedUntil = now + LOCKOUT_MS;
-      sessionStorage.setItem('vault_locked', lockedUntil);
-      showError('Слишком много попыток. Доступ заблокирован на 10 минут.');
-      document.getElementById('attempts-info').textContent = '';
+      lockedUntil = now + LOCKOUT_MIN * 60000;
+      sessionStorage.setItem('v_lock', lockedUntil);
+      showErr('Слишком много попыток. Блокировка на ' + LOCKOUT_MIN + ' мин.');
     } else {
-      const left = MAX_ATTEMPTS - attempts;
-      showError('Неверный пароль. Попробуйте ещё раз.');
-      document.getElementById('attempts-info').textContent =
-        `Осталось попыток: ${left}`;
+      showErr('Неверный пароль.');
+      document.getElementById('login-hint').textContent = 'Осталось попыток: ' + (MAX_ATTEMPTS - attempts);
     }
-    document.getElementById('vault-password').value = '';
+    document.getElementById('vault-pw').value = '';
   }
 }
 
-function showError(msg) {
+function showErr(msg) {
   const el = document.getElementById('login-error');
   el.textContent = msg;
   el.classList.add('show');
@@ -386,17 +372,21 @@ function showError(msg) {
 function showVault(role) {
   document.getElementById('login-screen').style.display = 'none';
   document.getElementById('vault-content').style.display = 'block';
-  document.getElementById('vault-session-info').textContent = role + ' · Сессия активна';
+  document.getElementById('vb-session').textContent = role + ' · ' + new Date().toLocaleTimeString('ru', {hour:'2-digit',minute:'2-digit'});
+  document.getElementById('wm').textContent = 'CONFIDENTIAL · ILACH · ' + role.toUpperCase();
 
-  // Watermark with role
-  document.getElementById('watermark').textContent = 'CONFIDENTIAL · ILACH · ' + role.toUpperCase();
+  // Register this session in stats
+  const s = getStats();
+  const sid = sessionStorage.getItem('vault_session_id');
+  s.sessions = s.sessions || {};
+  s.sessions[sid] = true;
+  saveStats(s);
+  updateStatDisplay();
 
-  // Disable right-click and keyboard shortcuts
+  // Security
   document.addEventListener('contextmenu', e => e.preventDefault());
   document.addEventListener('keydown', e => {
-    if ((e.ctrlKey || e.metaKey) && ['s','p','a','c'].includes(e.key.toLowerCase())) {
-      e.preventDefault();
-    }
+    if ((e.ctrlKey||e.metaKey) && ['s','p','a','c','u'].includes(e.key.toLowerCase())) e.preventDefault();
     if (e.key === 'PrintScreen') e.preventDefault();
   });
 }
@@ -404,28 +394,61 @@ function showVault(role) {
 function logout() {
   sessionStorage.removeItem('vault_auth');
   sessionStorage.removeItem('vault_role');
-  window.location.reload();
+  location.reload();
 }
 
-// ── PDF Viewer ───────────────────────────────────────────────────────
-function openPDF(file, title) {
-  document.getElementById('pdf-modal-title').textContent = title;
-  // Append #toolbar=0&navpanes=0 to hide download button in browser
-  document.getElementById('pdf-frame').src = file + '#toolbar=0&navpanes=0&scrollbar=1&view=FitH';
-  document.getElementById('pdf-modal').classList.add('open');
-  document.body.style.overflow = 'hidden';
+// ── Document viewer ─────────────────────────────────────────────────
+let currentDoc = null;
+
+function openDoc(file, title, subtitle, tag, docId) {
+  // Update sidebar active state
+  document.querySelectorAll('.sidebar-link').forEach(l => l.classList.remove('active'));
+  event.currentTarget.classList.add('active');
+
+  currentDoc = docId;
+
+  // Record view
+  recordView(docId);
+
+  // Get stats for this doc
+  const s = getStats();
+  const docViews = (s.docs && s.docs[docId]) || 1;
+
+  // Build viewer
+  const main = document.getElementById('vault-main');
+  const tagColors = {
+    blue: '#dbeafe;color:#1e40af',
+    green: '#eef8f3;color:#1e5537',
+    purple: '#ede9fe;color:#5b21b6',
+  };
+  const tc = tagColors[tag] || tagColors.green;
+
+  main.innerHTML = `
+    <div class="doc-header">
+      <div class="doc-title-wrap">
+        <span class="doc-tag ${tag}" style="background:${tc.split(';')[0].replace('background:','')};color:${tc.split('color:')[1]}">Документ ${docId.toUpperCase()}</span>
+        <div class="doc-title">${title}</div>
+        <div class="doc-meta">${subtitle} · ILACH · Confidential</div>
+      </div>
+      <div class="doc-read-badge">
+        <svg viewBox="0 0 24 24"><path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
+        Просмотрен ${docViews} ${plural(docViews, 'раз', 'раза', 'раз')}
+      </div>
+    </div>
+    <div class="doc-frame-wrap">
+      <iframe src="${file}" title="${title}" sandbox="allow-scripts allow-same-origin" referrerpolicy="no-referrer"></iframe>
+    </div>
+  `;
 }
 
-function closePDF() {
-  document.getElementById('pdf-modal').classList.remove('open');
-  document.getElementById('pdf-frame').src = '';
-  document.body.style.overflow = '';
+function plural(n, a, b, c) {
+  const m = n % 100;
+  if (m >= 11 && m <= 19) return c;
+  const m2 = n % 10;
+  if (m2 === 1) return a;
+  if (m2 >= 2 && m2 <= 4) return b;
+  return c;
 }
-
-// Close modal on backdrop click
-document.getElementById('pdf-modal').addEventListener('click', function(e) {
-  if (e.target === this) closePDF();
-});
 </script>
 </body>
 </html>
