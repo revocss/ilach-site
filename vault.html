@@ -73,6 +73,22 @@ html,body{height:100%;font-family:var(--font-body);background:var(--g900);overfl
 .vault-notice svg{width:14px;height:14px;stroke:#d4a017;fill:none;stroke-width:2;flex-shrink:0;}
 .vault-notice p{font-size:12px;color:#92700a;line-height:1.5;}
 
+/* ── ANTI-COPY ─────────────────────────────────────────────────────── */
+#vault-content{
+  -webkit-user-select:none;
+  -moz-user-select:none;
+  -ms-user-select:none;
+  user-select:none;
+}
+/* Cursor shows normal but selection blocked */
+#vault-content *{cursor:default;}
+#vault-content a, #vault-content button{cursor:pointer;}
+/* Block iframe pointer events so text inside can't be selected */
+.doc-frame-wrap iframe{
+  pointer-events:none;
+  -webkit-user-select:none;
+  user-select:none;
+}
 /* Watermark */
 .wm{position:fixed;inset:0;pointer-events:none;z-index:9;display:flex;align-items:center;justify-content:center;opacity:0.04;transform:rotate(-28deg);font-family:var(--font-head);font-size:52px;font-weight:700;color:var(--g600);white-space:nowrap;letter-spacing:6px;}
 
@@ -287,17 +303,28 @@ function getStats() {
 function saveStats(s) { localStorage.setItem('vault_stats', JSON.stringify(s)); }
 
 function recordView(docId) {
+  // Count only once per session per document
+  const sessionKey = 'viewed_' + docId;
+  const alreadySeen = sessionStorage.getItem(sessionKey);
+
   const s = getStats();
   const today = new Date().toISOString().slice(0,10);
-  s.total = (s.total || 0) + 1;
-  s.today_date = s.today_date || '';
-  if (s.today_date !== today) { s.today = 0; s.today_date = today; }
-  s.today = (s.today || 0) + 1;
+
+  if (!alreadySeen) {
+    // First time in this session — increment counters
+    s.total = (s.total || 0) + 1;
+    if (s.today_date !== today) { s.today = 0; s.today_date = today; }
+    s.today = (s.today || 0) + 1;
+    s.docs = s.docs || {};
+    s.docs[docId] = (s.docs[docId] || 0) + 1;
+    sessionStorage.setItem(sessionKey, '1');
+    saveStats(s);
+  }
+
+  // Always track session
   const sid = sessionStorage.getItem('vault_session_id');
   s.sessions = s.sessions || {};
   s.sessions[sid] = true;
-  s.docs = s.docs || {};
-  s.docs[docId] = (s.docs[docId] || 0) + 1;
   saveStats(s);
   updateStatDisplay();
 }
@@ -383,10 +410,17 @@ function showVault(role) {
   saveStats(s);
   updateStatDisplay();
 
-  // Security
+  // Security — comprehensive copy protection
   document.addEventListener('contextmenu', e => e.preventDefault());
+  document.addEventListener('copy',  e => { e.preventDefault(); return false; });
+  document.addEventListener('cut',   e => { e.preventDefault(); return false; });
+  document.addEventListener('selectstart', e => {
+    if (!e.target.closest('input,textarea')) e.preventDefault();
+  });
+  document.addEventListener('dragstart', e => e.preventDefault());
   document.addEventListener('keydown', e => {
-    if ((e.ctrlKey||e.metaKey) && ['s','p','a','c','u'].includes(e.key.toLowerCase())) e.preventDefault();
+    const k = e.key.toLowerCase();
+    if ((e.ctrlKey || e.metaKey) && ['s','p','a','c','u','x','j'].includes(k)) e.preventDefault();
     if (e.key === 'PrintScreen') e.preventDefault();
   });
 }
