@@ -107,8 +107,14 @@ html,body{height:100%;font-family:var(--font-body);background:var(--g900);overfl
 .doc-views svg{width:12px;height:12px;stroke:var(--g500);fill:none;stroke-width:2;}
 
 /* iframe */
-.doc-frame{flex:1;overflow:hidden;}
+.doc-frame{flex:1;overflow:hidden;position:relative;}
 .doc-frame iframe{width:100%;height:100%;border:none;display:block;}
+/* Transparent overlay blocks mouse selection but passes scroll events */
+.doc-frame-overlay{
+  position:absolute;inset:0;z-index:10;
+  background:transparent;
+  cursor:default;
+}
 
 /* Welcome */
 .vault-welcome{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:40px;text-align:center;}
@@ -336,6 +342,10 @@ function openDoc(file,title,subtitle,tag,docId){
     </div>
     <div class="doc-frame">
       <iframe src="${file}" title="${title}"></iframe>
+      <div class="doc-frame-overlay"
+           onwheel="this.previousElementSibling.contentWindow.scrollBy(0, event.deltaY); event.preventDefault();"
+           oncontextmenu="return false;">
+      </div>
     </div>
   `;
 }
