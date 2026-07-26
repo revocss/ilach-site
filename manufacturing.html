@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Производство | ILACH</title>
+<meta name="description" content="ILACH — фармацевтическое производство полного цикла в Турции. Синтез АФС, GMP, рынки ЕАЭС.">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+PHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iNyIgZmlsbD0iIzFlNTUzNyIvPjxjaXJjbGUgY3g9IjE2IiBjeT0iNy41IiByPSIyLjgiIGZpbGw9IiM2ZGM0OTYiLz48cmVjdCB4PSIxMy4yIiB5PSIxMiIgd2lkdGg9IjUuNiIgaGVpZ2h0PSIxMyIgcng9IjIuMiIgZmlsbD0id2hpdGUiLz48L3N2Zz4=">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Syne:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{--g900:#061810;--g800:#0d2b1c;--g700:#153d28;--g600:#1e5537;--g500:#2a7a4f;--g400:#3ea86e;--g300:#6dc496;--g50:#eef8f3;--g100:#d6f0e3;--text:#0d1f16;--text2:#2e4d3a;--text3:#5a7a66;--border:#ddeee5;--surface:#f5fbf7;--white:#ffffff;--font-head:'Syne',sans-serif;--font-body:'Inter',sans-serif;}
+html{scroll-behavior:smooth;}body{font-family:var(--font-body);background:var(--white);color:var(--text);font-size:15px;line-height:1.7;overflow-x:hidden;}
+nav{position:fixed;top:0;left:0;right:0;z-index:200;height:64px;display:flex;align-items:center;justify-content:space-between;padding:0 48px;background:rgba(6,24,16,0.96);backdrop-filter:blur(16px);border-bottom:1px solid rgba(62,168,110,0.12);}
+.nav-brand{display:flex;align-items:center;gap:12px;text-decoration:none;}
+.nav-mark{width:32px;height:32px;border-radius:6px;background:var(--g500);display:flex;align-items:center;justify-content:center;font-family:var(--font-head);font-size:16px;font-weight:700;color:var(--white);}
+.nav-name{font-family:var(--font-head);font-size:14px;font-weight:600;color:var(--white);letter-spacing:2px;}
+.nav-center{display:flex;gap:4px;}
+.nav-center a{color:rgba(255,255,255,0.6);text-decoration:none;font-size:13px;padding:6px 14px;border-radius:6px;transition:all 0.2s;}
+.nav-center a:hover{color:var(--white);background:rgba(255,255,255,0.08);}
+.nav-center a.active{color:var(--g300);background:rgba(62,168,110,0.15);}
+.nav-right{display:flex;align-items:center;gap:12px;}
+.lang-switch{display:flex;align-items:center;gap:2px;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);border-radius:8px;padding:3px;}
+.lang-btn{padding:5px 12px;border-radius:6px;font-size:12px;font-weight:600;cursor:pointer;border:none;background:transparent;color:rgba(255,255,255,0.45);transition:all 0.2s;}
+.lang-btn.active{background:var(--g500);color:var(--white);}
+.nav-cta{background:var(--g500);color:var(--white);padding:8px 20px;border-radius:8px;font-size:13px;font-weight:500;text-decoration:none;transition:background 0.2s;}
+.nav-cta:hover{background:var(--g400);}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;border:none;background:transparent;z-index:300;}
+.hamburger span{display:block;width:22px;height:2px;background:var(--white);border-radius:2px;transition:all 0.3s ease;}
+.hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+.hamburger.open span:nth-child(2){opacity:0;}
+.hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+.mobile-menu{display:none;position:fixed;top:64px;left:0;right:0;bottom:0;background:rgba(6,24,16,0.98);backdrop-filter:blur(20px);z-index:150;flex-direction:column;padding:32px 28px;gap:8px;overflow-y:auto;transform:translateX(100%);transition:transform 0.3s cubic-bezier(0.4,0,0.2,1);}
+.mobile-menu.open{transform:translateX(0);}
+.mobile-menu a{color:rgba(255,255,255,0.75);text-decoration:none;font-size:18px;font-weight:500;font-family:var(--font-head);padding:16px 0;border-bottom:1px solid rgba(255,255,255,0.08);display:flex;align-items:center;justify-content:space-between;transition:color 0.2s;}
+.mobile-menu a:hover,.mobile-menu a.active{color:var(--g400);}
+.mobile-menu-footer{margin-top:auto;padding-top:24px;display:flex;flex-direction:column;gap:12px;}
+.mobile-menu-cta{background:var(--g500);color:var(--white);padding:15px;border-radius:10px;font-size:15px;font-weight:600;text-decoration:none;display:flex;align-items:center;justify-content:center;width:100%;box-sizing:border-box;}
+.mobile-lang{display:flex;gap:8px;}
+.mobile-lang button{flex:1;padding:10px;border-radius:8px;font-size:14px;font-weight:600;cursor:pointer;border:1.5px solid rgba(255,255,255,0.15);background:transparent;color:rgba(255,255,255,0.5);transition:all 0.2s;font-family:var(--font-body);}
+.mobile-lang button.active{background:var(--g500);border-color:var(--g500);color:var(--white);}
+@media(max-width:768px){nav{padding:0 18px;height:60px;}.nav-center,.nav-right .lang-switch,.nav-right .nav-cta{display:none;}.hamburger{display:flex;}.mobile-menu{display:flex;}}
+
+/* Hero */
+.hero{background:var(--g900);padding:110px 48px 80px;position:relative;overflow:hidden;}
+.hero-dots{position:absolute;inset:0;background-image:radial-gradient(circle,rgba(62,168,110,0.1) 1px,transparent 1px);background-size:28px 28px;}
+.hero-inner{position:relative;z-index:2;max-width:760px;}
+.hero-pill{display:inline-flex;align-items:center;gap:8px;background:rgba(62,168,110,0.1);border:1px solid rgba(62,168,110,0.2);padding:6px 14px;border-radius:100px;margin-bottom:24px;}
+.hero-dot{width:6px;height:6px;border-radius:50%;background:var(--g400);animation:pulse 2s infinite;}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.4}}
+.hero-pill-txt{font-size:12px;font-weight:500;color:var(--g300);}
+.hero h1{font-family:var(--font-head);font-size:clamp(36px,5vw,60px);font-weight:700;color:var(--white);line-height:1.08;margin-bottom:20px;letter-spacing:-1.5px;}
+.hero h1 span{color:var(--g400);}
+.hero-desc{font-size:17px;color:rgba(255,255,255,0.5);line-height:1.75;max-width:600px;}
+
+/* Sections */
+section{padding:80px 48px;}
+.sl{font-size:11px;letter-spacing:2.5px;text-transform:uppercase;color:var(--g500);font-weight:600;margin-bottom:14px;}
+h2{font-family:var(--font-head);font-size:clamp(26px,3vw,40px);font-weight:700;line-height:1.1;color:var(--text);margin-bottom:16px;letter-spacing:-0.8px;}
+h2 span{color:var(--g500);}
+.lead{font-size:15px;color:var(--text3);max-width:620px;line-height:1.8;margin-bottom:32px;}
+.dark-sec{background:var(--g900);}
+.dark-sec .sl{color:var(--g400);}
+.dark-sec h2{color:var(--white);}
+.dark-sec h2 span{color:var(--g400);}
+.dark-sec .lead{color:rgba(255,255,255,0.5);}
+
+/* KPI bar */
+.kpi-bar{background:rgba(255,255,255,0.04);border:1px solid rgba(62,168,110,0.15);border-radius:16px;padding:32px;display:grid;grid-template-columns:repeat(4,1fr);gap:24px;margin-bottom:48px;}
+.kpi-item{text-align:center;}
+.kpi-num{font-family:var(--font-head);font-size:28px;font-weight:700;color:var(--g300);line-height:1;margin-bottom:6px;}
+.kpi-lbl{font-size:11px;color:rgba(255,255,255,0.4);line-height:1.4;}
+
+/* Scenarios */
+.scenario-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:32px;}
+.sc-card{border-radius:14px;padding:24px;border:1px solid;}
+.sc-card.rec{background:rgba(62,168,110,0.08);border-color:rgba(62,168,110,0.3);}
+.sc-card.neutral{background:rgba(255,255,255,0.04);border-color:rgba(255,255,255,0.1);}
+.sc-tag{display:inline-flex;padding:3px 10px;border-radius:5px;font-size:10px;font-weight:700;letter-spacing:1px;margin-bottom:12px;}
+.sc-tag.rec{background:rgba(62,168,110,0.2);color:var(--g300);}
+.sc-tag.neutral{background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.5);}
+.sc-name{font-family:var(--font-head);font-size:16px;font-weight:700;color:var(--white);margin-bottom:4px;}
+.sc-sub{font-size:12px;color:rgba(255,255,255,0.4);margin-bottom:16px;}
+.sc-metric{display:flex;justify-content:space-between;margin-bottom:8px;}
+.sc-metric-lbl{font-size:12px;color:rgba(255,255,255,0.45);}
+.sc-metric-val{font-size:12px;font-weight:600;color:var(--g300);}
+.sc-metric-val.dim{color:rgba(255,255,255,0.35);}
+
+/* Pipeline */
+.pipeline{display:flex;align-items:center;gap:0;margin-top:32px;flex-wrap:wrap;}
+.pipe-step{flex:1;min-width:130px;background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:18px 14px;text-align:center;}
+.pipe-arrow{font-size:20px;color:var(--g400);padding:0 6px;flex-shrink:0;}
+.pipe-num{font-size:10px;font-weight:700;letter-spacing:2px;color:var(--g500);margin-bottom:6px;}
+.pipe-name{font-size:12px;font-weight:600;color:var(--text);}
+
+/* Production types */
+.prod-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:32px;}
+.prod-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:22px;}
+.prod-icon{width:38px;height:38px;border-radius:9px;background:var(--g50);display:flex;align-items:center;justify-content:center;margin-bottom:12px;}
+.prod-icon svg{width:18px;height:18px;stroke:var(--g500);fill:none;stroke-width:1.8;}
+.prod-title{font-size:14px;font-weight:600;color:var(--text);margin-bottom:6px;}
+.prod-desc{font-size:12px;color:var(--text3);line-height:1.6;}
+
+/* Timeline */
+.timeline{position:relative;padding-left:32px;margin-top:32px;}
+.timeline::before{content:'';position:absolute;left:10px;top:0;bottom:0;width:2px;background:rgba(62,168,110,0.2);}
+.tl-item{position:relative;margin-bottom:28px;}
+.tl-dot{position:absolute;left:-26px;top:4px;width:12px;height:12px;border-radius:50%;border:2px solid var(--g400);background:var(--g900);}
+.tl-dot.filled{background:var(--g400);}
+.tl-year{font-size:11px;font-weight:700;color:var(--g400);letter-spacing:1px;margin-bottom:4px;}
+.tl-text{font-size:13px;color:rgba(255,255,255,0.6);line-height:1.6;}
+
+/* CTA */
+.cta-sec{background:linear-gradient(135deg,var(--g800),var(--g900));border-top:1px solid rgba(62,168,110,0.15);}
+.cta-inner{max-width:680px;margin:0 auto;text-align:center;}
+.cta-title{font-family:var(--font-head);font-size:clamp(28px,4vw,44px);font-weight:700;color:var(--white);margin-bottom:16px;letter-spacing:-1px;}
+.cta-desc{font-size:16px;color:rgba(255,255,255,0.5);line-height:1.75;margin-bottom:32px;}
+.cta-row{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;}
+.cta-btn{display:inline-flex;align-items:center;gap:10px;background:var(--g500);color:var(--white);padding:16px 36px;border-radius:12px;font-size:15px;font-weight:600;text-decoration:none;transition:background 0.2s;}
+.cta-btn:hover{background:var(--g400);}
+.cta-btn-outline{display:inline-flex;align-items:center;gap:10px;background:transparent;color:var(--g300);padding:15px 32px;border-radius:12px;font-size:15px;font-weight:600;text-decoration:none;border:1.5px solid rgba(62,168,110,0.35);transition:all 0.2s;}
+.cta-btn-outline:hover{border-color:var(--g400);background:rgba(62,168,110,0.08);}
+
+/* Footer */
+footer{background:var(--g900);padding:40px 48px;border-top:1px solid rgba(255,255,255,0.06);}
+
+@media(max-width:768px){
+  .hero{padding:80px 20px 60px;}
+  section{padding:56px 20px;}
+  .kpi-bar{grid-template-columns:repeat(2,1fr);}
+  .scenario-grid,.prod-grid{grid-template-columns:1fr;}
+  .pipeline{flex-direction:column;}
+  .cta-row{flex-direction:column;align-items:center;}
+  footer{padding:28px 20px;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-brand">
+    <div class="nav-mark">İ</div>
+    <span class="nav-name">ILACH</span>
+  </a>
+  <div class="nav-center">
+    <a href="index.html" data-ru="О компании" data-en="About">О компании</a>
+    <a href="biology-infrastructure.html" data-ru="Digital Laboratory" data-en="Digital Laboratory">Digital Laboratory</a>
+    <a href="index.html#invest" data-ru="Инвесторам" data-en="Investors">Инвесторам</a>
+    <a href="analytics.html" data-ru="Аналитика" data-en="Analytics">Аналитика</a>
+    <a href="team.html" data-ru="Команда" data-en="Team">Команда</a>
+    <a href="investment.html" data-ru="Инвестиции" data-en="Investment">Инвестиции</a>
+    <a href="market.html" data-ru="Рынок" data-en="Market">Рынок</a>
+    <a href="manufacturing.html" class="active" data-ru="Производство" data-en="Manufacturing">Производство</a>
+  </div>
+  <div class="nav-right">
+    <div class="lang-switch">
+      <button class="lang-btn active" onclick="setLang('ru',true)">RU</button>
+      <button class="lang-btn" onclick="setLang('en',true)">EN</button>
+    </div>
+    <a href="index.html#contact" class="nav-cta" data-ru="Связаться" data-en="Contact Us">Связаться</a>
+  </div>
+  <button class="hamburger" id="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></button>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html" data-ru="О компании" data-en="About" onclick="closeMobileMenu()">О компании</a>
+  <a href="biology-infrastructure.html" data-ru="Digital Laboratory" data-en="Digital Laboratory" onclick="closeMobileMenu()">Digital Laboratory</a>
+  <a href="index.html#invest" data-ru="Инвесторам" data-en="Investors" onclick="closeMobileMenu()">Инвесторам</a>
+  <a href="analytics.html" data-ru="Аналитика" data-en="Analytics" onclick="closeMobileMenu()">Аналитика</a>
+  <a href="team.html" data-ru="Команда" data-en="Team" onclick="closeMobileMenu()">Команда</a>
+  <a href="investment.html" data-ru="Инвестиции" data-en="Investment" onclick="closeMobileMenu()">Инвестиции</a>
+  <a href="market.html" data-ru="Рынок" data-en="Market" onclick="closeMobileMenu()">Рынок</a>
+  <a href="manufacturing.html" class="active" data-ru="Производство" data-en="Manufacturing" onclick="closeMobileMenu()">Производство</a>
+  <div class="mobile-menu-footer">
+    <div class="mobile-lang">
+      <button class="lang-btn active" id="mob-ru" onclick="setLang('ru',true);updateMobileLang('ru')">RU</button>
+      <button class="lang-btn" id="mob-en" onclick="setLang('en',true);updateMobileLang('en')">EN</button>
+    </div>
+    <a href="index.html#contact" class="mobile-menu-cta" onclick="closeMobileMenu()">Связаться</a>
+  </div>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-dots"></div>
+  <div class="hero-inner">
+    <div class="hero-pill"><div class="hero-dot"></div><span class="hero-pill-txt" data-ru="Производство · Турция · GMP · ЕАЭС" data-en="Manufacturing · Türkiye · GMP · EAEU">Производство · Турция · GMP · ЕАЭС</span></div>
+    <h1 data-ru="Фармацевтическое<br><span>производство</span>" data-en="Pharmaceutical<br><span>Manufacturing</span>">Фармацевтическое<br><span>производство</span></h1>
+    <p class="hero-desc" data-ru="Завод полного цикла в Турции: синтез АФС, производство готовых лекарственных форм и поставка на рынки ЕАЭС." data-en="Full-cycle plant in Türkiye: API synthesis, finished dosage form manufacturing and supply to EAEU markets.">Завод полного цикла в Турции: синтез АФС, производство готовых лекарственных форм и поставка на рынки ЕАЭС.</p>
+  </div>
+</section>
+
+<!-- KPI -->
+<section class="dark-sec">
+  <div class="sl" data-ru="Ключевые параметры проекта" data-en="Key Project Parameters">Ключевые параметры проекта</div>
+  <h2 data-ru="ТЭО · <span>Brownfield</span> — рекомендованный вариант" data-en="Feasibility Study · <span>Brownfield</span> — recommended">ТЭО · <span>Brownfield</span> — рекомендованный вариант</h2>
+  <div class="kpi-bar">
+    <div class="kpi-item"><div class="kpi-num">$132M</div><div class="kpi-lbl" data-ru="Инвестиции (Brownfield)" data-en="Investment (Brownfield)">Инвестиции (Brownfield)</div></div>
+    <div class="kpi-item"><div class="kpi-num">19.8%</div><div class="kpi-lbl" data-ru="IRR (23.1% с терм. стоимостью)" data-en="IRR (23.1% with terminal value)">IRR (23.1% с терм. стоимостью)</div></div>
+    <div class="kpi-item"><div class="kpi-num">$41.5M</div><div class="kpi-lbl" data-ru="NPV проекта" data-en="Project NPV">NPV проекта</div></div>
+    <div class="kpi-item"><div class="kpi-num">10 лет</div><div class="kpi-lbl" data-ru="Дисконтированный срок окупаемости" data-en="Discounted payback period">Дисконтированный срок окупаемости</div></div>
+  </div>
+
+  <!-- Scenarios -->
+  <div class="sl" data-ru="Сравнение сценариев" data-en="Scenario Comparison">Сравнение сценариев</div>
+  <div class="scenario-grid">
+    <div class="sc-card rec">
+      <span class="sc-tag rec" data-ru="✓ РЕКОМЕНДОВАН" data-en="✓ RECOMMENDED">✓ РЕКОМЕНДОВАН</span>
+      <div class="sc-name">Brownfield</div>
+      <div class="sc-sub" data-ru="Приобретение GMP-площадки + модернизация" data-en="Acquisition of GMP facility + upgrade">Приобретение GMP-площадки + модернизация</div>
+      <div class="sc-metric"><span class="sc-metric-lbl">CAPEX</span><span class="sc-metric-val">$132 млн</span></div>
+      <div class="sc-metric"><span class="sc-metric-lbl">IRR</span><span class="sc-metric-val">19.8%</span></div>
+      <div class="sc-metric"><span class="sc-metric-lbl">NPV</span><span class="sc-metric-val">$41.5 млн</span></div>
+      <div class="sc-metric"><span class="sc-metric-lbl">Окупаемость</span><span class="sc-metric-val">10 лет</span></div>
+    </div>
+    <div class="sc-card neutral">
+      <span class="sc-tag neutral" data-ru="АЛЬТЕРНАТИВА" data-en="ALTERNATIVE">АЛЬТЕРНАТИВА</span>
+      <div class="sc-name">Greenfield (поэтапный)</div>
+      <div class="sc-sub" data-ru="Строительство с нуля, этапами" data-en="Phased greenfield construction">Строительство с нуля, этапами</div>
+      <div class="sc-metric"><span class="sc-metric-lbl">CAPEX</span><span class="sc-metric-val dim">~$160 млн</span></div>
+      <div class="sc-metric"><span class="sc-metric-lbl">IRR</span><span class="sc-metric-val dim">~14-15%</span></div>
+      <div class="sc-metric"><span class="sc-metric-lbl">NPV</span><span class="sc-metric-val dim">около 0</span></div>
+      <div class="sc-metric"><span class="sc-metric-lbl">Окупаемость</span><span class="sc-metric-val dim">&gt;12 лет</span></div>
+    </div>
+    <div class="sc-card neutral">
+      <span class="sc-tag neutral" data-ru="НЕ РЕКОМЕНДОВАН" data-en="NOT RECOMMENDED">НЕ РЕКОМЕНДОВАН</span>
+      <div class="sc-name">Greenfield (полный цикл)</div>
+      <div class="sc-sub" data-ru="Полное строительство с нуля" data-en="Full greenfield from scratch">Полное строительство с нуля</div>
+      <div class="sc-metric"><span class="sc-metric-lbl">CAPEX</span><span class="sc-metric-val dim">$210 млн</span></div>
+      <div class="sc-metric"><span class="sc-metric-lbl">IRR</span><span class="sc-metric-val dim">11.2%</span></div>
+      <div class="sc-metric"><span class="sc-metric-lbl">NPV</span><span class="sc-metric-val dim">&lt; 0</span></div>
+      <div class="sc-metric"><span class="sc-metric-lbl">Окупаемость</span><span class="sc-metric-val dim">&gt;17 лет</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCTION TYPES -->
+<section>
+  <div class="sl" data-ru="Производственная программа" data-en="Production Program">Производственная программа</div>
+  <h2 data-ru="Три производственных <span>контура</span>" data-en="Three manufacturing <span>clusters</span>">Три производственных <span>контура</span></h2>
+  <p class="lead" data-ru="Завод объединяет синтез АФС и производство готовых лекарственных форм в рамках единой GMP-площадки в Турции." data-en="The plant combines API synthesis and finished dosage form manufacturing within a single GMP facility in Türkiye.">Завод объединяет синтез АФС и производство готовых лекарственных форм в рамках единой GMP-площадки в Турции.</p>
+  <div class="prod-grid">
+    <div class="prod-card">
+      <div class="prod-icon"><svg viewBox="0 0 24 24"><path d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/></svg></div>
+      <div class="prod-title" data-ru="Общий контур (ГЛФ)" data-en="General Cluster (FDF)">Общий контур (ГЛФ)</div>
+      <p class="prod-desc" data-ru="Стерильные инъекции, твёрдые пероральные формы, офтальмологические препараты. Основной производственный поток для рынков ЕАЭС." data-en="Sterile injectables, solid oral forms, ophthalmic products. Main production flow for EAEU markets.">Стерильные инъекции, твёрдые пероральные формы, офтальмологические препараты.</p>
+    </div>
+    <div class="prod-card">
+      <div class="prod-icon"><svg viewBox="0 0 24 24"><path d="M9 3H5a2 2 0 00-2 2v4m6-6h10a2 2 0 012 2v4M9 3v18m0 0h10a2 2 0 002-2V9M9 21H5a2 2 0 01-2-2V9m0 0h18"/></svg></div>
+      <div class="prod-title" data-ru="Цитотоксический контур" data-en="Cytotoxic Cluster">Цитотоксический контур</div>
+      <p class="prod-desc" data-ru="Изолированное производство онкологических препаратов (Метотрексат, Капецитабин). Защищённая среда OEB4-5, барьерные технологии RABS." data-en="Isolated production of oncology drugs (Methotrexate, Capecitabine). Protected OEB4-5 environment, RABS barrier technologies.">Изолированное производство онкологических препаратов. Защищённая среда OEB4-5, барьерные технологии RABS.</p>
+    </div>
+    <div class="prod-card">
+      <div class="prod-icon"><svg viewBox="0 0 24 24"><path d="M13 10V3L4 14h7v7l9-11h-7z"/></svg></div>
+      <div class="prod-title" data-ru="Пептидный синтез (АФС)" data-en="Peptide Synthesis (API)">Пептидный синтез (АФС)</div>
+      <p class="prod-desc" data-ru="Твердофазный пептидный синтез (SPPS) для производства Терлипрессина и аналогов. Вертикальная интеграция: контроль субстанции внутри периметра." data-en="Solid-phase peptide synthesis (SPPS) for Terlipressin and analogs. Vertical integration: API control within the perimeter.">Твердофазный пептидный синтез (SPPS). Вертикальная интеграция — контроль субстанции внутри периметра.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PIPELINE -->
+<section style="background:var(--surface);">
+  <div class="sl" data-ru="Производственный конвейер" data-en="Production Pipeline">Производственный конвейер</div>
+  <h2 data-ru="От <span>субстанции</span> до рынка" data-en="From <span>API</span> to market">От <span>субстанции</span> до рынка</h2>
+  <div class="pipeline">
+    <div class="pipe-step"><div class="pipe-num">01</div><div class="pipe-name" data-ru="Синтез АФС" data-en="API Synthesis">Синтез АФС</div></div>
+    <div class="pipe-arrow">→</div>
+    <div class="pipe-step"><div class="pipe-num">02</div><div class="pipe-name" data-ru="Контроль качества" data-en="QC / QA">Контроль качества</div></div>
+    <div class="pipe-arrow">→</div>
+    <div class="pipe-step"><div class="pipe-num">03</div><div class="pipe-name" data-ru="Производство ГЛФ" data-en="FDF Manufacturing">Производство ГЛФ</div></div>
+    <div class="pipe-arrow">→</div>
+    <div class="pipe-step"><div class="pipe-num">04</div><div class="pipe-name" data-ru="GMP-сертификация" data-en="GMP Certification">GMP-сертификация</div></div>
+    <div class="pipe-arrow">→</div>
+    <div class="pipe-step"><div class="pipe-num">05</div><div class="pipe-name" data-ru="Рынки ЕАЭС" data-en="EAEU Markets">Рынки ЕАЭС</div></div>
+  </div>
+</section>
+
+<!-- ROADMAP -->
+<section class="dark-sec">
+  <div class="sl" data-ru="Дорожная карта" data-en="Roadmap">Дорожная карта</div>
+  <h2 data-ru="Горизонт <span>2027–2044</span>" data-en="Horizon <span>2027–2044</span>">Горизонт <span>2027–2044</span></h2>
+  <div class="timeline">
+    <div class="tl-item"><div class="tl-dot filled"></div><div class="tl-year">2026–2027</div><div class="tl-text" data-ru="Выбор и приобретение GMP-площадки в Турции. Аудит, переговоры, юридическая структура. Начало модернизации под стандарты ЕАЭС." data-en="Selection and acquisition of GMP facility in Türkiye. Audit, negotiations, legal structure. Start of upgrade to EAEU standards.">Выбор и приобретение GMP-площадки в Турции. Аудит, переговоры, юридическая структура. Начало модернизации под стандарты ЕАЭС.</div></div>
+    <div class="tl-item"><div class="tl-dot"></div><div class="tl-year">2027–2028</div><div class="tl-text" data-ru="Модернизация и валидация производства. Получение GMP-сертификата ЕАЭС и TİTCK. Запуск пробных серий по ключевым МНН портфеля." data-en="Production upgrade and validation. Obtaining EAEU GMP and TİTCK certificates. Launch of pilot batches for key portfolio INNs.">Модернизация и валидация. Получение GMP ЕАЭС и TİTCK. Запуск пробных серий по ключевым МНН.</div></div>
+    <div class="tl-item"><div class="tl-dot"></div><div class="tl-year">2029–2030</div><div class="tl-text" data-ru="Выход на проектную мощность по общему контуру. Старт коммерческих поставок в РФ, РК, РБ. Запуск цитотоксического блока." data-en="Reaching design capacity for general cluster. Start of commercial deliveries to Russia, Kazakhstan, Belarus. Launch of cytotoxic block.">Выход на проектную мощность. Коммерческие поставки в РФ, РК, РБ. Запуск цитотоксического блока.</div></div>
+    <div class="tl-item"><div class="tl-dot"></div><div class="tl-year">2031–2035</div><div class="tl-text" data-ru="Достройка блока пептидного синтеза АФС (Терлипрессин). Вертикальная интеграция. Расширение продуктового портфеля." data-en="Completion of peptide API synthesis block (Terlipressin). Vertical integration. Expansion of product portfolio.">Достройка блока пептидного синтеза АФС. Вертикальная интеграция. Расширение портфеля.</div></div>
+    <div class="tl-item"><div class="tl-dot"></div><div class="tl-year">2036–2044</div><div class="tl-text" data-ru="Выход на полную проектную мощность. Возврат инвестиций. Опцион на развитие Digital Biology и AI Drug Discovery направления." data-en="Full design capacity. Return on investment. Option for Digital Biology and AI Drug Discovery development.">Выход на полную мощность. Возврат инвестиций. Опцион Digital Biology и AI Drug Discovery.</div></div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-sec">
+  <div class="cta-inner">
+    <div class="sl" style="color:var(--g400);" data-ru="Для инвесторов и партнёров" data-en="For investors and partners">Для инвесторов и партнёров</div>
+    <div class="cta-title" data-ru="Запросите <span style='color:var(--g400)'>ТЭО</span>" data-en="Request the <span style='color:var(--g400)'>Feasibility Study</span>">Запросите <span style="color:var(--g400)">ТЭО</span></div>
+    <p class="cta-desc" data-ru="Полное ТЭО на 14 разделов и 39 таблиц доступно в защищённом хранилище документов для квалифицированных инвесторов." data-en="Full feasibility study with 14 sections and 39 tables is available in the secure document vault for qualified investors.">Полное ТЭО на 14 разделов и 39 таблиц доступно в защищённом хранилище для квалифицированных инвесторов.</p>
+    <div class="cta-row">
+      <a href="index.html#contact" class="cta-btn" data-ru="Запросить доступ →" data-en="Request Access →">Запросить доступ →</a>
+      <a href="manufacturing-vault.html" class="cta-btn-outline" data-ru="🔒 Открыть хранилище" data-en="🔒 Open Vault">🔒 Открыть хранилище</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:32px;">
+    <div>
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px;"><div style="width:28px;height:28px;border-radius:6px;background:#1e5537;display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-size:13px;font-weight:700;color:white;">İ</div><span style="font-size:13px;font-weight:600;color:rgba(255,255,255,0.65);letter-spacing:1.5px;font-family:'Syne',sans-serif;">ILACH</span></div>
+      <div style="font-size:12px;color:rgba(255,255,255,0.35);line-height:1.7;margin-bottom:16px;" data-ru="Фармацевтический оператор нового поколения" data-en="Next-generation pharmaceutical operator">Фармацевтический оператор нового поколения</div>
+      <div style="font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,0.25);font-weight:600;margin-bottom:10px;" data-ru="Мы в соцсетях" data-en="Follow us">Мы в соцсетях</div>
+      <div style="display:flex;gap:8px;">
+        <a href="https://t.me/ilachpharma" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:6px;padding:6px 12px;border-radius:7px;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.1);color:rgba(255,255,255,0.6);text-decoration:none;font-size:12px;font-weight:500;">Telegram</a>
+        <a href="https://www.instagram.com/ilachpharma" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:6px;padding:6px 12px;border-radius:7px;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.1);color:rgba(255,255,255,0.6);text-decoration:none;font-size:12px;font-weight:500;">Instagram</a>
+        <a href="https://www.linkedin.com/company/ilach-pharma/" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:6px;padding:6px 12px;border-radius:7px;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.1);color:rgba(255,255,255,0.6);text-decoration:none;font-size:12px;font-weight:500;">LinkedIn</a>
+      </div>
+    </div>
+    <div style="display:flex;gap:40px;flex-wrap:wrap;">
+      <div>
+        <div style="font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-bottom:12px;font-weight:600;" data-ru="Компания" data-en="Company">Компания</div>
+        <div style="display:flex;flex-direction:column;gap:8px;">
+          <a href="index.html" style="color:rgba(255,255,255,0.5);text-decoration:none;font-size:13px;" data-ru="О компании" data-en="About">О компании</a>
+          <a href="team.html" style="color:rgba(255,255,255,0.5);text-decoration:none;font-size:13px;" data-ru="Команда" data-en="Team">Команда</a>
+          <a href="news.html" style="color:rgba(255,255,255,0.5);text-decoration:none;font-size:13px;" data-ru="Новости" data-en="News">Новости</a>
+          <a href="documents.html" style="color:rgba(255,255,255,0.5);text-decoration:none;font-size:13px;" data-ru="Документы" data-en="Documents">Документы</a>
+        </div>
+      </div>
+      <div>
+        <div style="font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-bottom:12px;font-weight:600;" data-ru="Продукт" data-en="Product">Продукт</div>
+        <div style="display:flex;flex-direction:column;gap:8px;">
+          <a href="plans.html" style="color:rgba(255,255,255,0.5);text-decoration:none;font-size:13px;" data-ru="Дорожная карта" data-en="Roadmap">Дорожная карта</a>
+          <a href="analytics.html" style="color:rgba(255,255,255,0.5);text-decoration:none;font-size:13px;" data-ru="Аналитика" data-en="Analytics">Аналитика</a>
+          <a href="biology-infrastructure.html" style="color:rgba(255,255,255,0.5);text-decoration:none;font-size:13px;">Digital Laboratory</a>
+          <a href="manufacturing.html" style="color:rgba(255,255,255,0.5);text-decoration:none;font-size:13px;" data-ru="Производство" data-en="Manufacturing">Производство</a>
+        </div>
+      </div>
+      <div>
+        <div style="font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-bottom:12px;font-weight:600;" data-ru="Инвесторам" data-en="Investors">Инвесторам</div>
+        <div style="display:flex;flex-direction:column;gap:8px;">
+          <a href="investment.html" style="color:rgba(255,255,255,0.5);text-decoration:none;font-size:13px;" data-ru="Инвестиции" data-en="Investment">Инвестиции</a>
+          <a href="documents.html" style="color:rgba(255,255,255,0.5);text-decoration:none;font-size:13px;" data-ru="Документы" data-en="Documents">Документы</a>
+          <a href="index.html#contact" style="color:rgba(255,255,255,0.5);text-decoration:none;font-size:13px;" data-ru="Связаться" data-en="Contact">Связаться</a>
+          <a href="privacy.html" style="color:rgba(255,255,255,0.5);text-decoration:none;font-size:13px;" data-ru="Конфиденциальность" data-en="Privacy">Конфиденциальность</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div style="border-top:1px solid rgba(255,255,255,0.06);padding-top:24px;margin-top:32px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;">
+    <span style="font-size:12px;color:rgba(255,255,255,0.22);"><span data-ru="© ИП Ахметзянов Д.И., 2026 · " data-en="© IE Akhmetzyanov D.I., 2026 · ">© ИП Ахметзянов Д.И., 2026 &nbsp;·&nbsp; </span><a href="privacy.html" style="color:rgba(255,255,255,0.35);text-decoration:none;"><span data-ru="Политика конфиденциальности" data-en="Privacy Policy">Политика конфиденциальности</span></a></span>
+    <span style="font-size:12px;color:rgba(255,255,255,0.2);">i-lach.com</span>
+  </div>
+</footer>
+
+<script>
+function setLang(lang,manual){if(manual)localStorage.setItem('ilach_lang',lang);document.documentElement.lang=lang;document.querySelectorAll('.lang-btn').forEach(b=>b.classList.toggle('active',b.textContent.toLowerCase()===lang));document.querySelectorAll('#mob-ru,#mob-en').forEach(b=>b.classList.toggle('active',b.id==='mob-'+lang));document.querySelectorAll('[data-ru][data-en]').forEach(el=>{const val=el.getAttribute('data-'+lang)||el.getAttribute('data-en');if(!val)return;if(el.tagName==='H1'||el.tagName==='H2')el.innerHTML=val;else el.textContent=val;});}
+function toggleMenu(){const m=document.getElementById('mobileMenu'),b=document.getElementById('hamburger');const open=m.classList.toggle('open');b.classList.toggle('open',open);document.body.style.overflow=open?'hidden':'';}
+function closeMobileMenu(){document.getElementById('mobileMenu').classList.remove('open');document.getElementById('hamburger').classList.remove('open');document.body.style.overflow='';}
+function updateMobileLang(lang){document.getElementById('mob-ru')?.classList.toggle('active',lang==='ru');document.getElementById('mob-en')?.classList.toggle('active',lang==='en');}
+window.addEventListener('resize',()=>{if(window.innerWidth>768)closeMobileMenu();});
+(async function(){const saved=localStorage.getItem('ilach_lang');if(saved==='ru'||saved==='en'){setLang(saved);return;}const RU=['RU','BY','KZ','KG','TJ','UZ','AM','AZ','UA','MD','GE'];try{const r=await fetch('https://ipapi.co/json/',{signal:AbortSignal.timeout(3000)});const d=await r.json();setLang(RU.includes(d.country_code)?'ru':'en');}catch{setLang((navigator.language||'').toLowerCase().startsWith('ru')?'ru':'en');}})();
+</script>
+</body>
+</html>
