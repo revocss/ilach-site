@@ -274,14 +274,23 @@ function openDoc(file,title,subtitle,tag,docId){
       <div>
         <span class="doc-tag ${tag}" style="background:${tagBg[tag]};color:${tagColor[tag]}">${docId.toUpperCase()}</span>
         <div class="doc-title">${title}</div>
-        <div class="doc-meta">${subtitle} · ILACH · Confidential</div>
+        <div class="doc-meta">${subtitle} &middot; ILACH &middot; Confidential</div>
       </div>
-      <div class="doc-views">👁 ${views} ${plural(views,'просмотр','просмотра','просмотров')}</div>
+      <div class="doc-views">&#128065; ${views} ${plural(views,'просмотр','просмотра','просмотров')}</div>
     </div>
-    <div class="doc-frame">
-      <iframe src="${file}" title="${title}" onload="injectIframeProtection(this);resizeIframe(this)"></iframe>
-      <div class="doc-frame-overlay" onwheel="this.previousElementSibling.contentWindow.scrollBy(0,event.deltaY);event.preventDefault();" oncontextmenu="return false;"></div>
-    </div>`;
+    <div class="vault-welcome">
+      <div class="welcome-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+      </div>
+      <h2>${title}</h2>
+      <p style="margin-bottom:24px;color:#5a7a66;">${subtitle}</p>
+      <a href="${file}" target="_blank" rel="noopener"
+         style="display:inline-flex;align-items:center;gap:10px;background:#2a7a4f;color:white;padding:14px 32px;border-radius:12px;font-size:14px;font-weight:600;text-decoration:none;">
+        &#128196; Открыть документ
+      </a>
+      <p style="margin-top:16px;font-size:11px;color:#5a7a66;">Откроется в новой вкладке &middot; Просмотров: ${views}</p>
+    </div>
+  `;
 }
 
 function injectIframeProtection(iframe){
