@@ -294,8 +294,8 @@ footer{background:var(--g900);padding:40px 48px;border-top:1px solid rgba(255,25
   <div class="cta-inner">
     <div class="sl" style="color:var(--g400);" data-ru="Для инвесторов и партнёров" data-en="For investors and partners">Для инвесторов и партнёров</div>
     <div class="cta-title">
-      <span data-ru="Запросите" data-en="Request the">Запросите</span>
-      <span style="color:var(--g400)" data-ru="ТЭО" data-en="Feasibility Study"> ТЭО</span>
+      <span id="cta-mfg-ru" style="display:inline;">Запросите <span style="color:var(--g400)">ТЭО</span></span>
+      <span id="cta-mfg-en" style="display:none;">Request the <span style="color:var(--g400)">Feasibility Study</span></span>
     </div>
     <p class="cta-desc" data-ru="Полное ТЭО на 14 разделов и 39 таблиц доступно в защищённом хранилище документов для квалифицированных инвесторов." data-en="Full feasibility study with 14 sections and 39 tables is available in the secure document vault for qualified investors.">Полное ТЭО на 14 разделов и 39 таблиц доступно в защищённом хранилище для квалифицированных инвесторов.</p>
     <div class="cta-row">
@@ -359,6 +359,17 @@ function toggleMenu(){const m=document.getElementById('mobileMenu'),b=document.g
 function closeMobileMenu(){document.getElementById('mobileMenu').classList.remove('open');document.getElementById('hamburger').classList.remove('open');document.body.style.overflow='';}
 function updateMobileLang(lang){document.getElementById('mob-ru')?.classList.toggle('active',lang==='ru');document.getElementById('mob-en')?.classList.toggle('active',lang==='en');}
 window.addEventListener('resize',()=>{if(window.innerWidth>768)closeMobileMenu();});
+// Toggle manual bilingual spans on manufacturing page
+const _origSetLang = setLang;
+function setLang(lang, manual) {
+  _origSetLang(lang, manual);
+  const ru = document.getElementById('cta-mfg-ru');
+  const en = document.getElementById('cta-mfg-en');
+  if (ru && en) {
+    ru.style.display = lang === 'ru' ? 'inline' : 'none';
+    en.style.display = lang === 'en' ? 'inline' : 'none';
+  }
+}
 (async function(){const saved=localStorage.getItem('ilach_lang');if(saved==='ru'||saved==='en'){setLang(saved);return;}const RU=['RU','BY','KZ','KG','TJ','UZ','AM','AZ','UA','MD','GE'];try{const r=await fetch('https://ipapi.co/json/',{signal:AbortSignal.timeout(3000)});const d=await r.json();setLang(RU.includes(d.country_code)?'ru':'en');}catch{setLang((navigator.language||'').toLowerCase().startsWith('ru')?'ru':'en');}})();
 </script>
 </body>
